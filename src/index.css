@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@theme {
+  --color-ch1: #f7374f;
+  --color-ch2: #88304e;
+  --color-ch3: #522546;
+  --color-ch4: #2c2c2c;
+  --color-offwhite: #eee;
+  --color-offblack: #333;
+  --animate-blinking-cursor: blink 1s step-start infinite;
+}
+
+:root {
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #2c2c2c;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
