@@ -2,9 +2,10 @@ import { useState } from "react";
 import "./App.css";
 import ImageLinkButton from "./components/ImageButton";
 import Subtitle from "./components/Subtitle";
-import TechTag from "./components/Tag";
+
 import ProjectCard from "./components/Cards";
 import { Destaque } from "./components/Destaque";
+import ProjectCardG from "./components/CardsGames";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
             Destaques
           </a>
           <a className="font-black text-white" aria-label="Projetos">
-            Projetos Web
+            Projetos
           </a>
 
           <img
@@ -107,12 +108,12 @@ function App() {
           <ProjectCard
             title={"G.A.M.M.A"}
             description={
-              "Primeiro projeto web, criado para uma atividade escolar. Desenvolvi um site institucional para a empresa fictícia GAMMA, focado em serviços de engenharia ambiental. O projeto inclui layout responsivo, conteúdo organizado e boas práticas de HTML, CSS e UX."
+              "Primeiro projeto web, criado para uma atividade escolar. Desenvolvi um site institucional para a empresa fictícia GAMMA, focado em serviços de engenharia ambiental. O projeto inclui layout 100% responsivo, conteúdo organizado e boas práticas de HTML, CSS e UX."
             }
-            techs={["HTML", "CSS"]}
-            link={"#"}
-            repo={"#"}
-            foto="https://placehold.jp/80x120.png" // substitui pela imagem real se tiver
+            techs={["HTML", "CSS", "RESPONSIVIDADE"]}
+            link={"https://gamma-git-main-luukz05s-projects.vercel.app/"}
+            repo={"https://github.com/luukz05/GAMMA"}
+            foto="src/assets/thumbnails/GAMMA.png" // substitui pela imagem real se tiver
           />
 
           <ProjectCard
@@ -244,55 +245,47 @@ function App() {
           />
         </div>
       </div>
-      <div className="bg-cherry py-20 px-10 text-white text-justify flex flex-col  items-center">
+      <div className="bg-ch4 py-20 px-10 text-white text-justify flex flex-col  items-center">
         <h2 className="text-4xl font-black text-center mb-20">
           Projetos Gamedev
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
-          <ProjectCard
+          <ProjectCardG
             title="Scratch/Stencyl"
-            description="Meu primeiro jogo 2D com inspiração em Super Mario, feito no Stencyl após introdução à lógica no Scratch. Um marco no início da minha jornada com desenvolvimento de jogos."
+            description="Meu primeiro jogo 2D com inspiração em Super Mario, feito no Stencyl após introdução à lógica no Scratch. Infelizmente eu perdi o projeto original. "
             techs={["Scratch", "Stencyl", "Blockly", "Aseprite"]}
-            repo=""
-            link=""
-            foto="https://placehold.jp/80x120.png"
+            foto="src/assets/thumbnails/StencylScratch.png"
           />
-          <ProjectCard
+          <ProjectCardG
             title="Treasure Island"
             description="Jogo top-down inspirado em Zelda, com combate, labirintos e exploração. Um projeto voltado ao estudo de game design, lógica de inimigos e mapas interativos."
             techs={["Godot", "GDScript", "Aseprite"]}
-            repo=""
-            link="#"
+            foto={"src/assets/thumbnails/Treasure Island.png"}
           />
 
-          <ProjectCard
+          <ProjectCardG
             title="Lost Memories ⭐"
             description="Jogo de plataforma inspirado em Celeste, com foco em movimentação precisa, puzzles e narrativa emocional. Um marco pessoal no meu desenvolvimento em GameDev."
             techs={["Unity 2D", "C#"]}
-            repo=""
-            link="#"
-          />
-          <ProjectCard
-            title="Game Jam Natalina"
-            description="Coletânea de mini games criada em 24h com temática natalina. Inclui um runner estilo Subway Surfers e um lançador de presentes inspirado em Angry Birds. Foco em prototipagem rápida e criatividade."
-            techs={["Unity 2D", "C#"]}
-            repo=""
-            link="#"
+            repo="https://youtu.be/IEID1vtLYkM"
+            link="https://theldev.itch.io/lost-memories"
+            foto={"src/assets/thumbnails/Lost Memories.png"}
           />
 
-          <ProjectCard
+          <ProjectCardG
             title="Zombiefication"
             description="FPS feito na Unreal Engine com foco em combate contra zumbis, progressão por fases e sistema de recursos. Projeto voltado ao aprofundamento em mecânicas complexas de gameplay e narrativa."
             techs={["Unreal Engine", "Blueprints"]}
-            repo=""
-            link="#"
+            repo="https://youtu.be/ZiXHtchtcXk"
+            foto={"src/assets/thumbnails/Zombiefication.png"}
           />
-          <ProjectCard
+          <ProjectCardG
             title="The Chase"
             description="Jogo de fuga em mundo semiaberto com sistema de drift, pontuação e trilha sonora personalizada. Foco em física veicular e mecânicas de risco e recompensa."
             techs={["Unity 3D", "C#"]}
-            repo=""
-            link="#"
+            repo="https://youtu.be/l5qiPo7G6qQ"
+            link=""
+            foto={"src/assets/thumbnails/The Chase.png"}
           />
         </div>
       </div>

@@ -1,8 +1,8 @@
 import TechTag from "./Tag";
 
-const ProjectCard = ({ title, description, techs, link, foto, repo }) => {
+const ProjectCardG = ({ title, description, techs, link, foto, repo }) => {
   return (
-    <div className=" bg-ch2 rounded-2xl shadow-lg pb-5 w-[30.01rem] flex flex-col h-full hover:scale-102 transition-transform">
+    <div className=" bg-ch2  rounded-2xl shadow-lg pb-5 w-[30.01rem] flex flex-col h-full hover:scale-102 transition-transform">
       {foto ? (
         <img
           className="h-80 w-full object-fill rounded-t-2xl"
@@ -25,29 +25,32 @@ const ProjectCard = ({ title, description, techs, link, foto, repo }) => {
           ))}
         </div>
 
-        <div className="flex gap-3 mt-auto w-full justify-center">
-          {repo && (
-            <a
-              href={repo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-offblack font-bold py-2 px-4 rounded-xl hover:bg-ch4 transition w-full inline-flex items-center justify-center gap-2"
-            >
-              <img src="/src/assets/github.svg" className="invert h-6" />{" "}
-              <p>Repositório</p>
-            </a>
-          )}
-          {link ? (
+        <div className="flex flex-col sm:flex-row gap-3 mt-auto w-full justify-center">
+          {link && (
             <a
               href={link}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-cherry text-offwhite font-bold py-2 px-4 rounded-xl hover:bg-ch3 transition w-full inline-flex items-center justify-center gap-2"
+              aria-label="Jogar"
             >
-              <img src="src/assets/resize.png" className=" h-6 invert" />{" "}
-              <p>Acessar página</p>
+              <img src="src/assets/resize.png" className="h-6 invert" />
+              <p>Jogar</p>
             </a>
-          ) : (
+          )}
+          {repo && (
+            <a
+              href={repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-ch4 font-bold py-2 px-4 rounded-xl hover:bg-ch3 text-offwhite transition w-full inline-flex items-center justify-center gap-2"
+              aria-label="Assistir Demo"
+            >
+              <img src="/src/assets/youtube.svg" className="invert h-6" />
+              <p>Assistir Demo</p>
+            </a>
+          )}
+          {!link && !repo && (
             <p
               className="text-white font-bold py-2 px-4 rounded-xl bg-ch3"
               aria-label={`Ver mais sobre o projeto ${title}`}
@@ -61,4 +64,4 @@ const ProjectCard = ({ title, description, techs, link, foto, repo }) => {
   );
 };
 
-export default ProjectCard;
+export default ProjectCardG;
