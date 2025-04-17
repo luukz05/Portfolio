@@ -254,7 +254,7 @@ function App() {
             title="Scratch/Stencyl"
             description="Meu primeiro jogo 2D com inspiração em Super Mario, feito no Stencyl após introdução à lógica no Scratch. Infelizmente eu perdi o projeto original. "
             techs={["Scratch", "Stencyl", "Blockly", "Aseprite"]}
-            foto="https://cdn.discordapp.com/attachments/1362247144781648064/1362247219767546037/StencylScratch.png?ex=6801b316&is=68006196&hm=5d4cebe48904e40923dc2f6c55412f9be2a5fc549ec2a2a9e4fa3045088dbcdf&"
+            foto="./src/assets/thumbnails/StencylScratch.png"
           />
           <ProjectCardG
             title="Treasure Island"
