@@ -113,9 +113,8 @@ function App() {
             techs={["HTML", "CSS", "RESPONSIVIDADE"]}
             link={"https://gamma-git-main-luukz05s-projects.vercel.app/"}
             repo={"https://github.com/luukz05/GAMMA"}
-            foto="src/assets/thumbnails/GAMMA.png" // substitui pela imagem real se tiver
+            foto="https://cdn.discordapp.com/attachments/1362247144781648064/1362247218844663879/GAMMA.png?ex=6801b316&is=68006196&hm=add5d64541b1421ca1cc65c813b67f2d83ec28ef3fcef8a2a84b37937eda5ab2&" // substitui pela imagem real se tiver
           />
-          <p>teste</p>
           <ProjectCard
             title={"NBA Tracker"}
             description={
