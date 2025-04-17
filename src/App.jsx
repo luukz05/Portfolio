@@ -115,7 +115,7 @@ function App() {
             repo={"https://github.com/luukz05/GAMMA"}
             foto="src/assets/thumbnails/GAMMA.png" // substitui pela imagem real se tiver
           />
-
+          <p>teste</p>
           <ProjectCard
             title={"NBA Tracker"}
             description={
