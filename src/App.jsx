@@ -28,7 +28,7 @@ function App() {
           </a>
 
           <img
-            src="src/assets/logo.png"
+            src="https://cdn.discordapp.com/attachments/1362247226264518676/1362247278206648400/logo.png?ex=6801b324&is=680061a4&hm=fe99cc54428f0ace5a0d4f2e2c3902c15ab2e762bbc7fa9692fe1d11da303c64&"
             className="h-10 w-10 object-contain"
             alt="Logo"
           />
@@ -77,6 +77,16 @@ function App() {
             alt="LinkedIn"
             newTab={true}
           />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-envelope"
+            viewBox="0 0 16 16"
+          >
+            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
+          </svg>
           <ImageLinkButton
             href="mailto:seuemail@exemplo.com"
             src="/src/assets/envelope.svg"
@@ -253,13 +263,15 @@ function App() {
             title="Scratch/Stencyl"
             description="Meu primeiro jogo 2D com inspiração em Super Mario, feito no Stencyl após introdução à lógica no Scratch. Infelizmente eu perdi o projeto original. "
             techs={["Scratch", "Stencyl", "Blockly", "Aseprite"]}
-            foto="src/assets/thumbnails/StencylScratch.png"
+            foto="https://cdn.discordapp.com/attachments/1362247144781648064/1362247219767546037/StencylScratch.png?ex=6801b316&is=68006196&hm=5d4cebe48904e40923dc2f6c55412f9be2a5fc549ec2a2a9e4fa3045088dbcdf&"
           />
           <ProjectCardG
             title="Treasure Island"
             description="Jogo top-down inspirado em Zelda, com combate, labirintos e exploração. Um projeto voltado ao estudo de game design, lógica de inimigos e mapas interativos."
             techs={["Godot", "GDScript", "Aseprite"]}
-            foto={"src/assets/thumbnails/Treasure Island.png"}
+            foto={
+              "https://cdn.discordapp.com/attachments/1362247144781648064/1362247221051002890/Treasure_Island.png?ex=6801b316&is=68006196&hm=127c89493368070e877b5c7f26c8c88a2310c32d4975969b99113cffd83f9773&"
+            }
           />
 
           <ProjectCardG
@@ -268,7 +280,9 @@ function App() {
             techs={["Unity 2D", "C#"]}
             repo="https://youtu.be/IEID1vtLYkM"
             link="https://theldev.itch.io/lost-memories"
-            foto={"src/assets/thumbnails/Lost Memories.png"}
+            foto={
+              "https://cdn.discordapp.com/attachments/1362247144781648064/1362247219348242625/Lost_Memories.png?ex=6801b316&is=68006196&hm=fada86946e0bfe80f7f34748074d3e5e6e690e6670a4dc159b1fdd6ab809ed84&"
+            }
           />
 
           <ProjectCardG
@@ -276,7 +290,9 @@ function App() {
             description="FPS feito na Unreal Engine com foco em combate contra zumbis, progressão por fases e sistema de recursos. Projeto voltado ao aprofundamento em mecânicas complexas de gameplay e narrativa."
             techs={["Unreal Engine", "Blueprints"]}
             repo="https://youtu.be/ZiXHtchtcXk"
-            foto={"src/assets/thumbnails/Zombiefication.png"}
+            foto={
+              "https://cdn.discordapp.com/attachments/1362247144781648064/1362247221738733770/Zombiefication.png?ex=6801b316&is=68006196&hm=57b861831beb438eff990906a7ff31e28282ae7c0709468c35bc2b84d24e7e6a&"
+            }
           />
           <ProjectCardG
             title="The Chase"
@@ -284,7 +300,9 @@ function App() {
             techs={["Unity 3D", "C#"]}
             repo="https://youtu.be/l5qiPo7G6qQ"
             link=""
-            foto={"src/assets/thumbnails/The Chase.png"}
+            foto={
+              "https://cdn.discordapp.com/attachments/1362247144781648064/1362247220296155268/The_Chase.png?ex=6801b316&is=68006196&hm=f28fbdbfbb73282377ce4865c7ed0d3bcca10f8d116fb5cabb5485b0b012f462&"
+            }
           />
         </div>
       </div>
