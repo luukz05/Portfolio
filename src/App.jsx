@@ -67,7 +67,7 @@ function App() {
           <h1 className="text-5xl">&lt;</h1>
           <ImageLinkButton
             href="https://github.com/luukz05"
-            src="./src/assets/github.svg"
+            src="src/assets/github.svg"
             alt="GitHub"
             newTab={true}
           />
