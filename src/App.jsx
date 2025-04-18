@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 import ImageLinkButton from "./components/ImageButton";
 import Subtitle from "./components/Subtitle";
@@ -6,6 +5,18 @@ import Subtitle from "./components/Subtitle";
 import ProjectCard from "./components/Cards";
 import { Destaque } from "./components/Destaque";
 import ProjectCardG from "./components/CardsGames";
+
+import envelope from "./assets/envelope.svg";
+import github from "./assets/github.svg";
+import linkedin from "./assets/linkedin.svg";
+import seta from "./assets/keyboard-arrow-down_117120.svg";
+import GAMMA from "./assets/GAMMA.png";
+import logo from "./assets/logo.png";
+import lostmemories from "./assets/Lost Memories.png";
+import stencyl from "./assets/StencylScratch.png";
+import chase from "./assets/The Chase.png";
+import zombiefication from "./assets/Zombiefication.png";
+import treasure from "./assets/Treasure Island.png";
 
 function App() {
   return (
@@ -27,11 +38,7 @@ function App() {
             Projetos
           </a>
 
-          <img
-            src="./assets/logo.png"
-            className="h-10 w-10 object-contain"
-            alt="Logo"
-          />
+          <img src={logo} className="h-15 w-15 object-contain" alt="Logo" />
 
           <a
             href="https://placehold.jp/80x120.png"
@@ -67,20 +74,20 @@ function App() {
           <h1 className="text-5xl">&lt;</h1>
           <ImageLinkButton
             href="https://github.com/luukz05"
-            src="./src/assets/github.svg"
+            src={github}
             alt="GitHub"
             newTab={true}
           />
           <ImageLinkButton
             href="https://linkedin.com/in/seulink"
-            src="./src/assets/linkedin.svg"
+            src={linkedin}
             alt="LinkedIn"
             newTab={true}
           />
 
           <ImageLinkButton
-            href="mailto:seuemail@exemplo.com"
-            src="./src/assets/envelope.svg"
+            href="mailto:lucasvargasdev05@gmail.com"
+            src={envelope}
             alt="Email"
             newTab={true}
           />
@@ -88,14 +95,8 @@ function App() {
         </div>
         <div className="flex flex-col mb-[-100px] animate-bounce justify-center items-center">
           <h1 className=" text-offwhite text-2xl font-mono ">SCROLL</h1>
-          <img
-            src="src/assets/keyboard-arrow-down_117120.svg"
-            className="h-5 w-5 invert"
-          />
-          <img
-            src="src/assets/keyboard-arrow-down_117120.svg"
-            className="h-5 w-5 invert"
-          />
+          <img src={seta} className="h-5 w-5 invert" />
+          <img src={seta} className="h-5 w-5 invert" />
         </div>
       </div>
       <div className="flex justify-center mt-12 flex-col items-center">
@@ -114,7 +115,7 @@ function App() {
             techs={["HTML", "CSS", "RESPONSIVIDADE"]}
             link={"https://gamma-git-main-luukz05s-projects.vercel.app/"}
             repo={"https://github.com/luukz05/GAMMA"}
-            foto="./assets/thumbnails/GAMMA.png" // substitui pela imagem real se tiver
+            foto={GAMMA} // substitui pela imagem real se tiver
           />
           <ProjectCard
             title={"NBA Tracker"}
@@ -254,15 +255,13 @@ function App() {
             title="Scratch/Stencyl"
             description="Meu primeiro jogo 2D com inspiração em Super Mario, feito no Stencyl após introdução à lógica no Scratch. Infelizmente eu perdi o projeto original. "
             techs={["Scratch", "Stencyl", "Blockly", "Aseprite"]}
-            foto="./src/assets/thumbnails/StencylScratch.png"
+            foto={stencyl}
           />
           <ProjectCardG
             title="Treasure Island"
             description="Jogo top-down inspirado em Zelda, com combate, labirintos e exploração. Um projeto voltado ao estudo de game design, lógica de inimigos e mapas interativos."
             techs={["Godot", "GDScript", "Aseprite"]}
-            foto={
-              "https://cdn.discordapp.com/attachments/1362247144781648064/1362247221051002890/Treasure_Island.png?ex=6801b316&is=68006196&hm=127c89493368070e877b5c7f26c8c88a2310c32d4975969b99113cffd83f9773&"
-            }
+            foto={treasure}
           />
 
           <ProjectCardG
@@ -271,9 +270,7 @@ function App() {
             techs={["Unity 2D", "C#"]}
             repo="https://youtu.be/IEID1vtLYkM"
             link="https://theldev.itch.io/lost-memories"
-            foto={
-              "https://cdn.discordapp.com/attachments/1362247144781648064/1362247219348242625/Lost_Memories.png?ex=6801b316&is=68006196&hm=fada86946e0bfe80f7f34748074d3e5e6e690e6670a4dc159b1fdd6ab809ed84&"
-            }
+            foto={lostmemories}
           />
 
           <ProjectCardG
@@ -281,9 +278,7 @@ function App() {
             description="FPS feito na Unreal Engine com foco em combate contra zumbis, progressão por fases e sistema de recursos. Projeto voltado ao aprofundamento em mecânicas complexas de gameplay e narrativa."
             techs={["Unreal Engine", "Blueprints"]}
             repo="https://youtu.be/ZiXHtchtcXk"
-            foto={
-              "https://cdn.discordapp.com/attachments/1362247144781648064/1362247221738733770/Zombiefication.png?ex=6801b316&is=68006196&hm=57b861831beb438eff990906a7ff31e28282ae7c0709468c35bc2b84d24e7e6a&"
-            }
+            foto={zombiefication}
           />
           <ProjectCardG
             title="The Chase"
@@ -291,9 +286,7 @@ function App() {
             techs={["Unity 3D", "C#"]}
             repo="https://youtu.be/l5qiPo7G6qQ"
             link=""
-            foto={
-              "https://cdn.discordapp.com/attachments/1362247144781648064/1362247220296155268/The_Chase.png?ex=6801b316&is=68006196&hm=f28fbdbfbb73282377ce4865c7ed0d3bcca10f8d116fb5cabb5485b0b012f462&"
-            }
+            foto={chase}
           />
         </div>
       </div>

@@ -1,4 +1,6 @@
 import TechTag from "./Tag";
+import youtube from "../assets/youtube.svg";
+import controller from "../assets/controller.svg";
 
 const ProjectCardG = ({ title, description, techs, link, foto, repo }) => {
   return (
@@ -34,7 +36,7 @@ const ProjectCardG = ({ title, description, techs, link, foto, repo }) => {
               className="bg-cherry text-offwhite font-bold py-2 px-4 rounded-xl hover:bg-ch3 transition w-full inline-flex items-center justify-center gap-2"
               aria-label="Jogar"
             >
-              <img src="src/assets/resize.png" className="h-6 invert" />
+              <img src={controller} className="h-6 invert" />
               <p>Jogar</p>
             </a>
           )}
@@ -46,7 +48,7 @@ const ProjectCardG = ({ title, description, techs, link, foto, repo }) => {
               className="bg-ch4 font-bold py-2 px-4 rounded-xl hover:bg-ch3 text-offwhite transition w-full inline-flex items-center justify-center gap-2"
               aria-label="Assistir Demo"
             >
-              <img src="/src/assets/youtube.svg" className="invert h-6" />
+              <img src={youtube} className="invert h-6" />
               <p>Assistir Demo</p>
             </a>
           )}

@@ -1,11 +1,13 @@
 import TechTag from "./Tag";
+import githubIcon from "../assets/github.svg";
+import youtubeIcon from "../assets/youtube.svg";
 
 const ProjectCard = ({ title, description, techs, link, foto, repo }) => {
   return (
     <div className=" bg-ch2 rounded-2xl shadow-lg pb-5 w-[30.01rem] flex flex-col h-full hover:scale-102 transition-transform">
       {foto ? (
         <img
-          className="h-80 w-full object-fill rounded-t-2xl"
+          className="h-80  rounded-t-2xl"
           src={foto}
           alt={`Imagem do projeto ${title}`}
         />
@@ -33,8 +35,7 @@ const ProjectCard = ({ title, description, techs, link, foto, repo }) => {
               rel="noopener noreferrer"
               className="bg-offblack font-bold py-2 px-4 rounded-xl hover:bg-ch4 transition w-full inline-flex items-center justify-center gap-2"
             >
-              <img src="/src/assets/github.svg" className="invert h-6" />{" "}
-              <p>Repositório</p>
+              <img src={githubIcon} className="invert h-6" /> <p>Repositório</p>
             </a>
           )}
           {link ? (
@@ -44,7 +45,7 @@ const ProjectCard = ({ title, description, techs, link, foto, repo }) => {
               rel="noopener noreferrer"
               className="bg-cherry text-offwhite font-bold py-2 px-4 rounded-xl hover:bg-ch3 transition w-full inline-flex items-center justify-center gap-2"
             >
-              <img src="src/assets/resize.png" className=" h-6 invert" />{" "}
+              <img src={youtubeIcon} className=" h-6 invert" />{" "}
               <p>Acessar página</p>
             </a>
           ) : (
