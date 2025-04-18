@@ -1,20 +1,20 @@
 import TechTag from "./Tag";
 import githubIcon from "../assets/github.svg";
-import youtubeIcon from "../assets/youtube.svg";
+import resize from "../assets/resize.png";
 
 const ProjectCard = ({ title, description, techs, link, foto, repo }) => {
   return (
     <div className=" bg-ch2 rounded-2xl shadow-lg pb-5 w-[30.01rem] flex flex-col h-full hover:scale-102 transition-transform">
       {foto ? (
         <img
-          className="h-80  rounded-t-2xl"
+          className="h-70 object-fill  rounded-t-2xl"
           src={foto}
           alt={`Imagem do projeto ${title}`}
         />
       ) : (
         <img
-          className="h-80 w-full object-cover rounded-t-2xl"
-          src={`https://placehold.jp/80x120.png`}
+          className="h-75 w-full object-cover rounded-t-2xl"
+          src={`https://placehold.jp/75x120.png`}
           alt={`Imagem do projeto ${title}`}
         />
       )}
@@ -45,8 +45,7 @@ const ProjectCard = ({ title, description, techs, link, foto, repo }) => {
               rel="noopener noreferrer"
               className="bg-cherry text-offwhite font-bold py-2 px-4 rounded-xl hover:bg-ch3 transition w-full inline-flex items-center justify-center gap-2"
             >
-              <img src={youtubeIcon} className=" h-6 invert" />{" "}
-              <p>Acessar página</p>
+              <img src={resize} className=" h-6 invert" /> <p>Acessar página</p>
             </a>
           ) : (
             <p

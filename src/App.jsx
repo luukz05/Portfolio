@@ -10,8 +10,11 @@ import envelope from "./assets/envelope.svg";
 import github from "./assets/github.svg";
 import linkedin from "./assets/linkedin.svg";
 import seta from "./assets/keyboard-arrow-down_117120.svg";
-import GAMMA from "./assets/GAMMA.png";
 import logo from "./assets/logo.png";
+
+import GAMMA from "./assets/GAMMA.png";
+import NBA from "./assets/NBA.png";
+
 import lostmemories from "./assets/Lost Memories.png";
 import stencyl from "./assets/StencylScratch.png";
 import chase from "./assets/The Chase.png";
@@ -79,7 +82,7 @@ function App() {
             newTab={true}
           />
           <ImageLinkButton
-            href="https://linkedin.com/in/seulink"
+            href="www.linkedin.com/in/lucasvargasdev"
             src={linkedin}
             alt="LinkedIn"
             newTab={true}
@@ -120,12 +123,12 @@ function App() {
           <ProjectCard
             title={"NBA Tracker"}
             description={
-              "Aplicação web interativa sobre a NBA, com notícias, estatísticas de jogadores e times, elencos, placares em tempo real e calendário de jogos. Os dados são obtidos via RapidAPI, com foco na integração de APIs externas usando Fetch API e apresentação clara das informações."
+              "Aplicação web interativa sobre a NBA, com notícias, estatísticas de jogadores e times, elencos, placares em tempo real e calendário de jogos. Os dados são obtidos via RapidAPI, com foco na integração de APIs externas usando Fetch API e apresentação clara das informações. Site sujeito a erros de requisição e exibição devido a uso de cotas."
             }
             techs={["HTML", "CSS", "JAVASCRIPT"]}
-            link={"#"}
-            repo={"#"}
-            foto="https://placehold.jp/80x120.png" // substitui pela imagem real se tiver
+            link={"https://luukz05.github.io/NBA-Tracker/index.html"}
+            repo={"https://github.com/luukz05/NBA-Tracker"}
+            foto={NBA} // substitui pela imagem real se tiver
           />
 
           <ProjectCard
@@ -265,7 +268,7 @@ function App() {
           />
 
           <ProjectCardG
-            title="Lost Memories ⭐"
+            title="Lost Memories"
             description="Jogo de plataforma inspirado em Celeste, com foco em movimentação precisa, puzzles e narrativa emocional. Um marco pessoal no meu desenvolvimento em GameDev."
             techs={["Unity 2D", "C#"]}
             repo="https://youtu.be/IEID1vtLYkM"
