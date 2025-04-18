@@ -1,19 +1,20 @@
 import TechTag from "./Tag";
 import youtube from "../assets/youtube.svg";
 import controller from "../assets/controller.svg";
+import frown from "../assets/emoji-frown-fill.svg";
 
 const ProjectCardG = ({ title, description, techs, link, foto, repo }) => {
   return (
     <div className=" bg-ch2  rounded-2xl shadow-lg pb-5 w-[30.01rem] flex flex-col h-full hover:scale-102 transition-transform">
       {foto ? (
         <img
-          className="h-80 w-full object-fill rounded-t-2xl"
+          className="w-full h-70 rounded-t-2xl"
           src={foto}
           alt={`Imagem do projeto ${title}`}
         />
       ) : (
         <img
-          className="h-80 w-full object-cover rounded-t-2xl"
+          className="w-full h-screen object-cover rounded-t-2xl"
           src={`https://placehold.jp/80x120.png`}
           alt={`Imagem do projeto ${title}`}
         />
@@ -53,12 +54,10 @@ const ProjectCardG = ({ title, description, techs, link, foto, repo }) => {
             </a>
           )}
           {!link && !repo && (
-            <p
-              className="text-white font-bold py-2 px-4 rounded-xl bg-ch3"
-              aria-label={`Ver mais sobre o projeto ${title}`}
-            >
-              Acesso indisponível
-            </p>
+            <div className="bg-ch3 text-offwhite font-bold py-2 px-4 rounded-xl hover:bg-ch3 transition w-full inline-flex items-center justify-center gap-2">
+              <img src={frown} className=" h-6 invert" />{" "}
+              <p>Acesso Indisponível</p>
+            </div>
           )}
         </div>
       </div>

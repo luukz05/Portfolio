@@ -14,6 +14,8 @@ import logo from "./assets/logo.png";
 
 import GAMMA from "./assets/GAMMA.png";
 import NBA from "./assets/NBA.png";
+import IndieFolio from "./assets/IndieFolio.png";
+import Blueprint from "./assets/gif.gif";
 
 import lostmemories from "./assets/Lost Memories.png";
 import stencyl from "./assets/StencylScratch.png";
@@ -144,8 +146,8 @@ function App() {
               "MONGODB",
               "NODE",
             ]}
-            foto="https://placehold.jp/80x120.png" // substitui pela imagem real se tiver
-            link={"#"}
+            foto={IndieFolio} // substitui pela imagem real se tiver
+            link={""}
             repo={"#"}
           />
 
@@ -157,7 +159,7 @@ function App() {
             techs={["STYLED-COMPONENTS", "REACT"]}
             link={"#"}
             repo={"#"}
-            foto="https://placehold.jp/80x120.png" // substitui pela imagem real se tiver
+            foto={Blueprint} // substitui pela imagem real se tiver
           />
           <ProjectCard
             title={"Minimal Keeper"}
