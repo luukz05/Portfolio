@@ -28,7 +28,7 @@ function App() {
           </a>
 
           <img
-            src="https://cdn.discordapp.com/attachments/1362247226264518676/1362247278206648400/logo.png?ex=6801b324&is=680061a4&hm=fe99cc54428f0ace5a0d4f2e2c3902c15ab2e762bbc7fa9692fe1d11da303c64&"
+            src="./assets/logo.png"
             className="h-10 w-10 object-contain"
             alt="Logo"
           />
@@ -67,7 +67,7 @@ function App() {
           <h1 className="text-5xl">&lt;</h1>
           <ImageLinkButton
             href="https://github.com/luukz05"
-            src="src/assets/github.svg"
+            src="./src/assets/github.svg"
             alt="GitHub"
             newTab={true}
           />
@@ -114,7 +114,7 @@ function App() {
             techs={["HTML", "CSS", "RESPONSIVIDADE"]}
             link={"https://gamma-git-main-luukz05s-projects.vercel.app/"}
             repo={"https://github.com/luukz05/GAMMA"}
-            foto="https://cdn.discordapp.com/attachments/1362247144781648064/1362247218844663879/GAMMA.png?ex=6801b316&is=68006196&hm=add5d64541b1421ca1cc65c813b67f2d83ec28ef3fcef8a2a84b37937eda5ab2&" // substitui pela imagem real se tiver
+            foto="./assets/thumbnails/GAMMA.png" // substitui pela imagem real se tiver
           />
           <ProjectCard
             title={"NBA Tracker"}
