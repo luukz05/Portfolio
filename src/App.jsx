@@ -5,6 +5,7 @@ import Subtitle from "./components/Subtitle";
 import ProjectCard from "./components/Cards";
 import { Destaque } from "./components/Destaque";
 import ProjectCardG from "./components/CardsGames";
+import { SobreMim } from "./components/Sobre Mim";
 
 import envelope from "./assets/envelope.svg";
 import github from "./assets/github.svg";
@@ -16,12 +17,24 @@ import GAMMA from "./assets/GAMMA.png";
 import NBA from "./assets/NBA.png";
 import IndieFolio from "./assets/IndieFolio.png";
 import Blueprint from "./assets/gif.gif";
+import MinimalKeeper from "./assets/MinimalKeeper.png";
+import DVGC from "./assets/DVGC.png";
+import Rematch from "./assets/Rematch.png";
+import ConsultaWeb from "./assets/ConsultaWeb.png";
+import Esse from "./assets/Esse.png";
 
 import lostmemories from "./assets/Lost Memories.png";
 import stencyl from "./assets/StencylScratch.png";
 import chase from "./assets/The Chase.png";
 import zombiefication from "./assets/Zombiefication.png";
 import treasure from "./assets/Treasure Island.png";
+import dvgcmobile from "./assets/dvgc_mobile.jpg";
+
+import { Carousel } from "./components/carousel";
+import s1 from "./assets/1.png";
+import s2 from "./assets/2.png";
+import s3 from "./assets/3.png";
+import s4 from "./assets/4.png";
 
 function App() {
   return (
@@ -29,45 +42,56 @@ function App() {
       {/* HEADER */}
       <header className="fixed top-0 w-full z-50 bg-offblack shadow-md">
         <div className="flex flex-row items-center justify-center gap-10 px-6 py-4">
-          <a className="font-black text-white">Início</a>
-          <a className="font-black text-white" aria-label="Sobre">
+          <a href="#hero" className="font-black text-white">
+            Início
+          </a>
+          <a href="#sobre" className="font-black text-white" aria-label="Sobre">
             Sobre Mim
           </a>
           <a
             className="font-black text-ch1 animate-pulse"
             aria-label="Projetos"
+            href="#destaque"
           >
             Destaques
           </a>
-          <a className="font-black text-white" aria-label="Projetos">
+          <a
+            href="#web"
+            className="font-black text-white"
+            aria-label="Projetos"
+          >
             Projetos
           </a>
 
           <img src={logo} className="h-15 w-15 object-contain" alt="Logo" />
 
           <a
-            href="https://placehold.jp/80x120.png"
+            href="#games"
             className="font-black text-white"
             aria-label="Projetos"
           >
             Games
           </a>
-          <a className="font-black text-white" aria-label="Projetos">
+          <a href="" className="font-black text-white" aria-label="Projetos">
             Habilidades
           </a>
-          <a className="font-black text-white" aria-label="Contato">
+          <a href="" className="font-black text-white" aria-label="Contato">
             Contato
           </a>
           <a
             className="font-black text-white bg-ch2 p-2 rounded-md"
             aria-label="Contato"
+            href=""
           >
             Baixar CV
           </a>
         </div>
       </header>
       {/* HERO */}
-      <div className="bg-[url('./assets/image.png')] text-center min-h-screen flex flex-col items-center justify-evenly bg-no-repeat bg-cover bg-fixed">
+      <div
+        id="hero"
+        className="bg-[url('./assets/image.png')] text-center min-h-screen flex flex-col items-center justify-evenly bg-no-repeat bg-cover bg-fixed"
+      >
         <div className="flex flex-col items-center justify-evenly gap-2">
           <p className="text-offwhite text-4xl font-mono mb-[-30px]">
             Bem vindo(a), visitante!
@@ -104,12 +128,26 @@ function App() {
           <img src={seta} className="h-5 w-5 invert" />
         </div>
       </div>
+
+      <div className="flex justify-center mt-12 flex-col items-center ">
+        <h2 id="sobre" className="text-4xl font-black text-center mb-12">
+          Sobre Mim
+        </h2>
+        <div className="flex items-center gap-8">
+          <SobreMim />
+          <Carousel s1={s1} s2={s2} s3={s3} s4={s4} />
+        </div>
+      </div>
+      <p id="destaque"></p>
       <div className="flex justify-center mt-12 flex-col items-center">
         <h2 className="text-4xl font-black text-center mb-12">Destaque</h2>
-        <Destaque />
+        <Destaque src={dvgcmobile} />
       </div>
       {/* PROJETOS */}
-      <div className="bg-ch4 py-20 px-10 text-white text-justify flex flex-col  items-center">
+      <div
+        id="web"
+        className="bg-ch4 py-20 px-10 text-white text-justify flex flex-col  items-center"
+      >
         <h2 className="text-4xl font-black text-center mb-20">Projetos Web</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 ">
           <ProjectCard
@@ -166,8 +204,9 @@ function App() {
             description={
               "Aplicativo mobile de cibersegurança pessoal, desenvolvido com React Native. Permite gerar, testar e armazenar senhas com um cofre seguro e personalizável. Primeiro projeto mobile, com foco em segurança digital e uso inicial de MySQL para integração de dados."
             }
-            foto="https://placehold.jp/80x120.png" // substitui pela imagem real se tiver
+            foto={MinimalKeeper} // substitui pela imagem real se tiver
             techs={[
+              "MOBILE",
               "REACT NATIVE",
               "MYSQL",
               "EXPRESS",
@@ -186,6 +225,7 @@ function App() {
               "Projeto sobre Smart Cities que uniu software e hardware com uso do ESP32 e sensores de gás. Detecta vazamentos de GLP e envia alertas em tempo real para um app mobile feito em React Native, que exibe gráficos, registros e instruções. Marcou minha introdução à IoT e integração entre dispositivos físicos e apps."
             }
             techs={[
+              "MOBILE",
               "REACT NATIVE",
               "MYSQL",
               "EXPO",
@@ -199,7 +239,7 @@ function App() {
             ]}
             link={"#"}
             repo={"#"}
-            foto="https://placehold.jp/80x120.png"
+            foto={DVGC}
           />
 
           <ProjectCard
@@ -218,7 +258,7 @@ function App() {
             ]}
             link={"#"}
             repo={"#"}
-            foto="https://placehold.jp/80x120.png" // troca pela imagem real se quiser
+            foto={Rematch} // troca pela imagem real se quiser
           />
           <ProjectCard
             title="ConsultaWeb (Estudo)"
@@ -238,7 +278,7 @@ function App() {
             ]}
             link={"#"}
             repo={"#"}
-            foto="https://placehold.jp/80x120.png" // substitui pela imagem real se tiver
+            foto={ConsultaWeb} // substitui pela imagem real se tiver
           />
 
           <ProjectCard
@@ -247,11 +287,14 @@ function App() {
             techs={["REACT", "TAILWIND"]}
             link={"#"}
             repo={"#"}
-            foto="https://placehold.jp/80x120.png" // substitui pela imagem real do portfólio se quiser
+            foto={Esse} // substitui pela imagem real do portfólio se quiser
           />
         </div>
       </div>
-      <div className="bg-ch4 py-20 px-10 text-white text-justify flex flex-col  items-center">
+      <div
+        id="games"
+        className="bg-ch4 py-20 px-10 text-white text-justify flex flex-col  items-center"
+      >
         <h2 className="text-4xl font-black text-center mb-20">
           Projetos Gamedev
         </h2>
@@ -259,20 +302,20 @@ function App() {
           <ProjectCardG
             title="Scratch/Stencyl"
             description="Meu primeiro jogo 2D com inspiração em Super Mario, feito no Stencyl após introdução à lógica no Scratch. Infelizmente eu perdi o projeto original. "
-            techs={["Scratch", "Stencyl", "Blockly", "Aseprite"]}
+            techs={["SCRATCH", "STENCYL", "BLOCKLY", "ASEPRITE"]}
             foto={stencyl}
           />
           <ProjectCardG
             title="Treasure Island"
             description="Jogo top-down inspirado em Zelda, com combate, labirintos e exploração. Um projeto voltado ao estudo de game design, lógica de inimigos e mapas interativos."
-            techs={["Godot", "GDScript", "Aseprite"]}
+            techs={["GODOT", "GDSCRIPT", "ASEPRITE"]}
             foto={treasure}
           />
 
           <ProjectCardG
             title="Lost Memories"
             description="Jogo de plataforma inspirado em Celeste, com foco em movimentação precisa, puzzles e narrativa emocional. Um marco pessoal no meu desenvolvimento em GameDev."
-            techs={["Unity 2D", "C#"]}
+            techs={["UNITY 2D", "C#"]}
             repo="https://youtu.be/IEID1vtLYkM"
             link="https://theldev.itch.io/lost-memories"
             foto={lostmemories}
@@ -281,14 +324,14 @@ function App() {
           <ProjectCardG
             title="Zombiefication"
             description="FPS feito na Unreal Engine com foco em combate contra zumbis, progressão por fases e sistema de recursos. Projeto voltado ao aprofundamento em mecânicas complexas de gameplay e narrativa."
-            techs={["Unreal Engine", "Blueprints"]}
+            techs={["UNREAL ENGINE", "BLUEPRINTS"]}
             repo="https://youtu.be/ZiXHtchtcXk"
             foto={zombiefication}
           />
           <ProjectCardG
             title="The Chase"
             description="Jogo de fuga em mundo semiaberto com sistema de drift, pontuação e trilha sonora personalizada. Foco em física veicular e mecânicas de risco e recompensa."
-            techs={["Unity 3D", "C#"]}
+            techs={["UNITY 3D", "C#"]}
             repo="https://youtu.be/l5qiPo7G6qQ"
             link=""
             foto={chase}

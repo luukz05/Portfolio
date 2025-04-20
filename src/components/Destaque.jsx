@@ -1,14 +1,14 @@
 import React from "react";
 import TechTag from "./Tag";
 
-export const Destaque = () => {
+export const Destaque = ({ src }) => {
   return (
-    <div className=" scale-90 flex flex-col md:flex-row gap-8 items-center justify justify-center-safe text-justify ">
+    <div className="flex flex-col md:flex-row gap-8 items-center justify justify-center-safe text-justify ">
       <div className=" relative w-[20rem] h-[40rem] rounded-[3rem] bg-black p-2 shadow-2xl border-4 border-neutral-800">
         <img
-          src="https://placehold.jp/400x800.png"
+          src={src}
           alt="Interface do app DVGC"
-          className="w-full h-full rounded-[2rem] object-filled"
+          className="w-full h-full rounded-[2rem] object-cover"
         />
         {/* Simulando notch */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-2 rounded-b-xl bg-neutral-700 mt-2" />

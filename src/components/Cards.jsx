@@ -5,10 +5,10 @@ import frown from "../assets/emoji-frown-fill.svg";
 
 const ProjectCard = ({ title, description, techs, link, foto, repo }) => {
   return (
-    <div className=" bg-ch2 rounded-2xl shadow-lg pb-5 w-[30.01rem] flex flex-col h-full hover:scale-102 transition-transform">
+    <div className=" bg-ch2  rounded-2xl shadow-lg pb-5 w-125 flex flex-col h-full hover:scale-102 transition-transform">
       {foto ? (
         <img
-          className="w-100% h-70  rounded-t-2xl"
+          className="w-full h-70 object-fill rounded-t-2xl"
           src={foto}
           alt={`Imagem do projeto ${title}`}
         />
