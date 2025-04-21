@@ -36,6 +36,8 @@ import s2 from "./assets/2.png";
 import s3 from "./assets/3.png";
 import s4 from "./assets/4.png";
 
+import SkillsSection from "./components/skills";
+
 function App() {
   return (
     <>
@@ -156,7 +158,7 @@ function App() {
               "Primeiro projeto web, criado para uma atividade escolar. Desenvolvi um site institucional para a empresa fictícia GAMMA, focado em serviços de engenharia ambiental. O projeto inclui layout 100% responsivo, conteúdo organizado e boas práticas de HTML, CSS e UX."
             }
             techs={["HTML", "CSS", "RESPONSIVIDADE"]}
-            link={"https://gamma-git-main-luukz05s-projects.vercel.app/"}
+            link={"https://luukz05.github.io/GAMMA/"}
             repo={"https://github.com/luukz05/GAMMA"}
             foto={GAMMA} // substitui pela imagem real se tiver
           />
@@ -337,6 +339,13 @@ function App() {
             foto={chase}
           />
         </div>
+      </div>
+      <div className="flex justify-center mt-12 flex-col items-center ">
+        <h2 id="sobre" className="text-4xl font-black text-center mb-12">
+          Minhas Habilidades
+        </h2>
+        <SkillsSection />
+        <div className="flex items-center gap-8"></div>
       </div>
     </>
   );
