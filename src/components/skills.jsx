@@ -22,143 +22,224 @@ import {
   SiUnrealengine,
   SiAseprite,
   SiArduino,
-  SiScrumalliance,
 } from "react-icons/si";
-import { BsKanbanFill } from "react-icons/bs";
 
-const cherry = "#f7374f";
-const cherryLight = "#88304e";
+import { LiaFlagUsaSolid } from "react-icons/lia";
 
-const Card = ({ title, children }) => (
-  <div
-    className="rounded-2xl p-4 w-full sm:w-[250px] shadow-md border"
-    style={{ backgroundColor: cherryLight, borderColor: cherry }}
-  >
-    <h4
-      className="font-semibold mb-2 text-[##991B48] "
-      style={{ color: cherry }}
-    >
-      {title}
-    </h4>
-    <ul className="space-y-2 text-gray-700 text-base">{children}</ul>
-  </div>
-);
+import {
+  FaRegSmile,
+  FaComments,
+  FaPeopleCarry,
+  FaLightbulb,
+  FaHandsHelping,
+  FaClock,
+  FaPuzzlePiece,
+  FaBrain,
+} from "react-icons/fa";
+
+import { TbApi } from "react-icons/tb";
+
+const softSkills = [
+  {
+    icon: <FaRegSmile />,
+    title: "Empatia",
+    description:
+      "Habilidade de compreender sentimentos e perspectivas alheias, criando conexões genuínas e fortalecendo o trabalho em equipe.",
+  },
+  {
+    icon: <FaComments />,
+    title: "Comunicação",
+    description:
+      "Capacidade de expressar ideias com clareza, escutar ativamente e adaptar a linguagem ao público e ao contexto.",
+  },
+  {
+    icon: <FaPeopleCarry />,
+    title: "Trabalho em Equipe",
+    description:
+      "Aptidão para colaborar com pessoas diversas, respeitando opiniões e contribuindo de forma proativa para resultados coletivos.",
+  },
+  {
+    icon: <FaLightbulb />,
+    title: "Criatividade",
+    description:
+      "Mentalidade inovadora para resolver problemas de forma original, propor melhorias e impulsionar projetos com visão diferenciada.",
+  },
+  {
+    icon: <FaHandsHelping />,
+    title: "Liderança",
+    description:
+      "Capacidade de influenciar positivamente, motivar equipes, tomar decisões assertivas e guiar iniciativas rumo ao sucesso.",
+  },
+  {
+    icon: <FaClock />,
+    title: "Gestão de Tempo",
+    description:
+      "Organização eficiente de tarefas e prioridades, garantindo entregas de qualidade dentro dos prazos estabelecidos.",
+  },
+  {
+    icon: <FaPuzzlePiece />,
+    title: "Adaptabilidade",
+    description:
+      "Flexibilidade para lidar com mudanças, aprender rapidamente e se ajustar a novos contextos e tecnologias.",
+  },
+  {
+    icon: <FaBrain />,
+    title: "Pensamento Crítico",
+    description:
+      "Análise lógica e estratégica de problemas, questionando padrões e tomando decisões embasadas e eficientes.",
+  },
+];
+
+const skills = {
+  "Front-End": [
+    { icon: <FaHtml5 className="text-ch1" />, label: "HTML" },
+    { icon: <FaCss3Alt className="text-blue-600" />, label: "CSS" },
+    { icon: <SiTailwindcss className="text-cyan-500" />, label: "Tailwind" },
+    { icon: <FaBootstrap className="text-fuchsia-500" />, label: "Bootstrap" },
+    { icon: <FaReact className="text-ch1" />, label: "React" },
+    { icon: <FaReact className="text-blue-500" />, label: "React Native" },
+    { icon: <FaVuejs className="text-green-500" />, label: "Vue.js" },
+  ],
+  "Back-End": [
+    { icon: <FaNodeJs className="text-green-600" />, label: "Node.js" },
+    { icon: <SiExpress className="text-gray-700" />, label: "Express" },
+    { icon: <SiAxios className="text-blue-400" />, label: "Axios" },
+    { icon: <FaPython className="text-yellow-500" />, label: "Python" },
+    {
+      icon: <TbApi className="text-ch1" />,
+      label: "API RESTful",
+    },
+  ],
+  "Banco de Dados": [
+    { icon: <SiMongodb className="text-green-700" />, label: "MongoDB" },
+    { icon: <SiMongoose className="text-ch1" />, label: "Mongoose" },
+    { icon: <SiMysql className="text-blue-700" />, label: "MySQL" },
+  ],
+  "Controle de Versão": [
+    { icon: <FaGitAlt className="text-ch1" />, label: "Git" },
+    { icon: <FaGithub className="text-black" />, label: "GitHub" },
+  ],
+  "Game Dev": [
+    { icon: <FaUnity className="text-gray-800" />, label: "Unity" },
+    { icon: <SiUnrealengine className="text-black" />, label: "Unreal" },
+    { icon: <FaCode className="text-blue-700" />, label: "C" },
+    { icon: <FaCode className="text-purple-900" />, label: "C#" },
+    { icon: <SiAseprite className="text-ch1" />, label: "Aseprite" },
+  ],
+  Hardware: [
+    { icon: <SiArduino className="text-blue-700" />, label: "Arduino" },
+    { icon: <FaMicrochip className="text-gray-700" />, label: "ESP32" },
+  ],
+};
+import { SiNasa } from "react-icons/si";
 
 export default function SkillsSection() {
   return (
-    <section className="w-full px-6 py-12" id="skills">
-      <div className="flex flex-col md:flex-row gap-10 max-w-6xl mx-auto">
-        {/* Soft Skills */}
-        <div
-          className="w-full md:w-1/2 rounded-2xl p-6 shadow-xl"
-          style={{ backgroundColor: cherryLight }}
-        >
-          <h3 className="text-xl font-semibold mb-4 text-offwhite">
-            Soft Skills
-          </h3>
-          <ul className="space-y-2 list-disc list-inside text-offwhite">
-            <li>Comunicação clara</li>
-            <li>Trabalho em equipe</li>
-            <li>Resolução de problemas</li>
-            <li>Adaptabilidade</li>
-            <li>Proatividade</li>
-            <li>
-              Metodologias Ágeis{" "}
-              <BsKanbanFill className="inline ml-2" style={{ color: cherry }} />
-            </li>
-          </ul>
+    <div className="flex items-start">
+      <div className="flex justify-center items-center flex-col w-1/2">
+        <div className="flex flex-col gap-6 items-center">
+          <div className="flex items-center gap-2 text-white text-lg font-mono justify-center flex-col">
+            <div className="flex gap-2 justify-center items-center">
+              <span className="text-cherry">&lt;</span>
+              <h2 className="text-2xl font-bold">Soft-Skills</h2>
+              <span className="text-cherry">/&gt;</span>
+            </div>
+            <p className="text-s font-bold">Características interpessoais</p>
+          </div>
+
+          {/* Grid de Soft Skills */}
+          <div className="grid grid-cols-2 gap-4 w-full max-w-5xl scale-90">
+            {softSkills.map((skill, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center justify-center bg-ch2 p-6 rounded-xl shadow-lg hover:scale-105 transition duration-300 hover:bg-cherry/20"
+              >
+                <div className="text-4xl">{skill.icon}</div>
+                <h3 className="mt-4 text-xl text-white font-semibold">
+                  {skill.title}
+                </h3>
+                <p className="mt-2 text-white/70 text-center text-sm">
+                  {skill.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Hard Skills */}
-        <div className="w-full md:w-1/2 flex flex-wrap gap-6 justify-end  ">
-          <Card title="Front-end" className="h-96">
-            <li className="flex items-center gap-2">
-              <FaHtml5 style={{ color: cherry }} /> HTML
-            </li>
-            <li className="flex items-center gap-2">
-              <SiTailwindcss className="text-cyan-500" /> Tailwind CSS
-            </li>
-            <li className="flex items-center gap-2">
-              <FaCss3Alt className="text-blue-600" /> CSS
-            </li>
-            <li className="flex items-center gap-2">
-              <FaBootstrap className="text-purple-600" /> Bootstrap
-            </li>
-            <li className="flex items-center gap-2">
-              <FaReact style={{ color: cherry }} /> React
-            </li>
-            <li className="flex items-center gap-2">
-              <FaReact className="text-blue-500" /> React Native
-            </li>
-            <li className="flex items-center gap-2">
-              <FaVuejs className="text-green-500" /> Vue.js
-            </li>
-          </Card>
+        {/* Seção Competências Linguísticas */}
+        <div className="flex flex-col gap-6 items-center mt-12  scale-90">
+          <div className="flex items-center gap-2 text-white text-lg font-mono justify-center flex-col">
+            <div className="flex gap-2 justify-center items-center">
+              <span className="text-cherry">&lt;</span>
+              <h2 className="text-2xl font-bold">Competências Linguísticas</h2>
+              <span className="text-cherry">/&gt;</span>
+            </div>
+            <p className="text-s font-bold">
+              Habilidades linguísticas e experiência internacional
+            </p>
+          </div>
 
-          <Card title="Back-end">
-            <li className="flex items-center gap-2">
-              <FaNodeJs className="text-green-600" /> Node.js
-            </li>
-            <li className="flex items-center gap-2">
-              <SiExpress className="text-gray-700" /> Express.js
-            </li>
-            <li className="flex items-center gap-2">
-              <SiAxios className="text-blue-400" /> Axios
-            </li>
-            <li className="flex items-center gap-2">
-              <FaPython className="text-yellow-500" /> Python
-            </li>
-          </Card>
-
-          <Card title="Banco de Dados">
-            <li className="flex items-center gap-2">
-              <SiMongodb className="text-green-700" /> MongoDB
-            </li>
-            <li className="flex items-center gap-2">
-              <SiMongoose style={{ color: cherry }} /> Mongoose
-            </li>
-            <li className="flex items-center gap-2">
-              <SiMysql className="text-blue-700" /> MySQL
-            </li>
-          </Card>
-
-          <Card title="Versionamento">
-            <li className="flex items-center gap-2">
-              <FaGitAlt style={{ color: cherry }} /> Git
-            </li>
-            <li className="flex items-center gap-2">
-              <FaGithub className="text-black" /> GitHub
-            </li>
-          </Card>
-
-          <Card title="Game Dev">
-            <li className="flex items-center gap-2">
-              <FaUnity className="text-gray-800" /> Unity
-            </li>
-            <li className="flex items-center gap-2">
-              <SiUnrealengine className="text-black" /> Unreal Engine
-            </li>
-            <li className="flex items-center gap-2">
-              <FaCode className="text-blue-700" /> C
-            </li>
-            <li className="flex items-center gap-2">
-              <FaCode className="text-purple-700" /> C#
-            </li>
-            <li className="flex items-center gap-2">
-              <SiAseprite style={{ color: cherry }} /> Aseprite
-            </li>
-          </Card>
-
-          <Card title="IoT">
-            <li className="flex items-center gap-2">
-              <SiArduino className="text-blue-700" /> Arduino
-            </li>
-            <li className="flex items-center gap-2">
-              <FaMicrochip className="text-gray-700" /> ESP32
-            </li>
-          </Card>
+          <div className="flex flex-col flex-wrap items-center justify-center bg-ch2 p-6 rounded-xl  shadow-lg hover:scale-105 transition duration-300 hover:bg-cherry/20">
+            <div className="flex items-center justify-center gap-2">
+              <LiaFlagUsaSolid className="text-5xl text-offwhite" />
+              <p className="text-3xl">+</p>
+              <SiNasa className="text-8xl  text-red-500" />
+            </div>
+            <h3 className="mt-4 text-xl text-white font-semibold">
+              Inglês + Bootcamp Kennedy Space Center International Academy
+            </h3>
+            <p className="mt-2 text-white/70 text-center text-sm">
+              <strong>Certificado no nível B2+ de inglês</strong> pela Wizard by
+              Pearson, com <strong>domínio avançado da língua.</strong>{" "}
+              Participou de um bootcamp imersivo no{" "}
+              <strong>
+                Kennedy Space Center – International Academy, NASA,
+              </strong>{" "}
+              utilizando o inglês 100% do tempo em aulas, atividades práticas e
+              convivência internacional. Recebeu{" "}
+              <strong>
+                certificação de aptidão na área de STEM (Ciência, Tecnologia,
+                Engenharia e Matemática)
+              </strong>
+              , com foco em inovação e aplicação de conhecimento técnico em um
+              ambiente multicultural.
+            </p>
+          </div>
         </div>
       </div>
-    </section>
+      <div className="flex flex-col gap-6 ">
+        <div className="flex items-center gap-2 text-white text-lg font-mono justify-center flex-col">
+          <div className="flex gap-2 justify-center items-center">
+            <span className="text-cherry">&lt;</span>
+            <h2 className="text-2xl font-bold">Hard-Skills</h2>
+            <span className="text-cherry">/&gt;</span>
+          </div>
+          <p className="text-s font-bold">Tecnologias e ferramentas</p>
+        </div>
+
+        {Object.entries(skills).map(([category, items]) => (
+          <div key={category} className="flex flex-col gap-4 scale-90">
+            <div className="flex items-center gap-2 text-white text-lg font-mono">
+              <span className="text-cherry">&lt;</span>
+              <h2 className="text-xl font-bold">{category}</h2>
+              <span className="text-cherry">/&gt;</span>
+            </div>
+            <div className="flex gap-4 overflow-x-auto p-2">
+              {items.map(({ icon, label }, i) => (
+                <div
+                  key={i}
+                  className="flex flex-col justify-center items-center h-30 w-30 text-center bg-ch2 p-4 rounded-2xl min-w-[120px] shadow-md hover:scale-105 transition duration-300 hover:bg-cherry/20"
+                >
+                  <div className="text-5xl ">{icon}</div>
+                  <span className="mt-2 text-sm font-mono text-white">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

@@ -31,13 +31,10 @@ export const Carousel = ({ s1, s2, s3, s4 }) => {
         <img src={s1} />
       </SwiperSlide>
       <SwiperSlide>
-        <img src={s2} />
-      </SwiperSlide>
-      <SwiperSlide>
         <img src={s3} />
       </SwiperSlide>
       <SwiperSlide>
-        <img src={s4} />
+        <img src={s2} />
       </SwiperSlide>
     </Swiper>
   );

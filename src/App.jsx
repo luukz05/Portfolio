@@ -62,7 +62,7 @@ function App() {
             className="font-black text-white"
             aria-label="Projetos"
           >
-            Projetos
+            Web Dev
           </a>
 
           <img src={logo} className="h-15 w-15 object-contain" alt="Logo" />
@@ -72,9 +72,13 @@ function App() {
             className="font-black text-white"
             aria-label="Projetos"
           >
-            Games
+            Game Dev
           </a>
-          <a href="" className="font-black text-white" aria-label="Projetos">
+          <a
+            href="#skill"
+            className="font-black text-white"
+            aria-label="Projetos"
+          >
             Habilidades
           </a>
           <a href="" className="font-black text-white" aria-label="Contato">
@@ -94,10 +98,10 @@ function App() {
         id="hero"
         className="bg-[url('./assets/image.png')] text-center min-h-screen flex flex-col items-center justify-evenly bg-no-repeat bg-cover bg-fixed"
       >
+        <p className="text-offwhite text-4xl font-mono mb-[-30px]">
+          Bem vindo(a), visitante!
+        </p>
         <div className="flex flex-col items-center justify-evenly gap-2">
-          <p className="text-offwhite text-4xl font-mono mb-[-30px]">
-            Bem vindo(a), visitante!
-          </p>
           <p className="text-ch1 text-9xl font-black">Meu nome é Lucas</p>
           <Subtitle />
         </div>
@@ -110,7 +114,7 @@ function App() {
             newTab={true}
           />
           <ImageLinkButton
-            href="www.linkedin.com/in/lucasvargasdev"
+            href="https://linkedin.com/in/lucasvargasdev"
             src={linkedin}
             alt="LinkedIn"
             newTab={true}
@@ -130,27 +134,29 @@ function App() {
           <img src={seta} className="h-5 w-5 invert" />
         </div>
       </div>
-
+      <h2 id="sobre" className="text-4xl font-black text-center mb-12 mt-12">
+        Sobre Mim
+      </h2>
       <div className="flex justify-center mt-12 flex-col items-center ">
-        <h2 id="sobre" className="text-4xl font-black text-center mb-12">
-          Sobre Mim
-        </h2>
         <div className="flex items-center gap-8">
           <SobreMim />
           <Carousel s1={s1} s2={s2} s3={s3} s4={s4} />
         </div>
       </div>
-      <p id="destaque"></p>
+      <h2 id="destaque" className="text-4xl font-black text-center mb-12 mt-12">
+        Destaque
+      </h2>
       <div className="flex justify-center mt-12 flex-col items-center">
-        <h2 className="text-4xl font-black text-center mb-12">Destaque</h2>
         <Destaque src={dvgcmobile} />
       </div>
       {/* PROJETOS */}
+      <h2 className="text-4xl font-black text-center mb-12 mt-12">
+        Desenvolvimento Web
+      </h2>
       <div
         id="web"
-        className="bg-ch4 py-20 px-10 text-white text-justify flex flex-col  items-center"
+        className="bg-ch4  px-10 text-white text-justify flex flex-col  items-center"
       >
-        <h2 className="text-4xl font-black text-center mb-20">Projetos Web</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 ">
           <ProjectCard
             title={"G.A.M.M.A"}
@@ -295,10 +301,10 @@ function App() {
       </div>
       <div
         id="games"
-        className="bg-ch4 py-20 px-10 text-white text-justify flex flex-col  items-center"
+        className="bg-ch4 px-10 text-white text-justify flex flex-col  items-center"
       >
-        <h2 className="text-4xl font-black text-center mb-20">
-          Projetos Gamedev
+        <h2 className="text-4xl font-black text-center mb-12 mt-12">
+          Desenvolvimento de Games
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
           <ProjectCardG
@@ -341,7 +347,7 @@ function App() {
         </div>
       </div>
       <div className="flex justify-center mt-12 flex-col items-center ">
-        <h2 id="sobre" className="text-4xl font-black text-center mb-12">
+        <h2 id="skill" className="text-4xl font-black text-center mb-12">
           Minhas Habilidades
         </h2>
         <SkillsSection />
