@@ -244,6 +244,7 @@ function App() {
               "ELETRÔNICA DIGITAL E ANALÓGICA",
               "SEBRAE",
               "METODOLOGIAS ÁGEIS - KANBAN",
+              "UPX - FACENS",
             ]}
             video={"https://www.youtube.com/watch?v=VPFjS6IrryU"}
             repo={"https://github.com/luukz05/DVGC"}
@@ -263,6 +264,7 @@ function App() {
               "EXPRESS",
               "NODE",
               "METODOLOGIAS ÁGEIS - KANBAN",
+              "UPX - FACENS",
             ]}
             repo={"https://github.com/luukz05/ReMatch"}
             foto={Rematch} // troca pela imagem real se quiser
@@ -293,6 +295,51 @@ function App() {
             techs={["REACT", "TAILWIND"]}
             repo={"https://github.com/luukz05/Portfolio"}
             foto={Esse} // substitui pela imagem real do portfólio se quiser
+          />
+
+          <ProjectCard
+            title="FURIA.QG"
+            description={`Projeto gamificado para a FURIA que conecta fãs por meio de desafios, rankings e recompensas. Desenvolvido com React, Flask e MongoDB, utiliza autenticação JWT e Bcrypt para segurança. Foi minha primeira experiência integrando IA, reconhecimento de imagem para validar documentos no cadastro de usuários e deploy na Netlify.`}
+            techs={[
+              "REACT",
+              "TAILWIND",
+              "FLASK",
+              "PYTHON",
+              "MONGODB",
+              "AXIOS",
+              "JWT",
+              "BCRYPT",
+              "PYTESSERACT",
+              "PILLOW",
+              "NETLIFY",
+            ]}
+            repo={"https://github.com/luukz05/Portfolio"}
+            foto={
+              "https://cdn.discordapp.com/attachments/1362247144781648064/1385696142922219690/furia.png?ex=68570199&is=6855b019&hm=3f9e320a1f1e0b80624b76d94b5d9d013ad05b2f57868cd3128d6aee31c10262&"
+            }
+            link="https://furiaqg.netlify.app/"
+          />
+          <ProjectCard
+            title="SATA"
+            description={`SATA – Sistema Anti-Trânsito por Alagamento: projeto acadêmico com ESP32 e sensores para monitorar níveis de água em vias urbanas, acionando alertas visuais e notificações móveis em tempo real. Alimentado por energia solar, integra hardware e software para promover segurança viária e mobilidade sustentável. Minha segunda experiência com automação de sensores físicos e IoT, agora aplicada à prevenção de alagamentos.`}
+            techs={[
+              "REACT",
+              "TAILWIND",
+              "FLASK",
+              "PYTHON",
+              "MONGODB",
+              "AXIOS",
+              "JWT",
+              "BCRYPT",
+              "PYTESSERACT",
+              "PILLOW",
+              "NETLIFY",
+            ]}
+            repo={"https://github.com/luukz05/Portfolio"}
+            foto={
+              "https://cdn.discordapp.com/attachments/1362247144781648064/1385696142922219690/furia.png?ex=68570199&is=6855b019&hm=3f9e320a1f1e0b80624b76d94b5d9d013ad05b2f57868cd3128d6aee31c10262&"
+            }
+            link="https://furiaqg.netlify.app/"
           />
         </div>
       </div>

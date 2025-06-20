@@ -16,8 +16,11 @@ export const Destaque = ({ src }) => {
 
       {/* Conteúdo */}
       <div className="flex flex-col justify-between text-offwhite md:w-1/2">
-        <h1 className="text-4xl font-extrabold text-offwhite flex items-center gap-3 mb-2">
-          DVGC
+        <h1 className="text-4xl font-extrabold text-offwhite justify-between flex items-center mb-2">
+          DVGC{""}
+          <span className="text-[1.5rem] text-ch1 font-bold">
+            Detector de Vazamento de Gás de Cozinha
+          </span>
         </h1>
 
         <p className="text-base leading-relaxed mb-4">
