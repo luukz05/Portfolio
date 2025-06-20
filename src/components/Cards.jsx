@@ -2,8 +2,17 @@ import TechTag from "./Tag";
 import githubIcon from "../assets/github.svg";
 import resize from "../assets/resize.png";
 import frown from "../assets/emoji-frown-fill.svg";
+import youtube from "../assets/youtube.svg";
 
-const ProjectCard = ({ title, description, techs, link, foto, repo }) => {
+const ProjectCard = ({
+  title,
+  description,
+  techs,
+  link,
+  foto,
+  repo,
+  video,
+}) => {
   return (
     <div className=" bg-ch2  rounded-2xl shadow-lg pb-5 w-125 flex flex-col h-full hover:scale-102 transition-transform">
       {foto ? (
@@ -36,23 +45,32 @@ const ProjectCard = ({ title, description, techs, link, foto, repo }) => {
               rel="noopener noreferrer"
               className="bg-offblack font-bold py-2 px-4 rounded-xl hover:bg-ch4 transition w-full inline-flex items-center justify-center gap-2"
             >
-              <img src={githubIcon} className="invert h-6" /> <p>Repositório</p>
+              <img src={githubIcon} className="invert h-6" />
+              <p>Repositório</p>
             </a>
           )}
-          {link ? (
+          {link && (
             <a
               href={link}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-cherry text-offwhite font-bold py-2 px-4 rounded-xl hover:bg-ch3 transition w-full inline-flex items-center justify-center gap-2"
             >
-              <img src={resize} className=" h-6 invert" /> <p>Acessar página</p>
+              <img src={resize} className="h-6 invert" />
+              <p>Acessar página</p>
             </a>
-          ) : (
-            <div className="bg-ch3 text-offwhite font-bold py-2 px-4 rounded-xl hover:bg-ch3 transition w-full inline-flex items-center justify-center gap-2">
-              <img src={frown} className=" h-6 invert" />{" "}
-              <p>Acesso Indisponível</p>
-            </div>
+          )}
+          {video && (
+            <a
+              href={video}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-ch4 font-bold py-2 px-4 rounded-xl hover:bg-ch3 text-offwhite transition w-full inline-flex items-center justify-center gap-2"
+              aria-label="Assistir Demo"
+            >
+              <img src={youtube} className="invert h-6" />
+              <p>Demonstação</p>
+            </a>
           )}
         </div>
       </div>

@@ -53,12 +53,7 @@ const ProjectCardG = ({ title, description, techs, link, foto, repo }) => {
               <p>Assistir Demo</p>
             </a>
           )}
-          {!link && !repo && (
-            <div className="bg-ch3 text-offwhite font-bold py-2 px-4 rounded-xl hover:bg-ch3 transition w-full inline-flex items-center justify-center gap-2">
-              <img src={frown} className=" h-6 invert" />{" "}
-              <p>Acesso Indisponível</p>
-            </div>
-          )}
+          {!link && !repo && <></>}
         </div>
       </div>
     </div>

@@ -65,7 +65,7 @@ function App() {
             Web Dev
           </a>
 
-          <img src={logo} className="h-15 w-15 object-contain" alt="Logo" />
+          {/* <img src={logo} className="h-15 w-15 object-contain" alt="Logo" /> */}
 
           <a
             href="#games"
@@ -193,8 +193,8 @@ function App() {
               "NODE",
             ]}
             foto={IndieFolio} // substitui pela imagem real se tiver
-            link={""}
-            repo={"#"}
+            repo={"https://github.com/luukz05/IndieFolio"}
+            video={"https://youtu.be/fdZvMhgTKn0"}
           />
 
           <ProjectCard
@@ -203,9 +203,9 @@ function App() {
               "Ferramenta tática interativa para CS:GO e CS2, desenvolvida como meu primeiro projeto com React. Permite desenhar em mapas, posicionar elementos do jogo, adicionar tags, alternar entre mapas e salvar táticas. O foco foi na manipulação de estado, interatividade em tempo real e renderização dinâmica."
             }
             techs={["STYLED-COMPONENTS", "REACT"]}
-            link={"#"}
-            repo={"#"}
-            foto={Blueprint} // substitui pela imagem real se tiver
+            repo={"https://github.com/luukz05/Tactical-Blueprint-CS2-Planner"}
+            foto={Blueprint}
+            video={"https://youtu.be/G-yF0QhU6Fk?t=25"}
           />
           <ProjectCard
             title={"Minimal Keeper"}
@@ -223,8 +223,8 @@ function App() {
               "CRYPTO",
               "JWT",
             ]}
-            link={"#"}
-            repo={"#"}
+            repo={"https://github.com/luukz05/MinimalKeeper"}
+            video={"https://www.youtube.com/watch?v=GKuBor_k-s8"}
           />
 
           <ProjectCard
@@ -245,8 +245,8 @@ function App() {
               "SEBRAE",
               "METODOLOGIAS ÁGEIS - KANBAN",
             ]}
-            link={"#"}
-            repo={"#"}
+            video={"https://www.youtube.com/watch?v=VPFjS6IrryU"}
+            repo={"https://github.com/luukz05/DVGC"}
             foto={DVGC}
           />
 
@@ -264,8 +264,7 @@ function App() {
               "NODE",
               "METODOLOGIAS ÁGEIS - KANBAN",
             ]}
-            link={"#"}
-            repo={"#"}
+            repo={"https://github.com/luukz05/ReMatch"}
             foto={Rematch} // troca pela imagem real se quiser
           />
           <ProjectCard
@@ -284,8 +283,7 @@ function App() {
               "REQUESTS",
               "POSTMAN",
             ]}
-            link={"#"}
-            repo={"#"}
+            repo={"https://github.com/luukz05/ConsutaWEB"}
             foto={ConsultaWeb} // substitui pela imagem real se tiver
           />
 
@@ -293,8 +291,7 @@ function App() {
             title="Este portfólio!"
             description={`Portfólio desenvolvido como vitrine de projetos e exercício de aprendizado. Foco no estudo de Tailwind CSS, design limpo, responsividade e usabilidade. Também serviu para revisar e refatorar projetos antigos, consolidando minha evolução técnica e a forma de apresentar meu trabalho.`}
             techs={["REACT", "TAILWIND"]}
-            link={"#"}
-            repo={"#"}
+            repo={"https://github.com/luukz05/Portfolio"}
             foto={Esse} // substitui pela imagem real do portfólio se quiser
           />
         </div>

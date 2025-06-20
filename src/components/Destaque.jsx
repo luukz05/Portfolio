@@ -83,11 +83,6 @@ export const Destaque = ({ src }) => {
           <TechTag label="SEBRAE" />
           <TechTag label="METODOLOGIAS ÁGEIS - KANBAN" />
         </div>
-
-        {/* Botão */}
-        <button className="bg-ch1 text-ch4 font-bold py-3 px-6 rounded-xl hover:bg-ch3 transition w-fit">
-          Ver mais detalhes
-        </button>
       </div>
     </div>
   );
