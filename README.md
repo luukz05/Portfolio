@@ -19,7 +19,7 @@ Criar uma plataforma simples, elegante e funcional para mostrar meus projetos, d
 | Tailwind CSS | Framework CSS utilitário moderno |
 
 ## 📁 Estrutura de Pastas (Simplificada)
-
+```
 portfolio/
 ├── src/
 │   ├── assets/        # Imagens, logos e mídias
@@ -29,7 +29,7 @@ portfolio/
 │   └── main.jsx       # Entrada da aplicação
 ├── public/            # Arquivos estáticos
 └── README.md
-
+```
 
 ## 📦 Instalação
 
