@@ -24,7 +24,6 @@ import ConsultaWeb from "./assets/ConsultaWeb.png";
 import Esse from "./assets/Esse.png";
 
 import lostmemories from "./assets/Lost Memories.png";
-import stencyl from "./assets/StencylScratch.png";
 import chase from "./assets/The Chase.png";
 import zombiefication from "./assets/Zombiefication.png";
 import treasure from "./assets/Treasure Island.png";
@@ -81,13 +80,14 @@ function App() {
           >
             Habilidades
           </a>
-          <a href="" className="font-black text-white" aria-label="Contato">
+          {/* <a href="" className="font-black text-white" aria-label="Contato">
             Contato
-          </a>
+          </a> */}
           <a
             className="font-black text-white bg-ch2 p-2 rounded-md"
             aria-label="Contato"
-            href=""
+            href="https://drive.google.com/file/d/1eLlh3X8jOk83n1Jwb_vIb1S4mHQeiDks/view?usp=sharing"
+            target="_blank"
           >
             Baixar CV
           </a>
@@ -121,7 +121,7 @@ function App() {
           />
 
           <ImageLinkButton
-            href="mailto:lucasvargasdev05@gmail.com"
+            href="copy:lucasvargasdev05@gmail.com"
             src={envelope}
             alt="Email"
             newTab={true}
@@ -270,7 +270,7 @@ function App() {
             foto={Rematch} // troca pela imagem real se quiser
           />
           <ProjectCard
-            title="ConsultaWeb (Estudo)"
+            title="ConsultaWeb"
             description={`Projeto de estudo com backend em Python, focado em web scraping, extração de dados de PDFs e MySQL. O sistema coleta dados de planilhas em PDF, armazena no banco e exibe tudo via interface em Vue.js, com buscas e filtros. Também explorou criação de APIs e integração entre backend e frontend.`}
             techs={[
               "VUE.JS",
@@ -358,7 +358,7 @@ function App() {
             ]}
             repo={"https://github.com/luukz05/stag.io"}
             foto={
-              "https://cdn.discordapp.com/attachments/1362247144781648064/1385696142922219690/furia.png?ex=68570199&is=6855b019&hm=3f9e320a1f1e0b80624b76d94b5d9d013ad05b2f57868cd3128d6aee31c10262&"
+              "https://cdn.discordapp.com/attachments/1362247144781648064/1385799857343696996/Design_sem_nome.png?ex=68576230&is=685610b0&hm=ff28263d3d5292098bef7cb11dd37c91855ef9fef4fc7c483ffc8e04a797534d&"
             }
           />
         </div>

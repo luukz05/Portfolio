@@ -43,7 +43,7 @@ const ProjectCard = ({
               href={repo}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-offblack font-bold py-2 px-4 rounded-xl hover:bg-ch4 transition w-full inline-flex items-center justify-center gap-2"
+              className="bg-ch4 font-bold py-2 px-4 rounded-xl hover:bg-zinc-700 transition w-full inline-flex items-center justify-center gap-2"
             >
               <img src={githubIcon} className="invert h-6" />
               <p>Repositório</p>
@@ -65,7 +65,7 @@ const ProjectCard = ({
               href={video}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-ch4 font-bold py-2 px-4 rounded-xl hover:bg-ch3 text-offwhite transition w-full inline-flex items-center justify-center gap-2"
+              className="bg-cherry font-bold py-2 px-4 rounded-xl hover:bg-ch3 text-offwhite transition w-full inline-flex items-center justify-center gap-2"
               aria-label="Assistir Demo"
             >
               <img src={youtube} className="invert h-6" />

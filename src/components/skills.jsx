@@ -12,6 +12,7 @@ import {
   FaCode,
   FaMicrochip,
 } from "react-icons/fa";
+
 import {
   SiTailwindcss,
   SiExpress,
@@ -28,15 +29,17 @@ import { LiaFlagUsaSolid } from "react-icons/lia";
 
 import {
   FaRegSmile,
-  FaComments,
   FaPeopleCarry,
   FaLightbulb,
   FaHandsHelping,
   FaClock,
   FaPuzzlePiece,
   FaBrain,
+  FaColumns,
+  FaProjectDiagram,
+  FaBalanceScale,
 } from "react-icons/fa";
-
+import { FaComments } from "react-icons/fa6";
 import { TbApi } from "react-icons/tb";
 
 const softSkills = [
@@ -90,10 +93,16 @@ const softSkills = [
   },
 ];
 
+import { IoLogoJavascript } from "react-icons/io5";
+import { RiNextjsFill } from "react-icons/ri";
 const skills = {
   "Front-End": [
     { icon: <FaHtml5 className="text-ch1" />, label: "HTML" },
     { icon: <FaCss3Alt className="text-blue-600" />, label: "CSS" },
+    {
+      icon: <IoLogoJavascript className="text-yellow-400" />,
+      label: "Javacript",
+    },
     { icon: <SiTailwindcss className="text-cyan-500" />, label: "Tailwind" },
     { icon: <FaBootstrap className="text-fuchsia-500" />, label: "Bootstrap" },
     { icon: <FaReact className="text-ch1" />, label: "React" },
@@ -101,10 +110,15 @@ const skills = {
     { icon: <FaVuejs className="text-green-500" />, label: "Vue.js" },
   ],
   "Back-End": [
+    {
+      icon: <IoLogoJavascript className="text-yellow-400" />,
+      label: "Javacript",
+    },
     { icon: <FaNodeJs className="text-green-600" />, label: "Node.js" },
     { icon: <SiExpress className="text-gray-700" />, label: "Express" },
     { icon: <SiAxios className="text-blue-400" />, label: "Axios" },
     { icon: <FaPython className="text-yellow-500" />, label: "Python" },
+    { icon: <SiMongoose className="text-ch1" />, label: "Mongoose" },
     {
       icon: <TbApi className="text-ch1" />,
       label: "API RESTful",
@@ -112,26 +126,31 @@ const skills = {
   ],
   "Banco de Dados": [
     { icon: <SiMongodb className="text-green-700" />, label: "MongoDB" },
-    { icon: <SiMongoose className="text-ch1" />, label: "Mongoose" },
+    { icon: <SiMariadb className="text-blue-700" />, label: "MariaDB" },
     { icon: <SiMysql className="text-blue-700" />, label: "MySQL" },
   ],
-  "Controle de Versão": [
+  "Versionamento e Gestão de Projetos": [
     { icon: <FaGitAlt className="text-ch1" />, label: "Git" },
     { icon: <FaGithub className="text-black" />, label: "GitHub" },
-  ],
-  "Game Dev": [
-    { icon: <FaUnity className="text-gray-800" />, label: "Unity" },
-    { icon: <SiUnrealengine className="text-black" />, label: "Unreal" },
-    { icon: <FaCode className="text-blue-700" />, label: "C" },
-    { icon: <FaCode className="text-purple-900" />, label: "C#" },
-    { icon: <SiAseprite className="text-ch1" />, label: "Aseprite" },
+    {
+      icon: <FaLightbulb className="text-yellow-500" />,
+      label: "XP (Extreme Programming)",
+    },
+    { icon: <FaColumns className="text-blue-600" />, label: "Kanban / Trello" },
+    { icon: <FaProjectDiagram className="text-red-500" />, label: "Scrum" },
+    { icon: <FaBalanceScale className="text-green-600" />, label: "Lean" },
   ],
   Hardware: [
     { icon: <SiArduino className="text-blue-700" />, label: "Arduino" },
     { icon: <FaMicrochip className="text-gray-700" />, label: "ESP32" },
   ],
+  "Estudando Atualmente": [
+    { icon: <RiNextjsFill className="text-black" />, label: "Next.JS" },
+    { icon: <SiTypescript className="text-sky-700" />, label: "TypeScript" },
+    { icon: <SiDocker className="text-blue-800" />, label: "Docker" },
+  ],
 };
-import { SiNasa } from "react-icons/si";
+import { SiNasa, SiMariadb, SiTypescript, SiDocker } from "react-icons/si";
 
 export default function SkillsSection() {
   return (
@@ -191,7 +210,7 @@ export default function SkillsSection() {
             <p className="mt-2 text-white/70 text-center text-sm">
               <strong>Certificado no nível B2+ de inglês</strong> pela Wizard by
               Pearson, com <strong>domínio avançado da língua.</strong>{" "}
-              Participou de um bootcamp imersivo no{" "}
+              Participei de um bootcamp imersivo no{" "}
               <strong>
                 Kennedy Space Center – International Academy, NASA,
               </strong>{" "}
