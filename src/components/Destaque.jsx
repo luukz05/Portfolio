@@ -3,7 +3,7 @@ import TechTag from "./Tag";
 
 export const Destaque = ({ src }) => {
   return (
-    <div className="flex flex-col md:flex-row gap-8 items-center justify justify-center-safe text-justify ">
+    <div className="flex flex-col md:flex-row items-center justify justify-center gap-15 text-justify ">
       <div className=" relative w-[20rem] h-[40rem] rounded-[3rem] bg-black p-2 shadow-2xl border-4 border-neutral-800">
         <img
           src={src}
@@ -15,7 +15,7 @@ export const Destaque = ({ src }) => {
       </div>
 
       {/* Conteúdo */}
-      <div className="flex flex-col justify-between text-offwhite md:w-1/2">
+      <div className="flex flex-col  text-offwhite w-13/20">
         <h1 className="text-4xl font-extrabold text-offwhite justify-between flex items-center mb-2">
           DVGC{""}
           <span className="text-[1.5rem] text-ch1 font-bold">

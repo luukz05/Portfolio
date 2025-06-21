@@ -3,13 +3,13 @@ import TechTag from "./Tag";
 
 export const SobreMim = () => {
   return (
-    <div className="flex text-right w-[95vh]">
+    <div className="flex text-right w-[130vh]">
       <div className=" text-offwhite  ">
         <h1 className="text-4xl font-extrabold text-offwhite gap-3 mb-2 text-right">
           Olá, eu sou <span className="text-ch1">Lucas Vargas</span>
         </h1>
 
-        <p className="text-base leading-relaxed mb-4 text-justify">
+        <p className="text-base leading-relaxed mb-4 text-justify ">
           Entusiasta em tecnologia com paixão por transformar ideias em soluções
           reais. Desde cedo, sempre fui movido por curiosidade e vontade de
           entender como as coisas funcionam — o que me levou naturalmente ao

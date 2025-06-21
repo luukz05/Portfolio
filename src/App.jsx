@@ -323,62 +323,54 @@ function App() {
             title="SATA"
             description={`SATA – Sistema Anti-Trânsito por Alagamento: projeto acadêmico com ESP32 e sensores para monitorar níveis de água em vias urbanas, acionando alertas visuais e notificações móveis em tempo real. Alimentado por energia solar, integra hardware e software para promover segurança viária e mobilidade sustentável. Minha segunda experiência com automação de sensores físicos e IoT, agora aplicada à prevenção de alagamentos.`}
             techs={[
-              "REACT",
-              "TAILWIND",
-              "FLASK",
-              "PYTHON",
-              "MONGODB",
-              "AXIOS",
-              "JWT",
-              "BCRYPT",
-              "PYTESSERACT",
-              "PILLOW",
-              "NETLIFY",
+              "MOBILE",
+              "REACT NATIVE",
+              "EXPO",
+              "EXPRESS",
+              "NODE",
+              "C++",
+              "IOT",
+              "ELETRÔNICA DIGITAL E ANALÓGICA",
+              "METODOLOGIAS ÁGEIS - KANBAN",
+              "UPX - FACENS",
             ]}
-            repo={"https://github.com/luukz05/Portfolio"}
+            repo={"https://github.com/luukz05/SATA"}
             foto={
-              "https://cdn.discordapp.com/attachments/1362247144781648064/1385696142922219690/furia.png?ex=68570199&is=6855b019&hm=3f9e320a1f1e0b80624b76d94b5d9d013ad05b2f57868cd3128d6aee31c10262&"
+              "https://cdn.discordapp.com/attachments/1362247144781648064/1385787127672995840/Design_sem_nome.png?ex=68575655&is=685604d5&hm=63a77243823e29b412ce33d06eb5a4f47ec28af59137731b28cecf4dd9dedf30&"
             }
-            link="https://furiaqg.netlify.app/"
           />
           <ProjectCard
-            title="Stag.io"
-            description={`SATA – Sistema Anti-Trânsito por Alagamento: projeto acadêmico com ESP32 e sensores para monitorar níveis de água em vias urbanas, acionando alertas visuais e notificações móveis em tempo real. Alimentado por energia solar, integra hardware e software para promover segurança viária e mobilidade sustentável. Minha segunda experiência com automação de sensores físicos e IoT, agora aplicada à prevenção de alagamentos.`}
+            title="Stag.io - EM PROGRESSO"
+            description={`Stag.io – Sistema de Gestão Pessoal de Estágios e Projetos: aplicação fullstack para organização de candidaturas, projetos pessoais e metas, com funcionalidades como kanban interativo, editor de anotações em Markdown, upload de arquivos e visualização de progresso por gráficos. Utiliza autenticação JWT, APIs REST com FastAPI e banco relacional PostgreSQL. Interface moderna com Next.js, React, TypeScript e Tailwind, seguindo padrões de acessibilidade, usabilidade e responsividade. Projeto pensado para estimular produtividade, autogerenciamento e crescimento profissional.`}
             techs={[
+              "NEXT.JS",
               "REACT",
+              "TYPESCRIPT",
               "TAILWIND",
-              "FLASK",
+              "FASTAPI",
               "PYTHON",
-              "MONGODB",
-              "AXIOS",
+              "POSTGRESQL",
+              "DOCKER",
               "JWT",
-              "BCRYPT",
-              "PYTESSERACT",
-              "PILLOW",
-              "NETLIFY",
+              "KANBAN",
+              "MARKDOWN",
+              "CHART.JS",
             ]}
-            repo={"https://github.com/luukz05/Portfolio"}
+            repo={"https://github.com/luukz05/stag.io"}
             foto={
               "https://cdn.discordapp.com/attachments/1362247144781648064/1385696142922219690/furia.png?ex=68570199&is=6855b019&hm=3f9e320a1f1e0b80624b76d94b5d9d013ad05b2f57868cd3128d6aee31c10262&"
             }
-            link="https://furiaqg.netlify.app/"
           />
         </div>
       </div>
       <div
         id="games"
-        className="bg-ch4 px-10 text-white text-justify flex flex-col  items-center"
+        className="bg-ch4 text-white text-justify flex flex-col  items-center"
       >
         <h2 className="text-4xl font-black text-center mb-12 mt-12">
           Desenvolvimento de Games
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
-          <ProjectCardG
-            title="Scratch/Stencyl"
-            description="Meu primeiro jogo 2D com inspiração em Super Mario, feito no Stencyl após introdução à lógica no Scratch. Infelizmente eu perdi o projeto original. "
-            techs={["SCRATCH", "STENCYL", "BLOCKLY", "ASEPRITE"]}
-            foto={stencyl}
-          />
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
           <ProjectCardG
             title="Treasure Island"
             description="Jogo top-down inspirado em Zelda, com combate, labirintos e exploração. Um projeto voltado ao estudo de game design, lógica de inimigos e mapas interativos."
