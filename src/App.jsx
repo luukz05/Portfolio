@@ -96,7 +96,7 @@ function App() {
       {/* HERO */}
       <div
         id="hero"
-        className="bg-[url('./assets/image.png')] text-center min-h-screen flex flex-col items-center justify-evenly bg-no-repeat bg-cover bg-fixed"
+        className="bg-[url('./assets/image.png')] text-center min-h-screen w-screen flex flex-col items-center justify-evenly bg-no-repeat bg-cover bg-fixed"
       >
         <p className="text-offwhite text-4xl font-mono mb-[-30px]">
           Bem vindo(a), visitante!
@@ -153,11 +153,8 @@ function App() {
       <h2 className="text-4xl font-black text-center mb-12 mt-12">
         Desenvolvimento Web
       </h2>
-      <div
-        id="web"
-        className="bg-ch4 text-white text-justify flex flex-col items-center"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+      <div id="web" className="bg-ch4 text-white text-justify">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center ">
           <ProjectCard
             title={"G.A.M.M.A"}
             description={
@@ -370,7 +367,7 @@ function App() {
         <h2 className="text-4xl font-black text-center mb-12 mt-12">
           Desenvolvimento de Games
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center place-items-start">
           <ProjectCardG
             title="Treasure Island"
             description="Jogo top-down inspirado em Zelda, com combate, labirintos e exploração. Um projeto voltado ao estudo de game design, lógica de inimigos e mapas interativos."

@@ -5,7 +5,7 @@ import frown from "../assets/emoji-frown-fill.svg";
 
 const ProjectCardG = ({ title, description, techs, link, foto, repo }) => {
   return (
-    <div className=" bg-ch2 scale-82 rounded-2xl shadow-lg pb-5 w-125 flex flex-col h-145 hover:scale-85 transition-transform">
+    <div className=" bg-ch2 scale-70 rounded-2xl shadow-lg pb-5 md:w-125 flex flex-col  md:h-full hover:scale-75 transition-transform">
       {foto ? (
         <img
           className="w-full h-70 object-cover rounded-t-2xl"
