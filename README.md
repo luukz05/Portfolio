@@ -22,13 +22,14 @@ Criar uma plataforma simples, elegante e funcional para mostrar meus projetos, d
 
 portfolio/
 ├── src/
-│ ├── assets/ # Imagens, logos e mídias
-│ ├── components/ # Componentes React reutilizáveis
-│ ├── pages/ # Páginas principais
-│ ├── App.jsx # Componente raiz
-│ └── main.jsx # Entrada da aplicação
-├── public/ # Arquivos estáticos
+│   ├── assets/        # Imagens, logos e mídias
+│   ├── components/    # Componentes React reutilizáveis
+│   ├── pages/         # Páginas principais
+│   ├── App.jsx        # Componente raiz
+│   └── main.jsx       # Entrada da aplicação
+├── public/            # Arquivos estáticos
 └── README.md
+
 
 ## 📦 Instalação
 
