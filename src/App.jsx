@@ -155,9 +155,9 @@ function App() {
       </h2>
       <div
         id="web"
-        className="bg-ch4  px-10 text-white text-justify flex flex-col  items-center"
+        className="bg-ch4 text-white text-justify flex flex-col items-center"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 ">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
           <ProjectCard
             title={"G.A.M.M.A"}
             description={
@@ -313,7 +313,7 @@ function App() {
               "PILLOW",
               "NETLIFY",
             ]}
-            repo={"https://github.com/luukz05/Portfolio"}
+            repo={"https://github.com/luukz05/FURIA_TEST"}
             foto={
               "https://cdn.discordapp.com/attachments/1362247144781648064/1385696142922219690/furia.png?ex=68570199&is=6855b019&hm=3f9e320a1f1e0b80624b76d94b5d9d013ad05b2f57868cd3128d6aee31c10262&"
             }
@@ -321,6 +321,28 @@ function App() {
           />
           <ProjectCard
             title="SATA"
+            description={`SATA – Sistema Anti-Trânsito por Alagamento: projeto acadêmico com ESP32 e sensores para monitorar níveis de água em vias urbanas, acionando alertas visuais e notificações móveis em tempo real. Alimentado por energia solar, integra hardware e software para promover segurança viária e mobilidade sustentável. Minha segunda experiência com automação de sensores físicos e IoT, agora aplicada à prevenção de alagamentos.`}
+            techs={[
+              "REACT",
+              "TAILWIND",
+              "FLASK",
+              "PYTHON",
+              "MONGODB",
+              "AXIOS",
+              "JWT",
+              "BCRYPT",
+              "PYTESSERACT",
+              "PILLOW",
+              "NETLIFY",
+            ]}
+            repo={"https://github.com/luukz05/Portfolio"}
+            foto={
+              "https://cdn.discordapp.com/attachments/1362247144781648064/1385696142922219690/furia.png?ex=68570199&is=6855b019&hm=3f9e320a1f1e0b80624b76d94b5d9d013ad05b2f57868cd3128d6aee31c10262&"
+            }
+            link="https://furiaqg.netlify.app/"
+          />
+          <ProjectCard
+            title="Stag.io"
             description={`SATA – Sistema Anti-Trânsito por Alagamento: projeto acadêmico com ESP32 e sensores para monitorar níveis de água em vias urbanas, acionando alertas visuais e notificações móveis em tempo real. Alimentado por energia solar, integra hardware e software para promover segurança viária e mobilidade sustentável. Minha segunda experiência com automação de sensores físicos e IoT, agora aplicada à prevenção de alagamentos.`}
             techs={[
               "REACT",
