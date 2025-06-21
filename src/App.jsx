@@ -321,7 +321,7 @@ function App() {
           />
           <ProjectCard
             title="SATA"
-            description={`SATA – Sistema Anti-Trânsito por Alagamento: projeto acadêmico com ESP32 e sensores para monitorar níveis de água em vias urbanas, acionando alertas visuais e notificações móveis em tempo real. Alimentado por energia solar, integra hardware e software para promover segurança viária e mobilidade sustentável. Minha segunda experiência com automação de sensores físicos e IoT, agora aplicada à prevenção de alagamentos.`}
+            description={`SATA – Sistema Anti-Trânsito por Alagamento: projeto acadêmico com ESP32 e sensores para monitorar níveis de água em vias urbanas, acionando alertas visuais e notificações móveis em tempo real. Alimentado por energia solar, integra hardware e software para promover segurança viária e mobilidade sustentável.`}
             techs={[
               "MOBILE",
               "REACT NATIVE",
@@ -341,7 +341,7 @@ function App() {
           />
           <ProjectCard
             title="Stag.io - EM PROGRESSO"
-            description={`Stag.io – Sistema de Gestão Pessoal de Estágios e Projetos: aplicação fullstack para organização de candidaturas, projetos pessoais e metas, com funcionalidades como kanban interativo, editor de anotações em Markdown, upload de arquivos e visualização de progresso por gráficos. Utiliza autenticação JWT, APIs REST com FastAPI e banco relacional PostgreSQL. Interface moderna com Next.js, React, TypeScript e Tailwind, seguindo padrões de acessibilidade, usabilidade e responsividade. Projeto pensado para estimular produtividade, autogerenciamento e crescimento profissional.`}
+            description={`Stag.io – Sistema de Gestão Pessoal de Estágios e Projetos: aplicação fullstack para organização de candidaturas, projetos pessoais e metas, com funcionalidades como kanban, editor de anotações, upload de arquivos e visualização de progresso por gráficos. Utiliza autenticação JWT, APIs REST com FastAPI e banco relacional PostgreSQL. Interface moderna com Next.js, React, TypeScript e Tailwind.`}
             techs={[
               "NEXT.JS",
               "REACT",
