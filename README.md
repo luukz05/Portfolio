@@ -39,7 +39,7 @@ portfolio/
 git clone https://github.com/seu-usuario/portfolio.git
 cd portfolio
 ```
-##▶️ Rodando localmente
+## ▶️ Rodando localmente
 ``bash
 npm install
 npm run dev
