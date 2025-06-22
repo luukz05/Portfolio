@@ -47,7 +47,7 @@ function App() {
         className="
     bg-[url('./assets/image.png')] text-center min-h-screen w-screen
     flex flex-col items-center justify-evenly
-    bg-no-repeat bg-cover bg-fixed
+    bg-no-repeat bg-cover bg-scroll sm:bg-fixed
     
   "
       >

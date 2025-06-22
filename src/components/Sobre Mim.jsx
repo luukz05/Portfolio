@@ -89,7 +89,7 @@ export const SobreMim = () => {
         <button
           className="
             bg-ch1 text-ch4 font-bold py-3 px-6 rounded-xl hover:bg-ch3 transition
-            w-fit
+            w-full sm:w-fit
           "
         >
           Entrar em contato
