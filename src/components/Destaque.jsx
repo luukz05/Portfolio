@@ -3,27 +3,42 @@ import TechTag from "./Tag";
 
 export const Destaque = ({ src }) => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify justify-center gap-15 text-justify ">
-      <div className=" relative w-[20rem] h-[40rem] rounded-[3rem] bg-black p-2 shadow-2xl border-4 border-neutral-800">
+    <div
+      className="
+    flex flex-col lg:flex-row items-start justify-center
+    gap-12 xl:gap-20
+    max-w-[1700px] mx-auto px-4
+  "
+    >
+      {/* Mockup celular */}
+      <div
+        className="
+      relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-[20rem] xl:w-[22rem]
+      lg:h-[40rem] xl:h-[45rem]
+      rounded-3xl bg-black p-2 shadow-2xl border-4 border-neutral-800
+      hidden sm:block
+    "
+      >
         <img
           src={src}
           alt="Interface do app DVGC"
-          className="w-full h-full rounded-[2rem] object-cover"
+          className="w-full h-72 sm:h-96 md:h-full rounded-2xl object-cover"
         />
-        {/* Simulando notch */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-2 rounded-b-xl bg-neutral-700 mt-2" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-2 rounded-b-xl bg-neutral-700 mt-2" />
       </div>
 
-      {/* Conteúdo */}
-      <div className="flex flex-col  text-offwhite w-13/20">
-        <h1 className="text-4xl font-extrabold text-offwhite justify-between flex items-center mb-2">
-          DVGC{""}
-          <span className="text-[1.5rem] text-ch1 font-bold">
+      {/* Texto mais largo */}
+      <div className="flex flex-col text-offwhite flex-1 max-w-[1100px]">
+        <div className="flex flex-row items-center sm:flex-row justify-between mb-4  sm:items-center">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-offwhite">
+            DVGC
+          </p>
+          <p className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-ch1 font-bold">
             Detector de Vazamento de Gás de Cozinha
-          </span>
-        </h1>
+          </p>
+        </div>
 
-        <p className="text-base leading-relaxed mb-4">
+        <p className="text-sm sm:text-base leading-relaxed mb-4 text-justify ">
           Projeto desenvolvido em grupo por cinco integrantes como parte de uma
           disciplina acadêmica dentro do tema <strong>“Smart Cities”</strong>. O
           DVGC marcou minha primeira experiência prática integrando{" "}
@@ -65,7 +80,7 @@ export const Destaque = ({ src }) => {
           confiabilidade e um histórico completo dos eventos registrados.
         </p>
 
-        <div className="bg-ch3 text-s text-ch1 font-bold px-4 py-2 rounded-lg mb-4 shadow-inner">
+        <div className="bg-ch3 text-xs sm:text-sm text-ch1 font-bold px-4 py-2 rounded-lg mb-4 shadow-inner">
           Mesmo sendo desenvolvido por alunos de primeiro semestre, o DVGC foi
           um dos <strong>5 projetos selecionados</strong> entre todas as turmas
           e períodos dos cursos de engenharia para participar de bootcamps e

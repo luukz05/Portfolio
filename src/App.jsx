@@ -1,17 +1,15 @@
 import "./App.css";
 import ImageLinkButton from "./components/ImageButton";
 import Subtitle from "./components/Subtitle";
-
+import Header from "./components/Header";
 import ProjectCard from "./components/Cards";
 import { Destaque } from "./components/Destaque";
-import ProjectCardG from "./components/CardsGames";
 import { SobreMim } from "./components/Sobre Mim";
 
 import envelope from "./assets/envelope.svg";
 import github from "./assets/github.svg";
 import linkedin from "./assets/linkedin.svg";
 import seta from "./assets/keyboard-arrow-down_117120.svg";
-import logo from "./assets/logo.png";
 
 import GAMMA from "./assets/GAMMA.png";
 import NBA from "./assets/NBA.png";
@@ -22,6 +20,9 @@ import DVGC from "./assets/DVGC.png";
 import Rematch from "./assets/Rematch.png";
 import ConsultaWeb from "./assets/ConsultaWeb.png";
 import Esse from "./assets/Esse.png";
+import furia from "./assets/furia.png";
+import sata from "./assets/sata.png";
+import stagio from "./assets/stagio.png";
 
 import lostmemories from "./assets/Lost Memories.png";
 import chase from "./assets/The Chase.png";
@@ -40,73 +41,59 @@ import SkillsSection from "./components/skills";
 function App() {
   return (
     <>
-      {/* HEADER */}
-      <header className="fixed top-0 w-full z-50 bg-offblack shadow-md">
-        <div className="flex flex-row items-center justify-center gap-10 px-6 py-4">
-          <a href="#hero" className="font-black text-white">
-            Início
-          </a>
-          <a href="#sobre" className="font-black text-white" aria-label="Sobre">
-            Sobre Mim
-          </a>
-          <a
-            className="font-black text-ch1 animate-pulse"
-            aria-label="Projetos"
-            href="#destaque"
-          >
-            Destaques
-          </a>
-          <a
-            href="#web"
-            className="font-black text-white"
-            aria-label="Projetos"
-          >
-            Web Dev
-          </a>
-
-          {/* <img src={logo} className="h-15 w-15 object-contain" alt="Logo" /> */}
-
-          <a
-            href="#games"
-            className="font-black text-white"
-            aria-label="Projetos"
-          >
-            Game Dev
-          </a>
-          <a
-            href="#skill"
-            className="font-black text-white"
-            aria-label="Projetos"
-          >
-            Habilidades
-          </a>
-          {/* <a href="" className="font-black text-white" aria-label="Contato">
-            Contato
-          </a> */}
-          <a
-            className="font-black text-white bg-ch2 p-2 rounded-md"
-            aria-label="Contato"
-            href="https://drive.google.com/file/d/1eLlh3X8jOk83n1Jwb_vIb1S4mHQeiDks/view?usp=sharing"
-            target="_blank"
-          >
-            Baixar CV
-          </a>
-        </div>
-      </header>
-      {/* HERO */}
+      <Header />
       <div
         id="hero"
-        className="bg-[url('./assets/image.png')] text-center min-h-screen w-screen flex flex-col items-center justify-evenly bg-no-repeat bg-cover bg-fixed"
+        className="
+    bg-[url('./assets/image.png')] text-center min-h-screen w-screen
+    flex flex-col items-center justify-evenly
+    bg-no-repeat bg-cover bg-fixed
+    
+  "
       >
-        <p className="text-offwhite text-4xl font-mono mb-[-30px]">
+        {/* Saudação */}
+        <p
+          className="
+      text-offwhite text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+      font-mono
+    "
+        >
           Bem vindo(a), visitante!
         </p>
-        <div className="flex flex-col items-center justify-evenly gap-2">
-          <p className="text-ch1 text-9xl font-black">Meu nome é Lucas</p>
+
+        {/* Nome + Subtitle */}
+        <div
+          className="
+      flex flex-col items-center justify-evenly
+      gap-1 sm:gap-2 md:gap-3
+    "
+        >
+          <p
+            className="
+        text-ch1
+        text-5xl sm:text-6xl md:text-8xl lg:text-9xl
+        font-black
+      "
+          >
+            Meu nome é Lucas
+          </p>
           <Subtitle />
         </div>
-        <div className="flex gap-5 mt-[-30px] flex-row items-center justify-center">
-          <h1 className="text-5xl">&lt;</h1>
+
+        {/* Links + símbolos */}
+        <div
+          className="
+      flex gap-2 sm:gap-3 md:gap-5 mt-[-10px] sm:mt-[-20px] md:mt-[-30px]
+      flex-row items-center justify-center
+    "
+        >
+          <h1
+            className="
+        text-3xl sm:text-4xl md:text-5xl
+      "
+          >
+            &lt;
+          </h1>
           <ImageLinkButton
             href="https://github.com/luukz05"
             src={github}
@@ -119,39 +106,59 @@ function App() {
             alt="LinkedIn"
             newTab={true}
           />
-
           <ImageLinkButton
             href="copy:lucasvargasdev05@gmail.com"
             src={envelope}
             alt="Email"
             newTab={true}
           />
-          <h1 className="text-5xl">/&gt;</h1>
+          <h1
+            className="
+        text-3xl sm:text-4xl md:text-5xl
+      "
+          >
+            /&gt;
+          </h1>
         </div>
-        <div className="flex flex-col mb-[-100px] animate-bounce justify-center items-center">
-          <h1 className=" text-offwhite text-2xl font-mono ">SCROLL</h1>
-          <img src={seta} className="h-5 w-5 invert" />
-          <img src={seta} className="h-5 w-5 invert" />
+
+        {/* Scroll Indicator */}
+        <div
+          className="
+      flex flex-col mb-[-50px] sm:mb-[-70px] md:mb-[-100px]
+      animate-bounce justify-center items-center
+    "
+        >
+          <h1
+            className="
+        text-offwhite text-base sm:text-lg md:text-xl
+        font-mono
+      "
+          >
+            SCROLL
+          </h1>
+          <img src={seta} className="h-4 w-4 sm:h-5 sm:w-5 invert" />
+          <img src={seta} className="h-4 w-4 sm:h-5 sm:w-5 invert" />
         </div>
       </div>
+
       <h2 id="sobre" className="text-4xl font-black text-center mb-12 mt-12">
         Sobre Mim
       </h2>
-      <div className="flex justify-center mt-12 flex-col items-center ">
-        <div className="flex items-center gap-8">
+      <div className="flex justify-center mt-12  items-center ">
+        <div className="flex items-center gap-8 flex-col sm:flex-row">
           <SobreMim />
-          <Carousel s1={s1} s2={s2} s3={s3} s4={s4} />
+          <div className="scale-90 sm:scale-100">
+            <Carousel s1={s1} s2={s2} s3={s3} s4={s4} />
+          </div>
         </div>
       </div>
       <h2 id="destaque" className="text-4xl font-black text-center mb-12 mt-12">
         Destaque
       </h2>
-      <div className="flex justify-center mt-12 flex-col items-center">
-        <Destaque src={dvgcmobile} />
-      </div>
+      <Destaque src={dvgcmobile} />
       {/* PROJETOS */}
       <h2 className="text-4xl font-black text-center mb-12 mt-12">
-        Desenvolvimento Web
+        Projetos Web Development
       </h2>
       <div id="web" className="bg-ch4 text-white text-justify">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center ">
@@ -311,9 +318,7 @@ function App() {
               "NETLIFY",
             ]}
             repo={"https://github.com/luukz05/FURIA_TEST"}
-            foto={
-              "https://cdn.discordapp.com/attachments/1362247144781648064/1385696142922219690/furia.png?ex=68570199&is=6855b019&hm=3f9e320a1f1e0b80624b76d94b5d9d013ad05b2f57868cd3128d6aee31c10262&"
-            }
+            foto={furia}
             link="https://furiaqg.netlify.app/"
           />
           <ProjectCard
@@ -332,9 +337,7 @@ function App() {
               "UPX - FACENS",
             ]}
             repo={"https://github.com/luukz05/SATA"}
-            foto={
-              "https://cdn.discordapp.com/attachments/1362247144781648064/1385787127672995840/Design_sem_nome.png?ex=68575655&is=685604d5&hm=63a77243823e29b412ce33d06eb5a4f47ec28af59137731b28cecf4dd9dedf30&"
-            }
+            foto={sata}
           />
           <ProjectCard
             title="Stag.io - EM PROGRESSO"
@@ -354,9 +357,7 @@ function App() {
               "CHART.JS",
             ]}
             repo={"https://github.com/luukz05/stag.io"}
-            foto={
-              "https://cdn.discordapp.com/attachments/1362247144781648064/1385799857343696996/Design_sem_nome.png?ex=68576230&is=685610b0&hm=ff28263d3d5292098bef7cb11dd37c91855ef9fef4fc7c483ffc8e04a797534d&"
-            }
+            foto={stagio}
           />
         </div>
       </div>
@@ -365,37 +366,37 @@ function App() {
         className="bg-ch4 text-white text-justify flex flex-col  items-center"
       >
         <h2 className="text-4xl font-black text-center mb-12 mt-12">
-          Desenvolvimento de Games
+          Projetos Game Development
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center place-items-start">
-          <ProjectCardG
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center ">
+          <ProjectCard
             title="Treasure Island"
             description="Jogo top-down inspirado em Zelda, com combate, labirintos e exploração. Um projeto voltado ao estudo de game design, lógica de inimigos e mapas interativos."
             techs={["GODOT", "GDSCRIPT", "ASEPRITE"]}
             foto={treasure}
           />
 
-          <ProjectCardG
+          <ProjectCard
             title="Lost Memories"
             description="Jogo de plataforma inspirado em Celeste, com foco em movimentação precisa, puzzles e narrativa emocional. Um marco pessoal no meu desenvolvimento em GameDev."
             techs={["UNITY 2D", "C#"]}
             repo="https://youtu.be/IEID1vtLYkM"
-            link="https://theldev.itch.io/lost-memories"
+            demo="https://theldev.itch.io/lost-memories"
             foto={lostmemories}
           />
 
-          <ProjectCardG
+          <ProjectCard
             title="Zombiefication"
             description="FPS feito na Unreal Engine com foco em combate contra zumbis, progressão por fases e sistema de recursos. Projeto voltado ao aprofundamento em mecânicas complexas de gameplay e narrativa."
             techs={["UNREAL ENGINE", "BLUEPRINTS"]}
-            repo="https://youtu.be/ZiXHtchtcXk"
+            video="https://youtu.be/ZiXHtchtcXk"
             foto={zombiefication}
           />
-          <ProjectCardG
+          <ProjectCard
             title="The Chase"
             description="Jogo de fuga em mundo semiaberto com sistema de drift, pontuação e trilha sonora personalizada. Foco em física veicular e mecânicas de risco e recompensa."
             techs={["UNITY 3D", "C#"]}
-            repo="https://youtu.be/l5qiPo7G6qQ"
+            video="https://youtu.be/l5qiPo7G6qQ"
             link=""
             foto={chase}
           />

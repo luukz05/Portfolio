@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function DigitingEffect() {
-  const fullText = "Deesenvolvedor Fullstack"; // <- CONFERE AQUI
+  const fullText = "Deesenvolvedor Fullstack";
   const [displayedText, setDisplayedText] = useState("");
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function DigitingEffect() {
   }, []);
 
   return (
-    <p className="text-off text-4xl font-mono">
+    <p className="text-off text-xl sm:text-4xl font-mono">
       {displayedText}
       <span className="animate-blinking-cursor">|</span>
     </p>

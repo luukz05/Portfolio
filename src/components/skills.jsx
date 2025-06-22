@@ -154,8 +154,8 @@ import { SiNasa, SiMariadb, SiTypescript, SiDocker } from "react-icons/si";
 
 export default function SkillsSection() {
   return (
-    <div className="flex items-start">
-      <div className="flex justify-center items-center flex-col w-1/2">
+    <div className="flex flex-col lg:flex-row items-start gap-12 px-4">
+      <div className="flex flex-col w-full lg:w-1/2 gap-12">
         <div className="flex flex-col gap-6 items-center">
           <div className="flex items-center gap-2 text-white text-lg font-mono justify-center flex-col">
             <div className="flex gap-2 justify-center items-center">
@@ -166,8 +166,7 @@ export default function SkillsSection() {
             <p className="text-s font-bold">Características interpessoais</p>
           </div>
 
-          {/* Grid de Soft Skills */}
-          <div className="grid grid-cols-2 gap-4 w-full max-w-5xl scale-90">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-5xl">
             {softSkills.map((skill, i) => (
               <div
                 key={i}
@@ -185,26 +184,25 @@ export default function SkillsSection() {
           </div>
         </div>
 
-        {/* Seção Competências Linguísticas */}
-        <div className="flex flex-col gap-6 items-center mt-12  scale-90">
+        <div className="flex flex-col gap-6 items-center">
           <div className="flex items-center gap-2 text-white text-lg font-mono justify-center flex-col">
-            <div className="flex gap-2 justify-center items-center">
-              <span className="text-cherry">&lt;</span>
-              <h2 className="text-2xl font-bold">Competências Linguísticas</h2>
-              <span className="text-cherry">/&gt;</span>
+            <div className="flex items-center gap-2 text-white text-lg font-mono justify-center flex-col">
+              <div className="flex gap-2 justify-center items-center">
+                <span className="text-cherry">&lt;</span>
+                <h2 className="text-2xl font-bold">Línguas</h2>
+                <span className="text-cherry">/&gt;</span>
+              </div>
+              <p className="text-s font-bold">Idiomas e experiências</p>
             </div>
-            <p className="text-s font-bold">
-              Habilidades linguísticas e experiência internacional
-            </p>
           </div>
 
-          <div className="flex flex-col flex-wrap items-center justify-center bg-ch2 p-6 rounded-xl  shadow-lg hover:scale-105 transition duration-300 hover:bg-cherry/20">
-            <div className="flex items-center justify-center gap-2">
+          <div className="flex flex-col items-center justify-center bg-ch2 p-6 rounded-xl shadow-lg hover:scale-101 transition duration-300 hover:bg-cherry/20 w-full">
+            <div className="flex items-center justify-center gap-2 flex-wrap">
               <LiaFlagUsaSolid className="text-5xl text-offwhite" />
               <p className="text-3xl">+</p>
-              <SiNasa className="text-8xl  text-red-500" />
+              <SiNasa className="text-8xl text-red-500" />
             </div>
-            <h3 className="mt-4 text-xl text-white font-semibold">
+            <h3 className="mt-4 text-xl text-white font-semibold text-center">
               Inglês + Bootcamp Kennedy Space Center International Academy
             </h3>
             <p className="mt-2 text-white/70 text-center text-sm">
@@ -226,7 +224,8 @@ export default function SkillsSection() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-6 ">
+
+      <div className="flex flex-col w-full lg:w-1/2 gap-8">
         <div className="flex items-center gap-2 text-white text-lg font-mono justify-center flex-col">
           <div className="flex gap-2 justify-center items-center">
             <span className="text-cherry">&lt;</span>
@@ -237,19 +236,26 @@ export default function SkillsSection() {
         </div>
 
         {Object.entries(skills).map(([category, items]) => (
-          <div key={category} className="flex flex-col gap-4 scale-90">
+          <div key={category} className="flex flex-col gap-4">
             <div className="flex items-center gap-2 text-white text-lg font-mono">
               <span className="text-cherry">&lt;</span>
               <h2 className="text-xl font-bold">{category}</h2>
               <span className="text-cherry">/&gt;</span>
             </div>
-            <div className="flex gap-4 overflow-x-auto p-2">
+
+            <div
+              className={`grid gap-4 ${
+                items.length > 4
+                  ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-4"
+                  : "grid-cols-2 sm:grid-cols-3"
+              } overflow-x-auto sm:overflow-visible p-2`}
+            >
               {items.map(({ icon, label }, i) => (
                 <div
                   key={i}
-                  className="flex flex-col justify-center items-center h-30 w-30 text-center bg-ch2 p-4 rounded-2xl min-w-[120px] shadow-md hover:scale-105 transition duration-300 hover:bg-cherry/20"
+                  className="flex flex-col justify-center items-center text-center bg-ch2 p-4 rounded-2xl shadow-md hover:scale-105 transition duration-300 hover:bg-cherry/20 min-w-[100px]"
                 >
-                  <div className="text-5xl ">{icon}</div>
+                  <div className="text-5xl">{icon}</div>
                   <span className="mt-2 text-sm font-mono text-white">
                     {label}
                   </span>
