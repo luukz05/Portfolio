@@ -86,14 +86,14 @@ export const SobreMim = () => {
         </div>
 
         {/* Botão */}
-        <button
+        {/* <button
           className="
             bg-ch1 text-ch4 font-bold py-3 px-6 rounded-xl hover:bg-ch3 transition
             w-full sm:w-fit
           "
         >
           Entrar em contato
-        </button>
+        </button> */}
       </div>
     </div>
   );

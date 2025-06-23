@@ -9,7 +9,6 @@ import {
   FaGitAlt,
   FaGithub,
   FaUnity,
-  FaCode,
   FaMicrochip,
 } from "react-icons/fa";
 
@@ -23,6 +22,7 @@ import {
   SiUnrealengine,
   SiAseprite,
   SiArduino,
+  SiGodotengine,
 } from "react-icons/si";
 
 import { LiaFlagUsaSolid } from "react-icons/lia";
@@ -134,9 +134,9 @@ const skills = {
     { icon: <FaGithub className="text-black" />, label: "GitHub" },
     {
       icon: <FaLightbulb className="text-yellow-500" />,
-      label: "XP (Extreme Programming)",
+      label: "XP",
     },
-    { icon: <FaColumns className="text-blue-600" />, label: "Kanban / Trello" },
+    { icon: <FaColumns className="text-blue-600" />, label: "Kanban" },
     { icon: <FaProjectDiagram className="text-red-500" />, label: "Scrum" },
     { icon: <FaBalanceScale className="text-green-600" />, label: "Lean" },
   ],
@@ -144,10 +144,19 @@ const skills = {
     { icon: <SiArduino className="text-blue-700" />, label: "Arduino" },
     { icon: <FaMicrochip className="text-gray-700" />, label: "ESP32" },
   ],
+  "Game Development": [
+    { icon: <FaUnity className="text-black" />, label: "Unity" },
+    {
+      icon: <SiUnrealengine className="text-black" />,
+      label: "Unreal Engine",
+    },
+    // { icon: <SiAseprite className="text-white" />, label: "Aseprite" },
+    { icon: <SiGodotengine className="text-sky-600" />, label: "Godot" },
+  ],
   "Estudando Atualmente": [
     { icon: <RiNextjsFill className="text-black" />, label: "Next.JS" },
-    { icon: <SiTypescript className="text-sky-700" />, label: "TypeScript" },
-    { icon: <SiDocker className="text-blue-800" />, label: "Docker" },
+    { icon: <SiTypescript className="text-sky-600" />, label: "TypeScript" },
+    { icon: <SiDocker className="text-blue-600" />, label: "Docker" },
   ],
 };
 import { SiNasa, SiMariadb, SiTypescript, SiDocker } from "react-icons/si";
@@ -255,7 +264,7 @@ export default function SkillsSection() {
                   key={i}
                   className="flex flex-col justify-center items-center text-center bg-ch2 p-4 rounded-2xl shadow-md hover:scale-105 transition duration-300 hover:bg-cherry/20 min-w-[100px]"
                 >
-                  <div className="text-5xl">{icon}</div>
+                  <div className="text-4xl">{icon}</div>
                   <span className="mt-2 text-sm font-mono text-white">
                     {label}
                   </span>

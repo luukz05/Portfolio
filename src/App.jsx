@@ -37,6 +37,7 @@ import s3 from "./assets/3.png";
 import s4 from "./assets/4.png";
 
 import SkillsSection from "./components/skills";
+import Contato from "./components/contato";
 
 function App() {
   return (
@@ -54,7 +55,7 @@ function App() {
         {/* Saudação */}
         <p
           className="
-      text-offwhite text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+      text-offwhite text-2xl md:mt-15 sm:text-3xl md:text-3xl lg:text-5xl
       font-mono
     "
         >
@@ -290,15 +291,15 @@ function App() {
               "POSTMAN",
             ]}
             repo={"https://github.com/luukz05/ConsutaWEB"}
-            foto={ConsultaWeb} // substitui pela imagem real se tiver
+            foto={ConsultaWeb}
           />
 
           <ProjectCard
             title="Este portfólio!"
             description={`Portfólio desenvolvido como vitrine de projetos e exercício de aprendizado. Foco no estudo de Tailwind CSS, design limpo, responsividade e usabilidade. Também serviu para revisar e refatorar projetos antigos, consolidando minha evolução técnica e a forma de apresentar meu trabalho.`}
-            techs={["REACT", "TAILWIND"]}
+            techs={["REACT", "TAILWIND", "VITE", "RESPONSIVIDADE"]}
             repo={"https://github.com/luukz05/Portfolio"}
-            foto={Esse} // substitui pela imagem real do portfólio se quiser
+            foto={Esse}
           />
 
           <ProjectCard
@@ -409,6 +410,13 @@ function App() {
         <SkillsSection />
         <div className="flex items-center gap-8"></div>
       </div>
+      {/* <div className="flex justify-center mt-12 flex-col items-center ">
+        <h2 id="contato" className="text-4xl font-black text-center mb-12">
+          Contato
+        </h2>
+        <Contato />
+        <div className="flex items-center gap-8"></div>
+      </div> */}
     </>
   );
 }
