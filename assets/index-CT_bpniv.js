@@ -81,7 +81,7 @@ Error generating stack: `+l.message+`
     bg-no-repeat bg-cover bg-scroll sm:bg-fixed\r
     \r
   `,children:[b.jsx("p",{className:`\r
-      text-offwhite text-2xl sm:text-3xl md:text-4xl lg:text-5xl\r
+      text-offwhite text-2xl md:mt-15 sm:text-3xl md:text-3xl lg:text-5xl\r
       font-mono\r
     `,children:"Bem vindo(a), visitante!"}),b.jsxs("div",{className:`\r
       flex flex-col items-center justify-evenly\r
