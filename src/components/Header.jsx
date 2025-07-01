@@ -64,7 +64,7 @@ const Header = () => {
           </a>
           <a
             className="font-black text-white bg-ch2 px-3 py-2 rounded-md text-sm sm:text-base"
-            href="https://drive.google.com/file/d/1eLlh3X8jOk83n1Jwb_vIb1S4mHQeiDks/view?usp=sharing"
+            href="https://drive.google.com/file/d/1x7XYtnQZpaOHbQfYpMlMhHPu6qjrgdgt/view?usp=sharing"
             target="_blank"
           >
             Baixar CV
