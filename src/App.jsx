@@ -362,7 +362,7 @@ function App() {
             foto={stagio}
           />
           <ProjectCard
-            title="3D Todesco"
+            title="3D Todesco - EM PROGRESSO"
             description={`Meu primeiro projeto freelance, desenvolvido para uma loja especializada em impressão 3D. A plataforma conta com catálogo interativo, destaques, filtros de categorias e subcategorias, além de experiência otimizada para desktop e mobile, com animações fluidas via shadcn. O carrinho está integrado ao WhatsApp para pedidos diretos, com futura expansão para sistema de pagamentos online. Utiliza Next.js, TypeScript, Tailwind e shadcn no front-end, e Flask com MongoDB no back-end, garantindo flexibilidade e escalabilidade no gerenciamento de produtos e pedidos.`}
             techs={[
               "NEXT.JS",
