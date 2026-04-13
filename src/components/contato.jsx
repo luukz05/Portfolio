@@ -1,58 +1,54 @@
-import React from "react";
 import github from "../assets/github.svg";
 import linkedin from "../assets/linkedin.svg";
 import envelope from "../assets/envelope.svg";
 
+const links = [
+  {
+    href: "https://github.com/luukz05",
+    label: "GitHub",
+    detail: "github.com/luukz05",
+    icon: github,
+  },
+  {
+    href: "https://linkedin.com/in/lucasvargasdev",
+    label: "LinkedIn",
+    detail: "linkedin.com/in/lucasvargasdev",
+    icon: linkedin,
+  },
+  {
+    href: "mailto:lucasvargasdev05@gmail.com",
+    label: "Email",
+    detail: "lucasvargasdev05@gmail.com",
+    icon: envelope,
+  },
+];
+
 const Contact = () => {
   return (
-    <section
-      id="contato"
-      className="flex flex-col items-center justify-center py-20 px-6 text-offwhite max-w-7xl mx-auto"
-    >
-      {/* Título */}
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-ch1 text-center">
-        Entre em Contato
-      </h2>
-
-      <p className="text-base sm:text-lg mb-8 text-center max-w-xl">
-        Ficou interessado? Me chama nas redes ou envie um e-mail!
-      </p>
-
-      {/* Redes */}
-      <div className="flex flex-wrap gap-6 justify-center items-center">
-        {/* GitHub */}
+    <section className="grid gap-4 md:grid-cols-3">
+      {links.map((item) => (
         <a
-          href="https://github.com/luukz05"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-3 bg-ch2 hover:bg-ch3 transition px-5 py-3 rounded-xl shadow-lg"
+          key={item.label}
+          href={item.href}
+          target={item.href.startsWith("mailto:") ? "_self" : "_blank"}
+          rel={
+            item.href.startsWith("mailto:") ? undefined : "noopener noreferrer"
+          }
+          className="group flex min-h-40 flex-col justify-between rounded-[30px] bg-[rgba(14,14,16,0.76)] p-6 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)] transition duration-200 hover:bg-[rgba(209,31,49,0.05)]"
         >
-          <img src={github} alt="GitHub" className="h-6 invert" />
-          <span className="font-bold text-base sm:text-lg">GitHub</span>
+          <div className="flex h-12 w-12 items-center justify-center rounded-[18px] bg-[rgba(255,255,255,0.02)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)]">
+            <img src={item.icon} alt={item.label} className="h-4 w-4 invert" />
+          </div>
+          <div>
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.34em] text-[var(--color-red-soft)]">
+              {item.label}
+            </p>
+            <p className="mt-3 text-base text-[var(--color-text-mid)]">
+              {item.detail}
+            </p>
+          </div>
         </a>
-
-        {/* LinkedIn */}
-        <a
-          href="https://linkedin.com/in/lucasvargasdev"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-3 bg-ch2 hover:bg-ch3 transition px-5 py-3 rounded-xl shadow-lg"
-        >
-          <img src={linkedin} alt="LinkedIn" className="h-6 invert" />
-          <span className="font-bold text-base sm:text-lg">LinkedIn</span>
-        </a>
-
-        {/* E-mail */}
-        <a
-          href="mailto:lucasvargasdev05@gmail.com"
-          className="flex items-center gap-3 bg-ch2 hover:bg-ch3 transition px-5 py-3 rounded-xl shadow-lg"
-        >
-          <img src={envelope} alt="E-mail" className="h-6 invert" />
-          <span className="font-bold text-base sm:text-lg">
-            lucasvargasdev05@gmail.com
-          </span>
-        </a>
-      </div>
+      ))}
     </section>
   );
 };
