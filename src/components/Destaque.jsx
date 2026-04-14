@@ -31,6 +31,7 @@ function PolaroidCard({
   src,
   alt,
   caption,
+  rotation,
   className = "",
   imageClassName = "",
   frameClassName = "",
@@ -41,6 +42,7 @@ function PolaroidCard({
     <motion.div
       className={`group bg-[rgba(245,245,245,0.97)] p-3 pb-5 text-neutral-900 shadow-[0_24px_60px_rgba(0,0,0,0.2)] transition duration-300 hover:scale-[1.03] ${className} ${frameClassName}`}
       variants={scaleIn}
+      style={{ rotate: rotation }}
     >
       <div className={`overflow-hidden bg-black ${mediaClassName}`}>
         <img
@@ -76,9 +78,8 @@ export const Destaque = ({ groupPhoto, prototypePhoto, logoCard }) => {
             src={groupPhoto}
             alt="Equipe do projeto DVGC"
             caption="Apresentação do projeto"
+            rotation="var(--polaroid-rotation)"
             className="polaroid-card polaroid-card-main"
-            frameClassName="[clip-path:polygon(2%_1%,100%_0,98%_99%,0_100%)]"
-            mediaClassName="[clip-path:polygon(2%_1%,100%_0,98%_99%,0_100%)]"
             captionClassName="pr-4"
             imageClassName="aspect-[16/10]"
           />
@@ -87,6 +88,7 @@ export const Destaque = ({ groupPhoto, prototypePhoto, logoCard }) => {
             src={prototypePhoto}
             alt="Protótipo do DVGC"
             caption="Protótipo físico"
+            rotation="var(--polaroid-rotation)"
             className="polaroid-card polaroid-card-secondary"
             imageClassName="aspect-[4/3]"
           />
@@ -95,6 +97,7 @@ export const Destaque = ({ groupPhoto, prototypePhoto, logoCard }) => {
             src={logoCard}
             alt="Identidade visual do DVGC"
             caption="Identidade do app"
+            rotation="var(--polaroid-rotation)"
             className="polaroid-card polaroid-card-tertiary"
             imageClassName="aspect-[6/5]"
           />

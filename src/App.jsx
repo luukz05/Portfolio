@@ -1,3 +1,4 @@
+import { startTransition, useMemo, useState } from "react";
 import "./App.css";
 import { motion } from "framer-motion";
 import Header from "./components/Header";
@@ -26,6 +27,7 @@ import furia from "./assets/furia.png";
 import sata from "./assets/sata.png";
 import stagio from "./assets/stagio.png";
 import dddtodesco from "./assets/dddtodesco.png";
+import urbanflowCard from "./assets/Etapas de Planejamento e Execução.jpg";
 
 import lostmemories from "./assets/Lost Memories.png";
 import chase from "./assets/The Chase.png";
@@ -69,6 +71,10 @@ const webProjects = [
     video: "https://www.youtube.com/watch?v=VPFjS6IrryU",
     repo: "https://github.com/luukz05/DVGC",
     foto: DVGC,
+    category: "UPX - Facens",
+    status: "done",
+    complexity: 98,
+    recency: 7,
   },
   {
     title: "SATA",
@@ -85,6 +91,22 @@ const webProjects = [
     ],
     repo: "https://github.com/luukz05/SATA",
     foto: sata,
+    category: "UPX - Facens",
+    status: "done",
+    complexity: 70,
+    recency: 10,
+  },
+  {
+    title: "Urbanflow",
+    description:
+      "Sistema de mobilidade urbana com visão computacional para identificar ambulâncias e carros com YOLO e acionar lógica de semáforo com ESP32, priorizando situações de emergência.",
+    techs: ["PYTHON", "YOLO", "OPENCV", "ESP32", "C++", "COMPUTER VISION"],
+    repo: "https://github.com/luukz05/Urbanflow",
+    foto: urbanflowCard,
+    category: "UPX - Facens",
+    status: "done",
+    complexity: 100,
+    recency: 13,
   },
   {
     title: "3D Todesco",
@@ -102,6 +124,10 @@ const webProjects = [
     repo: "https://github.com/luukz05/3dtodesco",
     foto: dddtodesco,
     link: "https://3dtodesco.shop/",
+    category: "Freelancer",
+    status: "archived",
+    complexity: 88,
+    recency: 11,
   },
   {
     title: "Stag.io",
@@ -118,6 +144,9 @@ const webProjects = [
     ],
     repo: "https://github.com/luukz05/stag.io",
     foto: stagio,
+    status: "progress",
+    complexity: 95,
+    recency: 12,
   },
   {
     title: "FURIA.QG",
@@ -135,6 +164,9 @@ const webProjects = [
     repo: "https://github.com/luukz05/FURIA_TEST",
     foto: furia,
     link: "https://furiaqg.netlify.app/",
+    status: "done",
+    complexity: 93,
+    recency: 9,
   },
   {
     title: "ReMatch",
@@ -152,6 +184,10 @@ const webProjects = [
     ],
     repo: "https://github.com/luukz05/ReMatch",
     foto: Rematch,
+    category: "UPX - Facens",
+    status: "done",
+    complexity: 91,
+    recency: 8,
   },
   {
     title: "Minimal Keeper",
@@ -170,6 +206,9 @@ const webProjects = [
     repo: "https://github.com/luukz05/MinimalKeeper",
     foto: MinimalKeeper,
     video: "https://www.youtube.com/watch?v=GKuBor_k-s8",
+    status: "done",
+    complexity: 80,
+    recency: 5,
   },
   {
     title: "ConsultaWeb",
@@ -185,6 +224,10 @@ const webProjects = [
     ],
     repo: "https://github.com/luukz05/ConsutaWEB",
     foto: ConsultaWeb,
+    category: "Estudos",
+    status: "done",
+    complexity: 76,
+    recency: 6,
   },
   {
     title: "IndieFolio",
@@ -194,6 +237,9 @@ const webProjects = [
     foto: IndieFolio,
     repo: "https://github.com/luukz05/IndieFolio",
     video: "https://youtu.be/fdZvMhgTKn0",
+    status: "done",
+    complexity: 66,
+    recency: 3,
   },
   {
     title: "Tactical Blueprint",
@@ -203,6 +249,9 @@ const webProjects = [
     repo: "https://github.com/luukz05/Tactical-Blueprint-CS2-Planner",
     foto: Blueprint,
     video: "https://youtu.be/G-yF0QhU6Fk?t=25",
+    status: "done",
+    complexity: 54,
+    recency: 4,
   },
   {
     title: "NBA Tracker",
@@ -212,6 +261,9 @@ const webProjects = [
     link: "https://luukz05.github.io/NBA-Tracker/index.html",
     repo: "https://github.com/luukz05/NBA-Tracker",
     foto: NBA,
+    status: "done",
+    complexity: 40,
+    recency: 2,
   },
   {
     title: "Este portfólio",
@@ -220,6 +272,9 @@ const webProjects = [
     techs: ["REACT", "TAILWIND", "VITE", "RESPONSIVIDADE"],
     repo: "https://github.com/luukz05/Portfolio",
     foto: Esse,
+    status: "done",
+    complexity: 50,
+    recency: 14,
   },
   {
     title: "G.A.M.M.A",
@@ -229,6 +284,9 @@ const webProjects = [
     link: "https://luukz05.github.io/GAMMA/",
     repo: "https://github.com/luukz05/GAMMA",
     foto: GAMMA,
+    status: "done",
+    complexity: 30,
+    recency: 1,
   },
 ];
 
@@ -308,6 +366,7 @@ function ProjectSection({
   meta,
   projects,
   tone = "default",
+  controls,
 }) {
   return (
     <section
@@ -323,6 +382,7 @@ function ProjectSection({
         meta={meta}
       />
       <div className="editorial-shell mt-16">
+        {controls ? <div className="section-toolbar">{controls}</div> : null}
         <div className="project-grid-3">
           {projects.map((project, index) => (
             <ProjectCard key={project.title} revealIndex={index} {...project} />
@@ -334,6 +394,9 @@ function ProjectSection({
 }
 
 function App() {
+  const [webSort, setWebSort] = useState("complexity");
+  const [webDirection, setWebDirection] = useState("desc");
+
   const heroServices = [
     {
       title: "Front-end",
@@ -356,6 +419,113 @@ function App() {
       copy: "Clareza, colaboração e pensamento prático.",
     },
   ];
+
+  const sortedWebProjects = useMemo(() => {
+    const projects = [...webProjects];
+
+    if (webSort === "status") {
+      const statusOrder = {
+        progress: 0,
+        done: 1,
+        archived: 2,
+      };
+
+      return projects.sort((a, b) => {
+        const byStatus = statusOrder[a.status] - statusOrder[b.status];
+
+        if (byStatus !== 0) {
+          return byStatus;
+        }
+
+        return b.complexity - a.complexity;
+      });
+    }
+
+    const direction = webDirection === "asc" ? 1 : -1;
+
+    if (webSort === "recent") {
+      return projects.sort((a, b) => (a.recency - b.recency) * direction);
+    }
+
+    return projects.sort((a, b) => (a.complexity - b.complexity) * direction);
+  }, [webDirection, webSort]);
+
+  const webSortControls = (
+    <div className="sort-toolbar">
+      <span className="sort-label">Ordenar por:</span>
+      <div className="sort-toggle" role="tablist" aria-label="Critério de ordenação dos projetos web">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={webSort === "complexity"}
+          className={`sort-chip ${webSort === "complexity" ? "sort-chip-active" : ""}`}
+          onClick={() => {
+            startTransition(() => setWebSort("complexity"));
+          }}
+        >
+          Complexidade
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={webSort === "recent"}
+          className={`sort-chip ${webSort === "recent" ? "sort-chip-active" : ""}`}
+          onClick={() => {
+            startTransition(() => setWebSort("recent"));
+          }}
+        >
+          Conclusão
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={webSort === "status"}
+          className={`sort-chip ${webSort === "status" ? "sort-chip-active" : ""}`}
+          onClick={() => {
+            startTransition(() => setWebSort("status"));
+          }}
+        >
+          Status atual
+        </button>
+      </div>
+
+      <div
+        className={`sort-direction-toggle ${webSort === "status" ? "sort-direction-toggle-disabled" : ""}`}
+        role="tablist"
+        aria-label="Direção de ordenação dos projetos web"
+        aria-disabled={webSort === "status"}
+      >
+        <button
+          type="button"
+          role="tab"
+          aria-selected={webDirection === "desc"}
+          disabled={webSort === "status"}
+          className={`sort-direction-option ${
+            webDirection === "desc" ? "sort-direction-option-active" : ""
+          }`}
+          onClick={() => {
+            startTransition(() => setWebDirection("desc"));
+          }}
+        >
+          Desc
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={webDirection === "asc"}
+          disabled={webSort === "status"}
+          className={`sort-direction-option ${
+            webDirection === "asc" ? "sort-direction-option-active" : ""
+          }`}
+          onClick={() => {
+            startTransition(() => setWebDirection("asc"));
+          }}
+        >
+          Asc
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -522,7 +692,8 @@ function App() {
               "0"
             )} projetos web organizados por impacto e complexidade.`,
           }}
-          projects={webProjects}
+          projects={sortedWebProjects}
+          controls={webSortControls}
         />
 
         <ProjectSection

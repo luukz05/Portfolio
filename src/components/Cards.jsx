@@ -16,9 +16,17 @@ const ProjectCard = ({
   repo,
   video,
   demo,
+  category = "Projeto",
+  status = "done",
   revealIndex = 0,
 }) => {
   const imageSrc = foto ?? "https://placehold.jp/640x420.png";
+  const statusClass =
+    status === "progress"
+      ? "bg-[#f08b4f] shadow-[0_0_10px_rgba(240,139,79,0.35)]"
+      : status === "archived"
+      ? "bg-[var(--color-red-strong)] shadow-[0_0_10px_rgba(226,59,76,0.35)]"
+      : "bg-[#49d17d] shadow-[0_0_10px_rgba(73,209,125,0.35)]";
   const actions = [
     repo
       ? {
@@ -75,13 +83,13 @@ const ProjectCard = ({
 
       <div className="flex flex-1 flex-col px-5 pb-5 pt-5 sm:px-6 sm:pb-6 sm:pt-6">
         <p className="mb-3 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-text-faint)] sm:text-[0.66rem] sm:tracking-[0.3em]">
-          Projeto
+          {category}
         </p>
         <div className="mb-5 flex items-start justify-between gap-4">
           <h3 className="project-title text-[1.45rem] font-semibold tracking-[-0.05em] text-[var(--color-text-strong)] sm:text-[1.75rem]">
             {title}
           </h3>
-          <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--color-red-strong)] shadow-[0_0_10px_rgba(226,59,76,0.35)]" />
+          <span className={`mt-2 h-2 w-2 shrink-0 rounded-full ${statusClass}`} />
         </div>
 
         <p className="project-copy mb-5 text-sm leading-7 text-[var(--color-text-muted)]">
