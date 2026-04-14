@@ -1,4 +1,7 @@
 import {
+  FaBootstrap,
+  FaBrain,
+  FaCode,
   FaHtml5,
   FaCss3Alt,
   FaReact,
@@ -11,19 +14,35 @@ import {
   FaTasks,
   FaUnity,
   FaMicrochip,
+  FaServer,
+  FaStar,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import {
   SiAmazonwebservices,
   SiArduino,
+  SiAseprite,
+  SiAxios,
+  SiClaude,
   SiDocker,
   SiExpress,
+  SiFastapi,
+  SiFlask,
   SiGodotengine,
+  SiJsonwebtokens,
+  SiMongoose,
   SiMongodb,
   SiMysql,
   SiNasa,
+  SiOpencv,
+  SiOpenai,
+  SiPostgresql,
+  SiShadcnui,
   SiTailwindcss,
   SiTypescript,
+  SiUnrealengine,
+  SiVite,
+  SiVuedotjs,
 } from "react-icons/si";
 import { LiaFlagUsaSolid } from "react-icons/lia";
 import { IoLogoJavascript } from "react-icons/io5";
@@ -34,6 +53,7 @@ import { fadeLeft, fadeRight, fadeUp, staggerFast, viewportCard } from "../lib/m
 const skillGroups = [
   {
     title: "Front-end",
+    description: "Interfaces, componentização e consistência visual para web.",
     items: [
       { icon: FaReact, label: "React" },
       { icon: RiNextjsFill, label: "Next.js" },
@@ -41,22 +61,41 @@ const skillGroups = [
       { icon: FaCss3Alt, label: "CSS" },
       { icon: IoLogoJavascript, label: "JavaScript" },
       { icon: SiTypescript, label: "TypeScript" },
-      { icon: SiTailwindcss, label: "Tailwind UI" },
+      { icon: SiTailwindcss, label: "Tailwind CSS" },
+      { icon: FaBootstrap, label: "Bootstrap" },
+      { icon: SiVuedotjs, label: "Vue.js" },
+      { icon: FaCode, label: "Handlebars" },
+      { icon: FaCode, label: "Styled Components" },
+      { icon: SiShadcnui, label: "shadcn/ui" },
+      { icon: SiVite, label: "Vite" },
+      { icon: SiAxios, label: "Axios" },
+      { icon: FaCode, label: "React Cookies" },
+      { icon: FaCode, label: "Responsividade" },
     ],
   },
   {
-    title: "Back-end e linguagens",
+    title: "Back-end e APIs",
+    description: "Lógica de servidor, autenticação, integrações e serviços.",
     items: [
       { icon: FaNodeJs, label: "Node.js" },
       { icon: SiExpress, label: "Express" },
       { icon: FaPython, label: "Python" },
+      { icon: SiFlask, label: "Flask" },
+      { icon: SiFastapi, label: "FastAPI" },
+      { icon: FaServer, label: "Web Scraping" },
+      { icon: SiJsonwebtokens, label: "JWT" },
+      { icon: FaServer, label: "Bcrypt" },
+      { icon: FaServer, label: "Crypto" },
     ],
   },
   {
     title: "Dados e infraestrutura",
+    description: "Persistência, modelagem, containers e base operacional.",
     items: [
       { icon: SiMongodb, label: "MongoDB" },
+      { icon: SiMongoose, label: "Mongoose" },
       { icon: SiMysql, label: "MySQL" },
+      { icon: SiPostgresql, label: "PostgreSQL" },
       { icon: SiAmazonwebservices, label: "Amazon Web Services" },
       { icon: SiDocker, label: "Docker" },
       { icon: FaGitAlt, label: "Git" },
@@ -64,18 +103,42 @@ const skillGroups = [
     ],
   },
   {
-    title: "Mobile",
+    title: "Mobile e IoT",
+    description: "Apps conectados a hardware, sensores e fluxo em tempo real.",
     items: [
       { icon: FaReact, label: "React Native" },
+      { icon: FaReact, label: "Expo" },
+      { icon: SiArduino, label: "Arduino" },
+      { icon: FaMicrochip, label: "ESP32" },
+      { icon: FaCode, label: "C++" },
+      { icon: FaMicrochip, label: "IoT" },
     ],
   },
   {
-    title: "Hardware e games",
+    title: "IA e visão computacional",
+    description: "Modelos, automação e leitura de contexto a partir de imagem.",
     items: [
-      { icon: SiArduino, label: "Arduino" },
-      { icon: FaMicrochip, label: "ESP32" },
-      { icon: FaUnity, label: "Unity" },
+      { icon: FaBrain, label: "YOLO" },
+      { icon: SiOpencv, label: "OpenCV" },
+      { icon: FaBrain, label: "Computer Vision" },
+      { icon: SiOpenai, label: "Codex" },
+      { icon: SiClaude, label: "Claude Code" },
+    ],
+  },
+  {
+    title: "Games e criação",
+    description: "Engines, prototipação e ferramentas de criação visual.",
+    items: [
+      { icon: FaUnity, label: "Unity 2D" },
+      { icon: FaUnity, label: "Unity 3D" },
       { icon: SiGodotengine, label: "Godot" },
+      { icon: SiUnrealengine, label: "Unreal Engine" },
+      { icon: FaCode, label: "Blueprints" },
+      { icon: FaCode, label: "GDScript" },
+      { icon: FaCode, label: "C#" },
+      { icon: SiAseprite, label: "Aseprite" },
+      { icon: FaCode, label: "Figma" },
+      { icon: FaCode, label: "Canva" },
     ],
   },
 ];
@@ -93,7 +156,7 @@ const processHighlight = {
   title: "Metodologias ágeis",
   subtitle: "Rotina colaborativa e iterativa",
   copy:
-    "Vivência com XP, Scrum, Lean e Kanban aplicados à organização de backlog, definição de prioridades, entregas em ciclos curtos, acompanhamento contínuo e alinhamentos frequentes para revisar o progresso e ajustar o escopo.",
+    "XP, Scrum, Lean e Kanban para backlog e ciclos curtos.",
   accent: "Processo",
 };
 
@@ -122,16 +185,37 @@ const languageHighlights = [
 ];
 
 function SkillCard({ icon: Icon, label }) {
+  const highlightedSkills = new Set([
+    "React",
+    "Next.js",
+    "Tailwind CSS",
+    "Node.js",
+    "Flask",
+    "MongoDB",
+    "React Native",
+    "ESP32",
+    "Claude Code",
+    "Unity 2D",
+    "Unity 3D",
+  ]);
+
+  const isHighlighted = highlightedSkills.has(label);
+
   return (
     <motion.div
-      className="flex min-h-14 items-center gap-3 rounded-[18px] bg-[rgba(255,255,255,0.02)] px-4 py-3 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)] transition duration-200 hover:bg-[linear-gradient(135deg,rgba(240,90,104,0.16),rgba(209,31,49,0.08))] hover:shadow-[inset_0_0_0_1px_rgba(240,90,104,0.16)]"
+      className={`flex min-h-14 items-center gap-3 rounded-[18px] px-4 py-3 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)] transition duration-200 ${
+        isHighlighted
+          ? "bg-[linear-gradient(135deg,rgba(240,90,104,0.88),rgba(209,31,49,0.72))] hover:bg-[linear-gradient(135deg,rgba(244,107,120,0.94),rgba(224,52,69,0.8))] hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]"
+          : "bg-[rgba(255,255,255,0.02)] hover:bg-[linear-gradient(135deg,rgba(240,90,104,0.16),rgba(209,31,49,0.08))] hover:shadow-[inset_0_0_0_1px_rgba(240,90,104,0.16)]"
+      }`}
       variants={fadeUp}
       whileHover={{ y: -2 }}
     >
-      <Icon className="shrink-0 text-[1.15rem] text-[var(--color-red-soft)]" />
-      <span className="text-[0.8rem] font-medium uppercase tracking-[0.14em] text-[var(--color-text-mid)]">
+      <Icon className={`shrink-0 text-[1.15rem] ${isHighlighted ? "text-neutral-950" : "text-[var(--color-red-soft)]"}`} />
+      <span className={`flex-1 text-[0.8rem] font-medium uppercase tracking-[0.14em] ${isHighlighted ? "text-neutral-950" : "text-[var(--color-text-mid)]"}`}>
         {label}
       </span>
+      {isHighlighted ? <FaStar className="shrink-0 text-[0.72rem] text-neutral-950" /> : null}
     </motion.div>
   );
 }
@@ -170,6 +254,9 @@ export default function SkillsSection() {
                 <h3 className="text-xl font-semibold tracking-[-0.04em] text-[var(--color-text-strong)]">
                   {group.title}
                 </h3>
+                <p className="mt-3 max-w-[13rem] text-sm leading-6 text-[var(--color-text-faint)]">
+                  {group.description}
+                </p>
               </motion.div>
               <motion.div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3" variants={staggerFast}>
                 {group.items.map((item) => (
@@ -188,17 +275,17 @@ export default function SkillsSection() {
         <h3 className="mt-3 text-xl font-semibold tracking-[-0.04em] text-[var(--color-text-strong)]">
           {processHighlight.title}
         </h3>
-        <p className="mt-3 text-[0.78rem] font-semibold uppercase tracking-[0.2em] text-[var(--color-text-faint)]">
+        <p className="mt-3 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[var(--color-text-faint)]">
           {processHighlight.subtitle}
+          <span className="ml-4 inline-block text-[var(--color-text-mid)] normal-case tracking-normal">
+            {processHighlight.copy}
+          </span>
         </p>
         <motion.div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4" variants={staggerFast}>
           {processMethods.map((item) => (
             <SkillCard key={item.label} {...item} />
           ))}
         </motion.div>
-        <p className="mt-4 max-w-3xl text-sm leading-7 text-[var(--color-text-mid)]">
-          {processHighlight.copy}
-        </p>
       </motion.section>
 
       <motion.section variants={fadeUp} className="rounded-[30px] bg-[rgba(14,14,16,0.76)] p-6 sm:p-8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)]">
