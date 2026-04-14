@@ -1,4 +1,5 @@
 import "./App.css";
+import { motion } from "framer-motion";
 import Header from "./components/Header";
 import ImageLinkButton from "./components/ImageButton";
 import ProjectCard from "./components/Cards";
@@ -39,6 +40,16 @@ import s1 from "./assets/1.png";
 import s2 from "./assets/2.png";
 import s3 from "./assets/3.png";
 import s4 from "./assets/4.png";
+import {
+  fadeLeft,
+  fadeRight,
+  fadeUp,
+  scaleIn,
+  staggerContainer,
+  staggerFast,
+  viewportCard,
+  viewportSection,
+} from "./lib/motion";
 
 const webProjects = [
   {
@@ -62,7 +73,7 @@ const webProjects = [
   {
     title: "SATA",
     description:
-      "Sistema academico para monitoramento de alagamentos com ESP32, sensores e notificacoes moveis em uma proposta de mobilidade urbana segura.",
+      "Sistema acadêmico para monitoramento de alagamentos com ESP32, sensores e notificações móveis em uma proposta de mobilidade urbana segura.",
     techs: [
       "MOBILE",
       "REACT NATIVE",
@@ -78,7 +89,7 @@ const webProjects = [
   {
     title: "3D Todesco",
     description:
-      "Primeiro projeto freelance com catalogo interativo, filtros, carrinho via WhatsApp e base pronta para expansao comercial.",
+      "Primeiro projeto freelance com catálogo interativo, filtros, carrinho via WhatsApp e base pronta para expansão comercial.",
     techs: [
       "NEXT.JS",
       "REACT",
@@ -111,7 +122,7 @@ const webProjects = [
   {
     title: "FURIA.QG",
     description:
-      "Experiencia gamificada para comunidade da FURIA com desafios, ranking e autenticacao segura, incluindo uso inicial de IA e OCR.",
+      "Experiência gamificada para a comunidade da FURIA com desafios, ranking e autenticação segura, incluindo uso inicial de IA e OCR.",
     techs: [
       "REACT",
       "TAILWIND",
@@ -128,7 +139,7 @@ const webProjects = [
   {
     title: "ReMatch",
     description:
-      "Plataforma de sustentabilidade inspirada em matchmaking para conectar pessoas e empresas interessadas em reutilizacao e economia circular.",
+      "Plataforma de sustentabilidade inspirada em matchmaking para conectar pessoas e empresas interessadas em reutilização e economia circular.",
     techs: [
       "REACT",
       "CSS",
@@ -145,7 +156,7 @@ const webProjects = [
   {
     title: "Minimal Keeper",
     description:
-      "Aplicativo mobile de seguranca pessoal para gerar, validar e armazenar senhas com foco em UX objetiva e integracao full stack.",
+      "Aplicativo mobile de segurança pessoal para gerar, validar e armazenar senhas com foco em UX objetiva e integração full stack.",
     techs: [
       "MOBILE",
       "REACT NATIVE",
@@ -163,7 +174,7 @@ const webProjects = [
   {
     title: "ConsultaWeb",
     description:
-      "Projeto de estudo com scraping, leitura de PDFs e persistencia em MySQL, conectado a uma interface Vue para pesquisa e filtros.",
+      "Projeto de estudo com scraping, leitura de PDFs e persistência em MySQL, conectado a uma interface Vue para pesquisa e filtros.",
     techs: [
       "VUE.JS",
       "BOOTSTRAP",
@@ -178,7 +189,7 @@ const webProjects = [
   {
     title: "IndieFolio",
     description:
-      "Portfolio colaborativo para artistas independentes com categorias dinamicas, Handlebars no front e MongoDB para publicacoes e usuarios.",
+      "Portfólio colaborativo para artistas independentes com categorias dinâmicas, Handlebars no front e MongoDB para publicações e usuários.",
     techs: ["HANDLEBARS", "CSS", "JAVASCRIPT", "MONGOOSE", "MONGODB", "NODE"],
     foto: IndieFolio,
     repo: "https://github.com/luukz05/IndieFolio",
@@ -187,7 +198,7 @@ const webProjects = [
   {
     title: "Tactical Blueprint",
     description:
-      "Planner tatico para CS com mapas interativos, desenho em tempo real e salvamento de estrategias. Foi meu primeiro projeto em React.",
+      "Planner tático para CS com mapas interativos, desenho em tempo real e salvamento de estratégias. Foi meu primeiro projeto em React.",
     techs: ["STYLED-COMPONENTS", "REACT"],
     repo: "https://github.com/luukz05/Tactical-Blueprint-CS2-Planner",
     foto: Blueprint,
@@ -196,16 +207,16 @@ const webProjects = [
   {
     title: "NBA Tracker",
     description:
-      "Aplicacao web com noticias, elencos, estatisticas e placares em tempo real consumindo dados externos com foco em integracao de API e organizacao visual.",
+      "Aplicação web com notícias, elencos, estatísticas e placares em tempo real, consumindo dados externos com foco em integração de API e organização visual.",
     techs: ["HTML", "CSS", "JAVASCRIPT"],
     link: "https://luukz05.github.io/NBA-Tracker/index.html",
     repo: "https://github.com/luukz05/NBA-Tracker",
     foto: NBA,
   },
   {
-    title: "Este portfolio",
+    title: "Este portfólio",
     description:
-      "Projeto criado para apresentar minha evolucao tecnica, estudar Tailwind e refinar a forma como organizo e comunico meus trabalhos.",
+      "Projeto criado para apresentar minha evolução técnica, estudar Tailwind e refinar a forma como organizo e comunico meus trabalhos.",
     techs: ["REACT", "TAILWIND", "VITE", "RESPONSIVIDADE"],
     repo: "https://github.com/luukz05/Portfolio",
     foto: Esse,
@@ -213,7 +224,7 @@ const webProjects = [
   {
     title: "G.A.M.M.A",
     description:
-      "Site institucional responsivo para uma empresa ficticia de engenharia ambiental, criado para consolidar fundamentos de HTML, CSS e estrutura de interface.",
+      "Site institucional responsivo para uma empresa fictícia de engenharia ambiental, criado para consolidar fundamentos de HTML, CSS e estrutura de interface.",
     techs: ["HTML", "CSS", "RESPONSIVIDADE"],
     link: "https://luukz05.github.io/GAMMA/",
     repo: "https://github.com/luukz05/GAMMA",
@@ -225,14 +236,14 @@ const gameProjects = [
   {
     title: "Treasure Island",
     description:
-      "Jogo top-down inspirado em Zelda, com foco em combate, exploracao e construcao de mapas interativos.",
+      "Jogo top-down inspirado em Zelda, com foco em combate, exploração e construção de mapas interativos.",
     techs: ["GODOT", "GDSCRIPT", "ASEPRITE"],
     foto: treasure,
   },
   {
     title: "Lost Memories",
     description:
-      "Plataforma inspirado em Celeste com movimentacao precisa, puzzle e narrativa como eixo do design.",
+      "Plataforma inspirada em Celeste, com movimentação precisa, puzzle e narrativa como eixo do design.",
     techs: ["UNITY 2D", "C#"],
     video: "https://youtu.be/IEID1vtLYkM",
     demo: "https://theldev.itch.io/lost-memories",
@@ -241,7 +252,7 @@ const gameProjects = [
   {
     title: "Zombiefication",
     description:
-      "FPS em Unreal Engine voltado ao estudo de combate, progressao por fases e ritmo de gameplay.",
+      "FPS em Unreal Engine voltado ao estudo de combate, progressão por fases e ritmo de gameplay.",
     techs: ["UNREAL ENGINE", "BLUEPRINTS"],
     video: "https://youtu.be/ZiXHtchtcXk",
     foto: zombiefication,
@@ -249,7 +260,7 @@ const gameProjects = [
   {
     title: "The Chase",
     description:
-      "Jogo de fuga com drift, risco e recompensa, explorando fisica veicular e atmosfera arcade.",
+      "Jogo de fuga com drift, risco e recompensa, explorando física veicular e atmosfera arcade.",
     techs: ["UNITY 3D", "C#"],
     video: "https://youtu.be/l5qiPo7G6qQ",
     foto: chase,
@@ -258,19 +269,34 @@ const gameProjects = [
 
 function SectionHeading({ eyebrow, title, description, id, meta }) {
   return (
-    <div id={id} className="editorial-shell section-head">
-      <div>
-        <p className="section-kicker">{eyebrow}</p>
-        <h2 className="section-title">{title}</h2>
-        {description ? <p className="section-copy">{description}</p> : null}
-      </div>
+    <motion.div
+      id={id}
+      className="editorial-shell section-head"
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportSection}
+    >
+      <motion.div variants={staggerFast}>
+        <motion.p variants={fadeUp} className="section-kicker">
+          {eyebrow}
+        </motion.p>
+        <motion.h2 variants={fadeUp} className="section-title">
+          {title}
+        </motion.h2>
+        {description ? (
+          <motion.p variants={fadeUp} className="section-copy">
+            {description}
+          </motion.p>
+        ) : null}
+      </motion.div>
       {meta ? (
-        <div className="section-meta">
+        <motion.div variants={fadeRight} className="section-meta">
           <span className="section-meta-label">{meta.label}</span>
           <p className="section-meta-copy">{meta.copy}</p>
-        </div>
+        </motion.div>
       ) : null}
-    </div>
+    </motion.div>
   );
 }
 
@@ -298,8 +324,8 @@ function ProjectSection({
       />
       <div className="editorial-shell mt-16">
         <div className="project-grid-3">
-          {projects.map((project) => (
-            <ProjectCard key={project.title} {...project} />
+          {projects.map((project, index) => (
+            <ProjectCard key={project.title} revealIndex={index} {...project} />
           ))}
         </div>
       </div>
@@ -322,12 +348,12 @@ function App() {
       copy: "Apps e sistemas conectados.",
     },
     {
-      title: "Ingles",
-      copy: "Comunicacao fluente em contexto tecnico.",
+      title: "Inglês",
+      copy: "Comunicação fluente em contexto técnico.",
     },
     {
       title: "Soft skills",
-      copy: "Clareza, colaboracao e pensamento pratico.",
+      copy: "Clareza, colaboração e pensamento prático.",
     },
   ];
 
@@ -337,143 +363,179 @@ function App() {
       <main className="relative overflow-x-hidden">
         <section id="hero" className="hero-grid">
           <div className="editorial-shell hero-shell">
-            <div className="hero-copy">
-              <span className="hero-pill">Portfolio / 2026</span>
+            <motion.div
+              className="hero-copy"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="show"
+            >
+              <motion.span variants={fadeUp} className="hero-pill">
+                Portfolio / 2026
+              </motion.span>
 
-              <div className="hero-copy-grid">
-                <h1 className="hero-title">Lucas Vargas</h1>
-                <p className="hero-role">
+              <motion.div variants={staggerFast} className="hero-copy-grid">
+                <motion.h1 variants={fadeUp} className="hero-title">
+                  Lucas Vargas
+                </motion.h1>
+                <motion.p variants={fadeUp} className="hero-role">
                   Desenvolvedor full stack criando interfaces orientadas a
-                  produto, sistemas conectados e experiencias digitais com
+                  produto, sistemas conectados e experiências digitais com
                   identidade visual forte.
-                </p>
-                <p className="hero-note">
+                </motion.p>
+                <motion.p variants={fadeUp} className="hero-note">
                   Trabalho entre front-end, back-end, mobile e hardware com
                   foco em clareza, ritmo visual e produtos que parecem
-                  construidos com intencao, nao montados por partes.
-                </p>
-              </div>
+                  construídos com intenção, não montados por partes.
+                </motion.p>
+              </motion.div>
 
-              <div className="hero-actions">
-                <a className="button-primary" href="#web">
+              <motion.div variants={staggerFast} className="hero-actions">
+                <motion.a variants={scaleIn} className="button-primary" href="#web">
                   Ver projetos
-                </a>
+                </motion.a>
+                <motion.div variants={scaleIn}>
                 <ImageLinkButton
                   href="https://github.com/luukz05"
                   src={github}
                   alt="GitHub"
                   newTab={true}
                 />
+                </motion.div>
+                <motion.div variants={scaleIn}>
                 <ImageLinkButton
                   href="https://linkedin.com/in/lucasvargasdev"
                   src={linkedin}
                   alt="LinkedIn"
                   newTab={true}
                 />
+                </motion.div>
+                <motion.div variants={scaleIn}>
                 <ImageLinkButton
                   href="copy:lucasvargasdev05@gmail.com"
                   src={envelope}
                   alt="Email"
                   newTab={true}
                 />
-              </div>
-            </div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
 
-            <aside className="hero-panel glass-surface">
-              <div className="hero-panel-top">
-                <p className="hero-panel-label">Servicos</p>
-                <span className="hero-availability">Disponivel para projetos</span>
-              </div>
+            <motion.aside
+              className="hero-panel glass-surface"
+              variants={fadeRight}
+              initial="hidden"
+              animate="show"
+            >
+              <motion.div variants={fadeUp} className="hero-panel-top">
+                <p className="hero-panel-label">Serviços</p>
+                <span className="hero-availability">Disponível para projetos</span>
+              </motion.div>
 
-              <div>
-                <p className="hero-panel-label">Foco</p>
-                <p className="hero-panel-copy">
-                  Produto, interface e implementacao consistente.
-                </p>
-              </div>
-
-              <div className="hero-service-list">
+              <motion.div
+                className="hero-service-list"
+                variants={staggerFast}
+                initial="hidden"
+                animate="show"
+              >
                 {heroServices.map((item) => (
-                  <div key={item.title} className="hero-service-item">
+                  <motion.div
+                    key={item.title}
+                    variants={fadeUp}
+                    className="hero-service-item"
+                  >
                     <p className="hero-service-title">{item.title}</p>
                     <p className="hero-service-copy">{item.copy}</p>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
-            </aside>
+            </motion.aside>
           </div>
         </section>
 
         <section className="section-block section-block-plain">
           <SectionHeading
             id="sobre"
-            eyebrow="Perfil"
-            title="Mentalidade de engenharia, visao de produto e criterio visual."
-            description="Minha base mistura desenvolvimento web, mobile e sistemas conectados ao mundo fisico. Aqui, a ideia e apresentar essa trajetoria com mais clareza, mais contexto e menos excesso."
+            eyebrow="Sobre mim"
+            title="Desenvolvimento, produto e experiência visual."
+            description="Minha base reúne desenvolvimento web, mobile e sistemas conectados ao mundo físico. Aqui, a ideia é apresentar essa trajetória com mais clareza, contexto e organização."
             meta={{
               label: "Nota",
               copy:
-                "Pratico, autodidata e orientado a produto. Busco construir experiencias claras, funcionais e bem apresentadas.",
+                "Prático, autodidata e orientado a produto. Busco construir experiências claras, funcionais e bem apresentadas.",
             }}
           />
-          <div className="editorial-shell mt-16">
+          <motion.div
+            className="editorial-shell mt-16"
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportSection}
+            variants={fadeUp}
+          >
             <div className="showcase-grid about-showcase">
-              <SobreMim />
-              <div className="flex h-full items-stretch">
+              <motion.div variants={fadeLeft}>
+                <SobreMim />
+              </motion.div>
+              <motion.div variants={fadeRight} className="flex h-full items-stretch">
                 <Carousel s1={s1} s2={s2} s3={s3} s4={s4} />
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         <section className="section-block section-block-soft">
           <SectionHeading
             id="destaque"
             eyebrow="Projeto em destaque"
-            title="Um projeto em que software, hardware e usabilidade precisaram funcionar juntos."
-            description="DVGC representa a parte mais concreta da minha experiencia com produto, integracao e impacto social."
+            title="Um projeto que uniu software, hardware e usabilidade."
+            description="DVGC representa a parte mais concreta da minha experiência com produto, integração e impacto social."
             meta={{
               label: "Foco do caso",
               copy:
-                "Smart Cities, alertas em tempo real, interface mobile e monitoramento fisico em um mesmo fluxo.",
+                "Smart Cities, alertas em tempo real, interface mobile e monitoramento físico em um mesmo fluxo.",
             }}
           />
-          <div className="editorial-shell mt-16">
+          <motion.div
+            className="editorial-shell mt-16"
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportSection}
+            variants={fadeUp}
+          >
             <Destaque
               groupPhoto={dvgcGrupo}
               prototypePhoto={dvgcPrototipo}
               logoCard={dvgcLogo}
             />
-          </div>
+          </motion.div>
         </section>
 
         <ProjectSection
           id="web"
           eyebrow="Projetos web"
-          title="Produtos digitais, sistemas e experimentos selecionados."
-          description="Projetos em que produto, interface, dados, autenticacao, mobile e integracao externa aparecem com pesos diferentes, mas dentro da mesma obsessao por apresentacao e clareza."
+          title="Projetos web selecionados."
+          description="Projetos em que produto, interface, dados, autenticação, mobile e integração externa aparecem com pesos diferentes, mas sempre com foco em clareza e boa apresentação."
           meta={{
-            label: "Selecao",
+            label: "Seleção",
             copy: `${String(webProjects.length).padStart(
               2,
               "0"
-            )} web projects ordenados por impacto e complexidade.`,
+            )} projetos web organizados por impacto e complexidade.`,
           }}
           projects={webProjects}
         />
 
         <ProjectSection
           id="games"
-          eyebrow="Projetos em games"
-          title="Estudos de gameplay, atmosfera e experimentacao interativa."
-          description="Uma selecao menor, mas importante para direcao criativa, sensacao de ritmo e entendimento de experiencia interativa."
+          eyebrow="Projetos de jogos"
+          title="Projetos de jogos e experimentos interativos."
+          description="Uma seleção menor, mas importante para direção criativa, sensação de ritmo e entendimento de experiência interativa."
           meta={{
-            label: "Selecao",
+            label: "Seleção",
             copy: `${String(gameProjects.length).padStart(
               2,
               "0"
-            )} game projects apresentados com a mesma grade e o mesmo rigor visual.`,
+            )} projetos apresentados com a mesma grade e o mesmo rigor visual.`,
           }}
           projects={gameProjects}
           tone="soft"
@@ -482,35 +544,47 @@ function App() {
         <section className="section-block">
           <SectionHeading
             id="skill"
-            eyebrow="Capabilities"
-            title="Stack, tools and the way I like to work."
-            description="Organizado para destacar repertorio tecnico e a forma como eu abordo implementacao, colaboracao e consistencia."
+            eyebrow="Habilidades"
+            title="Tecnologias, ferramentas e forma de trabalho."
+            description="Organizado para destacar repertório técnico, critérios de implementação e a maneira como eu trabalho com mais clareza e menos ruído."
             meta={{
-              label: "Operating mode",
+              label: "Modo de trabalho",
               copy:
-                "Menos ruido visual, mais hierarquia, previsibilidade tecnica e escolhas com intencao.",
+                "Menos ruído visual, mais hierarquia, previsibilidade técnica e escolhas com intenção.",
             }}
           />
-          <div className="editorial-shell mt-16">
+          <motion.div
+            className="editorial-shell mt-16"
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportSection}
+            variants={fadeUp}
+          >
             <SkillsSection />
-          </div>
+          </motion.div>
         </section>
 
         <section className="section-block section-block-soft">
           <SectionHeading
             id="contato"
-            eyebrow="Contact"
-            title="Available for product work, freelance builds and strong collaborations."
-            description="Se fizer sentido conversar sobre produto, front-end, full stack, mobile ou projetos com hardware, aqui estao os canais mais diretos."
+            eyebrow="Contato"
+            title="Canais diretos para conversar sobre projetos e oportunidades."
+            description="Se fizer sentido conversar sobre front-end, full stack, mobile ou projetos com hardware, estes são os meios mais diretos para falar comigo."
             meta={{
-              label: "Availability",
+              label: "Disponibilidade",
               copy:
-                "Aberto a trabalhos com identidade visual forte, bom criterio tecnico e ambicao de produto.",
+                "Aberto a trabalhos com identidade visual forte, bom critério técnico e ambição de produto.",
             }}
           />
-          <div className="editorial-shell mt-16">
+          <motion.div
+            className="editorial-shell mt-16"
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportSection}
+            variants={fadeUp}
+          >
             <Contato />
-          </div>
+          </motion.div>
         </section>
       </main>
     </>

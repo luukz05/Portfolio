@@ -5,7 +5,7 @@ import controller from "../assets/controller.svg";
 import youtube from "../assets/youtube.svg";
 
 const actionClass =
-  "inline-flex h-7 w-full items-center justify-center gap-1 px-3 text-[0.6rem] font-medium uppercase leading-none tracking-[0.14em] transition duration-200";
+  "inline-flex h-7 w-full items-center justify-center gap-1 px-3 text-[0.58rem] font-medium uppercase leading-none tracking-[0.1em] transition duration-200 sm:text-[0.6rem] sm:tracking-[0.14em]";
 
 const ProjectCard = ({
   title,
@@ -16,6 +16,7 @@ const ProjectCard = ({
   repo,
   video,
   demo,
+  revealIndex = 0,
 }) => {
   const imageSrc = foto ?? "https://placehold.jp/640x420.png";
   const actions = [
@@ -23,9 +24,9 @@ const ProjectCard = ({
       ? {
           href: repo,
           icon: githubIcon,
-          label: "Codigo",
+          label: "Código",
           className:
-            "bg-[rgba(255,255,255,0.03)] text-[var(--color-text-mid)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.05)] hover:text-[var(--color-text-strong)]",
+            "bg-[rgba(255,255,255,0.03)] text-[var(--color-text-mid)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)] hover:bg-[linear-gradient(135deg,rgba(240,90,104,0.18),rgba(209,31,49,0.08))] hover:text-[var(--color-text-strong)] hover:shadow-[inset_0_0_0_1px_rgba(240,90,104,0.18)]",
         }
       : null,
     link
@@ -34,17 +35,17 @@ const ProjectCard = ({
           icon: resize,
           label: "Abrir",
           className:
-            "bg-[rgba(255,255,255,0.045)] text-[var(--color-text-mid)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)] hover:bg-[rgba(255,255,255,0.07)] hover:text-[var(--color-text-strong)]",
+            "bg-[linear-gradient(135deg,rgba(240,90,104,0.16),rgba(209,31,49,0.1))] text-[var(--color-text-strong)] shadow-[inset_0_0_0_1px_rgba(240,90,104,0.18)] hover:bg-[linear-gradient(135deg,rgba(240,90,104,0.24),rgba(209,31,49,0.14))]",
         }
       : null,
     video
       ? {
           href: video,
           icon: youtube,
-          label: "Demo",
+          label: "Vídeo",
           className:
-            "bg-[rgba(255,255,255,0.03)] text-[var(--color-text-mid)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.05)] hover:text-[var(--color-text-strong)]",
-          ariaLabel: "Assistir demonstracao",
+            "bg-[rgba(255,255,255,0.03)] text-[var(--color-text-mid)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)] hover:bg-[linear-gradient(135deg,rgba(240,90,104,0.18),rgba(209,31,49,0.08))] hover:text-[var(--color-text-strong)] hover:shadow-[inset_0_0_0_1px_rgba(240,90,104,0.18)]",
+          ariaLabel: "Assistir demonstração",
         }
       : null,
     demo
@@ -53,14 +54,17 @@ const ProjectCard = ({
           icon: controller,
           label: "Jogar",
           className:
-            "bg-[rgba(255,255,255,0.045)] text-[var(--color-text-mid)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)] hover:bg-[rgba(255,255,255,0.07)] hover:text-[var(--color-text-strong)]",
+            "bg-[linear-gradient(135deg,rgba(240,90,104,0.16),rgba(209,31,49,0.1))] text-[var(--color-text-strong)] shadow-[inset_0_0_0_1px_rgba(240,90,104,0.18)] hover:bg-[linear-gradient(135deg,rgba(240,90,104,0.24),rgba(209,31,49,0.14))]",
           ariaLabel: "Jogar",
         }
       : null,
   ].filter(Boolean);
 
   return (
-    <article className="group flex h-full min-h-[35rem] flex-col overflow-hidden rounded-[2rem] bg-[rgba(14,14,16,0.7)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)] transition duration-300 hover:bg-[rgba(18,18,20,0.88)]">
+    <article
+      className="project-card-reveal group flex h-auto flex-col overflow-hidden rounded-[1.7rem] bg-[rgba(14,14,16,0.7)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)] transition duration-300 hover:bg-[rgba(18,18,20,0.88)] md:h-full md:min-h-[35rem] md:rounded-[2rem]"
+      style={{ "--project-reveal-delay": `${revealIndex * 80}ms` }}
+    >
       <div className="overflow-hidden">
         <img
           className="aspect-[16/9] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
@@ -69,15 +73,15 @@ const ProjectCard = ({
         />
       </div>
 
-      <div className="flex flex-1 flex-col px-6 pb-6 pt-6">
-        <p className="mb-3 text-[0.66rem] font-semibold uppercase tracking-[0.3em] text-[var(--color-text-faint)]">
-          Project
+      <div className="flex flex-1 flex-col px-5 pb-5 pt-5 sm:px-6 sm:pb-6 sm:pt-6">
+        <p className="mb-3 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-text-faint)] sm:text-[0.66rem] sm:tracking-[0.3em]">
+          Projeto
         </p>
         <div className="mb-5 flex items-start justify-between gap-4">
-          <h3 className="project-title text-[1.75rem] font-semibold tracking-[-0.05em] text-[var(--color-text-strong)]">
+          <h3 className="project-title text-[1.45rem] font-semibold tracking-[-0.05em] text-[var(--color-text-strong)] sm:text-[1.75rem]">
             {title}
           </h3>
-          <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--color-red)]" />
+          <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--color-red-strong)] shadow-[0_0_10px_rgba(226,59,76,0.35)]" />
         </div>
 
         <p className="project-copy mb-5 text-sm leading-7 text-[var(--color-text-muted)]">
@@ -92,7 +96,7 @@ const ProjectCard = ({
 
         <div
           className={`project-actions mt-auto grid auto-rows-fr gap-2 ${
-            actions.length === 1 ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"
+            actions.length === 1 ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"
           }`}
         >
           {actions.map((action) => (
