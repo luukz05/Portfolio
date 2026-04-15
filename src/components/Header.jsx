@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { VscChromeClose } from "react-icons/vsc";
+import portfolioLogo from "../assets/logo.png";
 import { fadeUp, scaleIn, staggerFast } from "../lib/motion";
 
 const navLinks = [
@@ -63,13 +64,18 @@ const Header = () => {
       initial="hidden"
       animate="show"
     >
-      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-5 py-4 lg:px-8">
+      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-5 py-4 lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-8 lg:px-8">
         <motion.a
           href="#hero"
-          className="flex items-center text-[0.78rem] font-semibold uppercase tracking-[0.34em] text-[var(--color-text-strong)]"
+          className="inline-flex items-center"
+          aria-label="Lucas Vargas"
           variants={fadeUp}
         >
-          Lucas Vargas
+          <img
+            src={portfolioLogo}
+            alt="Logo do portfólio"
+            className="h-11 w-11 object-cover sm:h-12 sm:w-12"
+          />
         </motion.a>
 
         <button
@@ -81,7 +87,7 @@ const Header = () => {
         </button>
 
         <motion.nav
-          className="hidden items-center gap-5 xl:gap-8 lg:flex"
+          className="hidden items-center justify-center gap-5 xl:gap-8 lg:flex"
           variants={staggerFast}
           initial="hidden"
           animate="show"
@@ -108,16 +114,17 @@ const Header = () => {
               />
             </motion.a>
           ))}
-          <motion.a
-            className="inline-flex min-h-10 items-center rounded-full bg-[linear-gradient(135deg,rgba(240,90,104,0.2),rgba(209,31,49,0.12))] px-3 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-text-strong)] shadow-[inset_0_0_0_1px_var(--color-red-border-soft)] transition hover:bg-[linear-gradient(135deg,rgba(240,90,104,0.28),rgba(209,31,49,0.18))] xl:px-4 xl:text-[0.68rem] xl:tracking-[0.32em]"
-            href="https://drive.google.com/file/d/1x7XYtnQZpaOHbQfYpMlMhHPu6qjrgdgt/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            variants={scaleIn}
-          >
-            Baixar currículo
-          </motion.a>
         </motion.nav>
+
+        <motion.a
+          className="hidden min-h-10 items-center rounded-full bg-[linear-gradient(135deg,rgba(240,90,104,0.2),rgba(209,31,49,0.12))] px-3 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-text-strong)] shadow-[inset_0_0_0_1px_var(--color-red-border-soft)] transition hover:bg-[linear-gradient(135deg,rgba(240,90,104,0.28),rgba(209,31,49,0.18))] lg:inline-flex xl:px-4 xl:text-[0.68rem] xl:tracking-[0.32em]"
+          href="https://drive.google.com/file/d/1x7XYtnQZpaOHbQfYpMlMhHPu6qjrgdgt/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          variants={scaleIn}
+        >
+          Baixar currículo
+        </motion.a>
       </div>
 
       {menuOpen ? (
