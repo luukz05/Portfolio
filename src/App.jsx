@@ -1,15 +1,18 @@
+import { startTransition, useMemo, useState } from "react";
 import "./App.css";
-import ImageLinkButton from "./components/ImageButton";
-import Subtitle from "./components/Subtitle";
+import { motion } from "framer-motion";
 import Header from "./components/Header";
+import ImageLinkButton from "./components/ImageButton";
 import ProjectCard from "./components/Cards";
 import { Destaque } from "./components/Destaque";
 import { SobreMim } from "./components/Sobre Mim";
+import { Carousel } from "./components/carousel";
+import SkillsSection from "./components/skills";
+import Contato from "./components/contato";
 
 import envelope from "./assets/envelope.svg";
 import github from "./assets/github.svg";
 import linkedin from "./assets/linkedin.svg";
-import seta from "./assets/keyboard-arrow-down_117120.svg";
 
 import GAMMA from "./assets/GAMMA.png";
 import NBA from "./assets/NBA.png";
@@ -24,420 +27,737 @@ import furia from "./assets/furia.png";
 import sata from "./assets/sata.png";
 import stagio from "./assets/stagio.png";
 import dddtodesco from "./assets/dddtodesco.png";
+import urbanflowCard from "./assets/Etapas de Planejamento e Execução.jpg";
 
 import lostmemories from "./assets/Lost Memories.png";
 import chase from "./assets/The Chase.png";
 import zombiefication from "./assets/Zombiefication.png";
 import treasure from "./assets/Treasure Island.png";
 import dvgcmobile from "./assets/dvgc_mobile.jpg";
+import dvgcGrupo from "./assets/dvgc_grupo.png";
+import dvgcPrototipo from "./assets/dvgc_prototipo.png";
+import dvgcLogo from "./assets/DVGC.png";
 
-import { Carousel } from "./components/carousel";
 import s1 from "./assets/1.png";
 import s2 from "./assets/2.png";
 import s3 from "./assets/3.png";
 import s4 from "./assets/4.png";
+import {
+  fadeLeft,
+  fadeRight,
+  fadeUp,
+  scaleIn,
+  staggerContainer,
+  staggerFast,
+  viewportCard,
+  viewportSection,
+} from "./lib/motion";
 
-import SkillsSection from "./components/skills";
-import Contato from "./components/contato";
+const webProjects = [
+  {
+    title: "DVGC",
+    description:
+      "Projeto de smart cities que conecta ESP32, sensores e app mobile para detectar vazamentos de GLP e enviar alertas em tempo real.",
+    techs: [
+      "MOBILE",
+      "REACT NATIVE",
+      "MYSQL",
+      "EXPO",
+      "EXPRESS",
+      "NODE",
+      "C++",
+      "IOT",
+    ],
+    video: "https://www.youtube.com/watch?v=VPFjS6IrryU",
+    repo: "https://github.com/luukz05/DVGC",
+    foto: DVGC,
+    category: "UPX - Facens",
+    status: "done",
+    complexity: 98,
+    recency: 7,
+  },
+  {
+    title: "SATA",
+    description:
+      "Sistema acadêmico para monitoramento de alagamentos com ESP32, sensores e notificações móveis em uma proposta de mobilidade urbana segura.",
+    techs: [
+      "MOBILE",
+      "REACT NATIVE",
+      "EXPO",
+      "EXPRESS",
+      "NODE",
+      "C++",
+      "IOT",
+    ],
+    repo: "https://github.com/luukz05/SATA",
+    foto: sata,
+    category: "UPX - Facens",
+    status: "done",
+    complexity: 70,
+    recency: 10,
+  },
+  {
+    title: "Urbanflow",
+    description:
+      "Sistema de mobilidade urbana com visão computacional para identificar ambulâncias e carros com YOLO e acionar lógica de semáforo com ESP32, priorizando situações de emergência.",
+    techs: ["PYTHON", "YOLO", "OPENCV", "ESP32", "C++", "COMPUTER VISION"],
+    repo: "https://github.com/luukz05/Urbanflow",
+    foto: urbanflowCard,
+    category: "UPX - Facens",
+    status: "done",
+    complexity: 100,
+    recency: 13,
+  },
+  {
+    title: "3D Todesco",
+    description:
+      "Primeiro projeto freelance com catálogo interativo, filtros, carrinho via WhatsApp e base pronta para expansão comercial.",
+    techs: [
+      "NEXT.JS",
+      "REACT",
+      "TYPESCRIPT",
+      "TAILWIND",
+      "FLASK",
+      "MONGODB",
+      "SHADCN",
+    ],
+    repo: "https://github.com/luukz05/3dtodesco",
+    foto: dddtodesco,
+    link: "https://3dtodesco.shop/",
+    category: "Freelancer",
+    status: "archived",
+    complexity: 88,
+    recency: 11,
+  },
+  {
+    title: "Stag.io",
+    description:
+      "Plataforma pessoal para organizar candidaturas, projetos e metas com kanban, notas, graficos e stack moderna em Next.js e FastAPI.",
+    techs: [
+      "NEXT.JS",
+      "REACT",
+      "TYPESCRIPT",
+      "TAILWIND",
+      "FASTAPI",
+      "POSTGRESQL",
+      "DOCKER",
+    ],
+    repo: "https://github.com/luukz05/stag.io",
+    foto: stagio,
+    status: "progress",
+    complexity: 95,
+    recency: 12,
+  },
+  {
+    title: "FURIA.QG",
+    description:
+      "Experiência gamificada para a comunidade da FURIA com desafios, ranking e autenticação segura, incluindo uso inicial de IA e OCR.",
+    techs: [
+      "REACT",
+      "TAILWIND",
+      "FLASK",
+      "PYTHON",
+      "MONGODB",
+      "JWT",
+      "BCRYPT",
+    ],
+    repo: "https://github.com/luukz05/FURIA_TEST",
+    foto: furia,
+    link: "https://furiaqg.netlify.app/",
+    status: "done",
+    complexity: 93,
+    recency: 9,
+  },
+  {
+    title: "ReMatch",
+    description:
+      "Plataforma de sustentabilidade inspirada em matchmaking para conectar pessoas e empresas interessadas em reutilização e economia circular.",
+    techs: [
+      "REACT",
+      "CSS",
+      "AXIOS",
+      "REACT-COOKIES",
+      "MONGODB",
+      "MONGOOSE",
+      "EXPRESS",
+      "NODE",
+    ],
+    repo: "https://github.com/luukz05/ReMatch",
+    foto: Rematch,
+    category: "UPX - Facens",
+    status: "done",
+    complexity: 91,
+    recency: 8,
+  },
+  {
+    title: "Minimal Keeper",
+    description:
+      "Aplicativo mobile de segurança pessoal para gerar, validar e armazenar senhas com foco em UX objetiva e integração full stack.",
+    techs: [
+      "MOBILE",
+      "REACT NATIVE",
+      "MYSQL",
+      "EXPRESS",
+      "NODE",
+      "BCRYPT",
+      "CRYPTO",
+      "JWT",
+    ],
+    repo: "https://github.com/luukz05/MinimalKeeper",
+    foto: MinimalKeeper,
+    video: "https://www.youtube.com/watch?v=GKuBor_k-s8",
+    status: "done",
+    complexity: 80,
+    recency: 5,
+  },
+  {
+    title: "ConsultaWeb",
+    description:
+      "Projeto de estudo com scraping, leitura de PDFs e persistência em MySQL, conectado a uma interface Vue para pesquisa e filtros.",
+    techs: [
+      "VUE.JS",
+      "BOOTSTRAP",
+      "PYTHON",
+      "MYSQL",
+      "WEB SCRAPING",
+      "FLASK",
+    ],
+    repo: "https://github.com/luukz05/ConsutaWEB",
+    foto: ConsultaWeb,
+    category: "Estudos",
+    status: "done",
+    complexity: 76,
+    recency: 6,
+  },
+  {
+    title: "IndieFolio",
+    description:
+      "Portfólio colaborativo para artistas independentes com categorias dinâmicas, Handlebars no front e MongoDB para publicações e usuários.",
+    techs: ["HANDLEBARS", "CSS", "JAVASCRIPT", "MONGOOSE", "MONGODB", "NODE"],
+    foto: IndieFolio,
+    repo: "https://github.com/luukz05/IndieFolio",
+    video: "https://youtu.be/fdZvMhgTKn0",
+    status: "done",
+    complexity: 66,
+    recency: 3,
+  },
+  {
+    title: "Tactical Blueprint",
+    description:
+      "Planner tático para CS com mapas interativos, desenho em tempo real e salvamento de estratégias. Foi meu primeiro projeto em React.",
+    techs: ["STYLED-COMPONENTS", "REACT"],
+    repo: "https://github.com/luukz05/Tactical-Blueprint-CS2-Planner",
+    foto: Blueprint,
+    video: "https://youtu.be/G-yF0QhU6Fk?t=25",
+    status: "done",
+    complexity: 54,
+    recency: 4,
+  },
+  {
+    title: "NBA Tracker",
+    description:
+      "Aplicação web com notícias, elencos, estatísticas e placares em tempo real, consumindo dados externos com foco em integração de API e organização visual.",
+    techs: ["HTML", "CSS", "JAVASCRIPT"],
+    link: "https://luukz05.github.io/NBA-Tracker/index.html",
+    repo: "https://github.com/luukz05/NBA-Tracker",
+    foto: NBA,
+    status: "done",
+    complexity: 40,
+    recency: 2,
+  },
+  {
+    title: "Este portfólio",
+    description:
+      "Projeto criado para apresentar minha evolução técnica, estudar Tailwind e refinar a forma como organizo e comunico meus trabalhos.",
+    techs: ["REACT", "TAILWIND", "VITE", "RESPONSIVIDADE"],
+    repo: "https://github.com/luukz05/Portfolio",
+    foto: Esse,
+    status: "done",
+    complexity: 50,
+    recency: 14,
+  },
+  {
+    title: "G.A.M.M.A",
+    description:
+      "Site institucional responsivo para uma empresa fictícia de engenharia ambiental, criado para consolidar fundamentos de HTML, CSS e estrutura de interface.",
+    techs: ["HTML", "CSS", "RESPONSIVIDADE"],
+    link: "https://luukz05.github.io/GAMMA/",
+    repo: "https://github.com/luukz05/GAMMA",
+    foto: GAMMA,
+    status: "done",
+    complexity: 30,
+    recency: 1,
+  },
+];
+
+const gameProjects = [
+  {
+    title: "Treasure Island",
+    description:
+      "Jogo top-down inspirado em Zelda, com foco em combate, exploração e construção de mapas interativos.",
+    techs: ["GODOT", "GDSCRIPT", "ASEPRITE"],
+    foto: treasure,
+  },
+  {
+    title: "Lost Memories",
+    description:
+      "Plataforma inspirada em Celeste, com movimentação precisa, puzzle e narrativa como eixo do design.",
+    techs: ["UNITY 2D", "C#"],
+    video: "https://youtu.be/IEID1vtLYkM",
+    demo: "https://theldev.itch.io/lost-memories",
+    foto: lostmemories,
+  },
+  {
+    title: "Zombiefication",
+    description:
+      "FPS em Unreal Engine voltado ao estudo de combate, progressão por fases e ritmo de gameplay.",
+    techs: ["UNREAL ENGINE", "BLUEPRINTS"],
+    video: "https://youtu.be/ZiXHtchtcXk",
+    foto: zombiefication,
+  },
+  {
+    title: "The Chase",
+    description:
+      "Jogo de fuga com drift, risco e recompensa, explorando física veicular e atmosfera arcade.",
+    techs: ["UNITY 3D", "C#"],
+    video: "https://youtu.be/l5qiPo7G6qQ",
+    foto: chase,
+  },
+];
+
+function SectionHeading({ eyebrow, title, description, id, meta }) {
+  return (
+    <motion.div
+      id={id}
+      className="editorial-shell section-head"
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportSection}
+    >
+      <motion.div variants={staggerFast}>
+        <motion.p variants={fadeUp} className="section-kicker">
+          {eyebrow}
+        </motion.p>
+        <motion.h2 variants={fadeUp} className="section-title">
+          {title}
+        </motion.h2>
+        {description ? (
+          <motion.p variants={fadeUp} className="section-copy">
+            {description}
+          </motion.p>
+        ) : null}
+      </motion.div>
+      {meta ? (
+        <motion.div variants={fadeRight} className="section-meta">
+          <span className="section-meta-label">{meta.label}</span>
+          <p className="section-meta-copy">{meta.copy}</p>
+        </motion.div>
+      ) : null}
+    </motion.div>
+  );
+}
+
+function ProjectSection({
+  id,
+  eyebrow,
+  title,
+  description,
+  meta,
+  projects,
+  tone = "default",
+  controls,
+}) {
+  return (
+    <section
+      className={`section-block ${
+        tone === "soft" ? "section-block-soft" : "section-block-default"
+      }`}
+    >
+      <SectionHeading
+        id={id}
+        eyebrow={eyebrow}
+        title={title}
+        description={description}
+        meta={meta}
+      />
+      <div className="editorial-shell mt-16">
+        {controls ? <div className="section-toolbar">{controls}</div> : null}
+        <div className="project-grid-3">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.title} revealIndex={index} {...project} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function App() {
+  const [webSort, setWebSort] = useState("complexity");
+  const [webDirection, setWebDirection] = useState("desc");
+
+  const heroServices = [
+    {
+      title: "Front-end",
+      copy: "Interfaces claras e responsivas.",
+    },
+    {
+      title: "Full stack",
+      copy: "API, dados e produto.",
+    },
+    {
+      title: "Mobile + IoT",
+      copy: "Apps e sistemas conectados.",
+    },
+    {
+      title: "Inglês",
+      copy: "Comunicação fluente em contexto técnico.",
+    },
+    {
+      title: "Soft skills",
+      copy: "Clareza, colaboração e pensamento prático.",
+    },
+  ];
+
+  const sortedWebProjects = useMemo(() => {
+    const projects = [...webProjects];
+
+    if (webSort === "status") {
+      const statusOrder = {
+        progress: 0,
+        done: 1,
+        archived: 2,
+      };
+
+      return projects.sort((a, b) => {
+        const byStatus = statusOrder[a.status] - statusOrder[b.status];
+
+        if (byStatus !== 0) {
+          return byStatus;
+        }
+
+        return b.complexity - a.complexity;
+      });
+    }
+
+    const direction = webDirection === "asc" ? 1 : -1;
+
+    if (webSort === "recent") {
+      return projects.sort((a, b) => (a.recency - b.recency) * direction);
+    }
+
+    return projects.sort((a, b) => (a.complexity - b.complexity) * direction);
+  }, [webDirection, webSort]);
+
+  const webSortControls = (
+    <div className="sort-toolbar">
+      <span className="sort-label">Ordenar por:</span>
+      <div className="sort-toggle" role="tablist" aria-label="Critério de ordenação dos projetos web">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={webSort === "complexity"}
+          className={`sort-chip ${webSort === "complexity" ? "sort-chip-active" : ""}`}
+          onClick={() => {
+            startTransition(() => setWebSort("complexity"));
+          }}
+        >
+          Complexidade
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={webSort === "recent"}
+          className={`sort-chip ${webSort === "recent" ? "sort-chip-active" : ""}`}
+          onClick={() => {
+            startTransition(() => setWebSort("recent"));
+          }}
+        >
+          Conclusão
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={webSort === "status"}
+          className={`sort-chip ${webSort === "status" ? "sort-chip-active" : ""}`}
+          onClick={() => {
+            startTransition(() => setWebSort("status"));
+          }}
+        >
+          Status atual
+        </button>
+      </div>
+
+      <div
+        className={`sort-direction-toggle ${webSort === "status" ? "sort-direction-toggle-disabled" : ""}`}
+        role="tablist"
+        aria-label="Direção de ordenação dos projetos web"
+        aria-disabled={webSort === "status"}
+      >
+        <button
+          type="button"
+          role="tab"
+          aria-selected={webDirection === "desc"}
+          disabled={webSort === "status"}
+          className={`sort-direction-option ${
+            webDirection === "desc" ? "sort-direction-option-active" : ""
+          }`}
+          onClick={() => {
+            startTransition(() => setWebDirection("desc"));
+          }}
+        >
+          Desc
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={webDirection === "asc"}
+          disabled={webSort === "status"}
+          className={`sort-direction-option ${
+            webDirection === "asc" ? "sort-direction-option-active" : ""
+          }`}
+          onClick={() => {
+            startTransition(() => setWebDirection("asc"));
+          }}
+        >
+          Asc
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <Header />
-      <div
-        id="hero"
-        className="
-    bg-[url('./assets/image.png')] text-center min-h-screen w-screen
-    flex flex-col items-center justify-evenly
-    bg-no-repeat bg-cover bg-scroll sm:bg-fixed
-    
-  "
-      >
-        {/* Saudação */}
-        <p
-          className="
-      text-offwhite text-2xl md:mt-15 sm:text-3xl md:text-3xl lg:text-5xl
-      font-mono
-    "
-        >
-          Bem vindo(a), visitante!
-        </p>
+      <main className="relative overflow-x-hidden">
+        <section id="hero" className="hero-grid">
+          <div className="editorial-shell hero-shell">
+            <motion.div
+              className="hero-copy"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="show"
+            >
+              <motion.span variants={fadeUp} className="hero-pill">
+                Portfolio / 2026
+              </motion.span>
 
-        {/* Nome + Subtitle */}
-        <div
-          className="
-      flex flex-col items-center justify-evenly
-      gap-1 sm:gap-2 md:gap-3
-    "
-        >
-          <p
-            className="
-        text-ch1
-        text-5xl sm:text-6xl md:text-8xl lg:text-9xl
-        font-black
-      "
-          >
-            Meu nome é Lucas
-          </p>
-          <Subtitle />
-        </div>
+              <motion.div variants={staggerFast} className="hero-copy-grid">
+                <motion.h1 variants={fadeUp} className="hero-title">
+                  Lucas Vargas
+                </motion.h1>
+                <motion.p variants={fadeUp} className="hero-role">
+                  Desenvolvedor full stack criando interfaces orientadas a
+                  produto, sistemas conectados e experiências digitais com
+                  identidade visual forte.
+                </motion.p>
+                <motion.p variants={fadeUp} className="hero-note">
+                  Trabalho entre front-end, back-end, mobile e hardware com
+                  foco em clareza, ritmo visual e produtos que parecem
+                  construídos com intenção, não montados por partes.
+                </motion.p>
+              </motion.div>
 
-        {/* Links + símbolos */}
-        <div
-          className="
-      flex gap-2 sm:gap-3 md:gap-5 mt-[-10px] sm:mt-[-20px] md:mt-[-30px]
-      flex-row items-center justify-center
-    "
-        >
-          <h1
-            className="
-        text-3xl sm:text-4xl md:text-5xl
-      "
-          >
-            &lt;
-          </h1>
-          <ImageLinkButton
-            href="https://github.com/luukz05"
-            src={github}
-            alt="GitHub"
-            newTab={true}
-          />
-          <ImageLinkButton
-            href="https://linkedin.com/in/lucasvargasdev"
-            src={linkedin}
-            alt="LinkedIn"
-            newTab={true}
-          />
-          <ImageLinkButton
-            href="copy:lucasvargasdev05@gmail.com"
-            src={envelope}
-            alt="Email"
-            newTab={true}
-          />
-          <h1
-            className="
-        text-3xl sm:text-4xl md:text-5xl
-      "
-          >
-            /&gt;
-          </h1>
-        </div>
+              <motion.div variants={staggerFast} className="hero-actions">
+                <motion.a variants={scaleIn} className="button-primary" href="#web">
+                  Ver projetos
+                </motion.a>
+                <motion.div variants={scaleIn}>
+                <ImageLinkButton
+                  href="https://github.com/luukz05"
+                  src={github}
+                  alt="GitHub"
+                  newTab={true}
+                />
+                </motion.div>
+                <motion.div variants={scaleIn}>
+                <ImageLinkButton
+                  href="https://linkedin.com/in/lucasvargasdev"
+                  src={linkedin}
+                  alt="LinkedIn"
+                  newTab={true}
+                />
+                </motion.div>
+                <motion.div variants={scaleIn}>
+                <ImageLinkButton
+                  href="copy:lucasvargasdev05@gmail.com"
+                  src={envelope}
+                  alt="Email"
+                  newTab={true}
+                />
+                </motion.div>
+              </motion.div>
+            </motion.div>
 
-        {/* Scroll Indicator */}
-        <div
-          className="
-      flex flex-col mb-[-50px] sm:mb-[-70px] md:mb-[-100px]
-      animate-bounce justify-center items-center
-    "
-        >
-          <h1
-            className="
-        text-offwhite text-base sm:text-lg md:text-xl
-        font-mono
-      "
-          >
-            SCROLL
-          </h1>
-          <img src={seta} className="h-4 w-4 sm:h-5 sm:w-5 invert" />
-          <img src={seta} className="h-4 w-4 sm:h-5 sm:w-5 invert" />
-        </div>
-      </div>
+            <motion.aside
+              className="hero-panel glass-surface"
+              variants={fadeRight}
+              initial="hidden"
+              animate="show"
+            >
+              <motion.div variants={fadeUp} className="hero-panel-top">
+                <p className="hero-panel-label">Serviços</p>
+                <span className="hero-availability">Disponível para projetos</span>
+              </motion.div>
 
-      <h2 id="sobre" className="text-4xl font-black text-center mb-12 mt-12">
-        Sobre Mim
-      </h2>
-      <div className="flex justify-center mt-12  items-center ">
-        <div className="flex items-center gap-8 flex-col sm:flex-row">
-          <SobreMim />
-          <div className="scale-90 sm:scale-100">
-            <Carousel s1={s1} s2={s2} s3={s3} s4={s4} />
+              <motion.div
+                className="hero-service-list"
+                variants={staggerFast}
+                initial="hidden"
+                animate="show"
+              >
+                {heroServices.map((item) => (
+                  <motion.div
+                    key={item.title}
+                    variants={fadeUp}
+                    className="hero-service-item"
+                  >
+                    <p className="hero-service-title">{item.title}</p>
+                    <p className="hero-service-copy">{item.copy}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+            </motion.aside>
           </div>
-        </div>
-      </div>
-      <h2 id="destaque" className="text-4xl font-black text-center mb-12 mt-12">
-        Destaque
-      </h2>
-      <Destaque src={dvgcmobile} />
-      {/* PROJETOS */}
-      <h2 className="text-4xl font-black text-center mb-12 mt-12">
-        Projetos Web Development
-      </h2>
-      <div id="web" className="bg-ch4 text-white text-justify">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center ">
-          <ProjectCard
-            title={"G.A.M.M.A"}
-            description={
-              "Primeiro projeto web, criado para uma atividade escolar. Desenvolvi um site institucional para a empresa fictícia GAMMA, focado em serviços de engenharia ambiental. O projeto inclui layout 100% responsivo, conteúdo organizado e boas práticas de HTML, CSS e UX."
-            }
-            techs={["HTML", "CSS", "RESPONSIVIDADE"]}
-            link={"https://luukz05.github.io/GAMMA/"}
-            repo={"https://github.com/luukz05/GAMMA"}
-            foto={GAMMA} // substitui pela imagem real se tiver
-          />
-          <ProjectCard
-            title={"NBA Tracker"}
-            description={
-              "Aplicação web interativa sobre a NBA, com notícias, estatísticas de jogadores e times, elencos, placares em tempo real e calendário de jogos. Os dados são obtidos via RapidAPI, com foco na integração de APIs externas usando Fetch API e apresentação clara das informações. Site sujeito a erros de requisição e exibição devido a uso de cotas."
-            }
-            techs={["HTML", "CSS", "JAVASCRIPT"]}
-            link={"https://luukz05.github.io/NBA-Tracker/index.html"}
-            repo={"https://github.com/luukz05/NBA-Tracker"}
-            foto={NBA} // substitui pela imagem real se tiver
-          />
+        </section>
 
-          <ProjectCard
-            title={"IndieFolio"}
-            description={
-              "Plataforma web de portfólio colaborativo para artistas independentes, com postagens organizadas por categorias. Usei Handlebars para renderizar páginas dinâmicas e explorei MongoDB pela primeira vez para armazenar dados de usuários e publicações."
-            }
-            techs={[
-              "HANDLEBARS",
-              "CSS",
-              "JAVASCRIPT",
-              "MONGOOSE",
-              "MONGODB",
-              "NODE",
-            ]}
-            foto={IndieFolio} // substitui pela imagem real se tiver
-            repo={"https://github.com/luukz05/IndieFolio"}
-            video={"https://youtu.be/fdZvMhgTKn0"}
+        <section className="section-block section-block-plain">
+          <SectionHeading
+            id="sobre"
+            eyebrow="Sobre mim"
+            title="Desenvolvimento, produto e experiência visual."
+            description="Minha base reúne desenvolvimento web, mobile e sistemas conectados ao mundo físico. Aqui, a ideia é apresentar essa trajetória com mais clareza, contexto e organização."
+            meta={{
+              label: "Nota",
+              copy:
+                "Prático, autodidata e orientado a produto. Busco construir experiências claras, funcionais e bem apresentadas.",
+            }}
           />
+          <motion.div
+            className="editorial-shell mt-16"
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportSection}
+            variants={fadeUp}
+          >
+            <div className="showcase-grid about-showcase">
+              <motion.div variants={fadeLeft}>
+                <SobreMim />
+              </motion.div>
+              <motion.div variants={fadeRight} className="flex h-full items-stretch">
+                <Carousel s1={s1} s2={s2} s3={s3} s4={s4} />
+              </motion.div>
+            </div>
+          </motion.div>
+        </section>
 
-          <ProjectCard
-            title={"Tactical Blueprint"}
-            description={
-              "Ferramenta tática interativa para CS:GO e CS2, desenvolvida como meu primeiro projeto com React. Permite desenhar em mapas, posicionar elementos do jogo, adicionar tags, alternar entre mapas e salvar táticas. O foco foi na manipulação de estado, interatividade em tempo real e renderização dinâmica."
-            }
-            techs={["STYLED-COMPONENTS", "REACT"]}
-            repo={"https://github.com/luukz05/Tactical-Blueprint-CS2-Planner"}
-            foto={Blueprint}
-            video={"https://youtu.be/G-yF0QhU6Fk?t=25"}
+        <section className="section-block section-block-soft">
+          <SectionHeading
+            id="destaque"
+            eyebrow="Projeto em destaque"
+            title="Um projeto que uniu software, hardware e usabilidade."
+            description="DVGC representa a parte mais concreta da minha experiência com produto, integração e impacto social."
+            meta={{
+              label: "Foco do caso",
+              copy:
+                "Smart Cities, alertas em tempo real, interface mobile e monitoramento físico em um mesmo fluxo.",
+            }}
           />
-          <ProjectCard
-            title={"Minimal Keeper"}
-            description={
-              "Aplicativo mobile de cibersegurança pessoal, desenvolvido com React Native. Permite gerar, testar e armazenar senhas com um cofre seguro e personalizável. Primeiro projeto mobile, com foco em segurança digital e uso inicial de MySQL para integração de dados."
-            }
-            foto={MinimalKeeper} // substitui pela imagem real se tiver
-            techs={[
-              "MOBILE",
-              "REACT NATIVE",
-              "MYSQL",
-              "EXPRESS",
-              "NODE",
-              "BCRYPT",
-              "CRYPTO",
-              "JWT",
-            ]}
-            repo={"https://github.com/luukz05/MinimalKeeper"}
-            video={"https://www.youtube.com/watch?v=GKuBor_k-s8"}
-          />
+          <motion.div
+            className="editorial-shell mt-16"
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportSection}
+            variants={fadeUp}
+          >
+            <Destaque
+              groupPhoto={dvgcGrupo}
+              prototypePhoto={dvgcPrototipo}
+              logoCard={dvgcLogo}
+            />
+          </motion.div>
+        </section>
 
-          <ProjectCard
-            title="DVGC ⭐"
-            description={
-              "Projeto sobre Smart Cities que uniu software e hardware com uso do ESP32 e sensores de gás. Detecta vazamentos de GLP e envia alertas em tempo real para um app mobile feito em React Native, que exibe gráficos, registros e instruções. Marcou minha introdução à IoT e integração entre dispositivos físicos e apps."
-            }
-            techs={[
-              "MOBILE",
-              "REACT NATIVE",
-              "MYSQL",
-              "EXPO",
-              "EXPRESS",
-              "NODE",
-              "C++",
-              "IOT",
-              "ELETRÔNICA DIGITAL E ANALÓGICA",
-              "SEBRAE",
-              "METODOLOGIAS ÁGEIS - KANBAN",
-              "UPX - FACENS",
-            ]}
-            video={"https://www.youtube.com/watch?v=VPFjS6IrryU"}
-            repo={"https://github.com/luukz05/DVGC"}
-            foto={DVGC}
-          />
+        <ProjectSection
+          id="web"
+          eyebrow="Projetos web"
+          title="Projetos web selecionados."
+          description="Projetos em que produto, interface, dados, autenticação, mobile e integração externa aparecem com pesos diferentes, mas sempre com foco em clareza e boa apresentação."
+          meta={{
+            label: "Seleção",
+            copy: `${String(webProjects.length).padStart(
+              2,
+              "0"
+            )} projetos web organizados por impacto e complexidade.`,
+          }}
+          projects={sortedWebProjects}
+          controls={webSortControls}
+        />
 
-          <ProjectCard
-            title="ReMatch"
-            description={`Plataforma web de sustentabilidade criada para conectar pessoas e empresas interessadas em reutilizar ou reciclar itens. Inspirada em sistemas de matchmaking, com perfis personalizados, chat e correspondência inteligente. Desenvolvida dentro do tema Cidade Regenerativa, com foco em economia circular e consumo consciente.`}
-            techs={[
-              "REACT",
-              "CSS",
-              "AXIOS",
-              "REACT-COOKIES",
-              "MONGODB",
-              "MONGOOSE",
-              "EXPRESS",
-              "NODE",
-              "METODOLOGIAS ÁGEIS - KANBAN",
-              "UPX - FACENS",
-            ]}
-            repo={"https://github.com/luukz05/ReMatch"}
-            foto={Rematch} // troca pela imagem real se quiser
-          />
-          <ProjectCard
-            title="ConsultaWeb"
-            description={`Projeto de estudo com backend em Python, focado em web scraping, extração de dados de PDFs e MySQL. O sistema coleta dados de planilhas em PDF, armazena no banco e exibe tudo via interface em Vue.js, com buscas e filtros. Também explorou criação de APIs e integração entre backend e frontend.`}
-            techs={[
-              "VUE.JS",
-              "BOOTSTRAP",
-              "PYTHON",
-              "MYSQL",
-              "WEB SCRAPING",
-              "BS4",
-              "PANDAS",
-              "FLASK",
-              "PDF PLUMBER",
-              "REQUESTS",
-              "POSTMAN",
-            ]}
-            repo={"https://github.com/luukz05/ConsutaWEB"}
-            foto={ConsultaWeb}
-          />
+        <ProjectSection
+          id="games"
+          eyebrow="Projetos de jogos"
+          title="Projetos de jogos e experimentos interativos."
+          description="Uma seleção menor, mas importante para direção criativa, sensação de ritmo e entendimento de experiência interativa."
+          meta={{
+            label: "Seleção",
+            copy: `${String(gameProjects.length).padStart(
+              2,
+              "0"
+            )} projetos apresentados com a mesma grade e o mesmo rigor visual.`,
+          }}
+          projects={gameProjects}
+          tone="soft"
+        />
 
-          <ProjectCard
-            title="Este portfólio!"
-            description={`Portfólio desenvolvido como vitrine de projetos e exercício de aprendizado. Foco no estudo de Tailwind CSS, design limpo, responsividade e usabilidade. Também serviu para revisar e refatorar projetos antigos, consolidando minha evolução técnica e a forma de apresentar meu trabalho.`}
-            techs={["REACT", "TAILWIND", "VITE", "RESPONSIVIDADE"]}
-            repo={"https://github.com/luukz05/Portfolio"}
-            foto={Esse}
+        <section className="section-block">
+          <SectionHeading
+            id="skill"
+            eyebrow="Habilidades"
+            title="Tecnologias, ferramentas e forma de trabalho."
+            description="Organizado para destacar repertório técnico, critérios de implementação e a maneira como eu trabalho com mais clareza e menos ruído."
+            meta={{
+              label: "Modo de trabalho",
+              copy:
+                "Menos ruído visual, mais hierarquia, previsibilidade técnica e escolhas com intenção.",
+            }}
           />
+          <motion.div
+            className="editorial-shell mt-16"
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportSection}
+            variants={fadeUp}
+          >
+            <SkillsSection />
+          </motion.div>
+        </section>
 
-          <ProjectCard
-            title="FURIA.QG"
-            description={`Projeto gamificado para a FURIA que conecta fãs por meio de desafios, rankings e recompensas. Desenvolvido com React, Flask e MongoDB, utiliza autenticação JWT e Bcrypt para segurança. Foi minha primeira experiência integrando IA, reconhecimento de imagem para validar documentos no cadastro de usuários e deploy na Netlify.`}
-            techs={[
-              "REACT",
-              "TAILWIND",
-              "FLASK",
-              "PYTHON",
-              "MONGODB",
-              "AXIOS",
-              "JWT",
-              "BCRYPT",
-              "PYTESSERACT",
-              "PILLOW",
-              "NETLIFY",
-            ]}
-            repo={"https://github.com/luukz05/FURIA_TEST"}
-            foto={furia}
-            link="https://furiaqg.netlify.app/"
+        <section className="section-block section-block-soft">
+          <SectionHeading
+            id="contato"
+            eyebrow="Contato"
+            title="Canais diretos para conversar sobre projetos e oportunidades."
+            description="Se fizer sentido conversar sobre front-end, full stack, mobile ou projetos com hardware, estes são os meios mais diretos para falar comigo."
+            meta={{
+              label: "Disponibilidade",
+              copy:
+                "Aberto a trabalhos com identidade visual forte, bom critério técnico e ambição de produto.",
+            }}
           />
-          <ProjectCard
-            title="SATA"
-            description={`SATA – Sistema Anti-Trânsito por Alagamento: projeto acadêmico com ESP32 e sensores para monitorar níveis de água em vias urbanas, acionando alertas visuais e notificações móveis em tempo real. Alimentado por energia solar, integra hardware e software para promover segurança viária e mobilidade sustentável.`}
-            techs={[
-              "MOBILE",
-              "REACT NATIVE",
-              "EXPO",
-              "EXPRESS",
-              "NODE",
-              "C++",
-              "IOT",
-              "ELETRÔNICA DIGITAL E ANALÓGICA",
-              "METODOLOGIAS ÁGEIS - KANBAN",
-              "UPX - FACENS",
-            ]}
-            repo={"https://github.com/luukz05/SATA"}
-            foto={sata}
-          />
-          <ProjectCard
-            title="Stag.io - EM PROGRESSO"
-            description={`Stag.io – Sistema de Gestão Pessoal de Estágios e Projetos: aplicação fullstack para organização de candidaturas, projetos pessoais e metas, com funcionalidades como kanban, editor de anotações, upload de arquivos e visualização de progresso por gráficos. Utiliza autenticação JWT, APIs REST com FastAPI e banco relacional PostgreSQL. Interface moderna com Next.js, React, TypeScript e Tailwind.`}
-            techs={[
-              "NEXT.JS",
-              "REACT",
-              "TYPESCRIPT",
-              "TAILWIND",
-              "FASTAPI",
-              "PYTHON",
-              "POSTGRESQL",
-              "DOCKER",
-              "JWT",
-              "KANBAN",
-              "MARKDOWN",
-              "CHART.JS",
-            ]}
-            repo={"https://github.com/luukz05/stag.io"}
-            foto={stagio}
-          />
-          <ProjectCard
-            title="3D Todesco - EM PROGRESSO"
-            description={`Meu primeiro projeto freelance, desenvolvido para uma loja especializada em impressão 3D. A plataforma conta com catálogo interativo, destaques, filtros de categorias e subcategorias, além de experiência otimizada para desktop e mobile, com animações fluidas via shadcn. O carrinho está integrado ao WhatsApp para pedidos diretos, com futura expansão para sistema de pagamentos online. Utiliza Next.js, TypeScript, Tailwind e shadcn no front-end, e Flask com MongoDB no back-end, garantindo flexibilidade e escalabilidade no gerenciamento de produtos e pedidos.`}
-            techs={[
-              "NEXT.JS",
-              "REACT",
-              "TYPESCRIPT",
-              "TAILWIND",
-              "FLASK",
-              "PYTHON",
-              "MONGODB",
-              "SHADCN",
-              "VERCEL",
-              "RENDER",
-              "FREELANCER",
-            ]}
-            repo={"https://github.com/luukz05/3dtodesco"}
-            foto={dddtodesco}
-            link={"https://3dtodesco.shop/"}
-          />
-        </div>
-      </div>
-      <div
-        id="games"
-        className="bg-ch4 text-white text-justify flex flex-col  items-center"
-      >
-        <h2 className="text-4xl font-black text-center mb-12 mt-12">
-          Projetos Game Development
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center ">
-          <ProjectCard
-            title="Treasure Island"
-            description="Jogo top-down inspirado em Zelda, com combate, labirintos e exploração. Um projeto voltado ao estudo de game design, lógica de inimigos e mapas interativos."
-            techs={["GODOT", "GDSCRIPT", "ASEPRITE"]}
-            foto={treasure}
-          />
-
-          <ProjectCard
-            title="Lost Memories"
-            description="Jogo de plataforma inspirado em Celeste, com foco em movimentação precisa, puzzles e narrativa emocional. Um marco pessoal no meu desenvolvimento em GameDev."
-            techs={["UNITY 2D", "C#"]}
-            repo="https://youtu.be/IEID1vtLYkM"
-            demo="https://theldev.itch.io/lost-memories"
-            foto={lostmemories}
-          />
-
-          <ProjectCard
-            title="Zombiefication"
-            description="FPS feito na Unreal Engine com foco em combate contra zumbis, progressão por fases e sistema de recursos. Projeto voltado ao aprofundamento em mecânicas complexas de gameplay e narrativa."
-            techs={["UNREAL ENGINE", "BLUEPRINTS"]}
-            video="https://youtu.be/ZiXHtchtcXk"
-            foto={zombiefication}
-          />
-          <ProjectCard
-            title="The Chase"
-            description="Jogo de fuga em mundo semiaberto com sistema de drift, pontuação e trilha sonora personalizada. Foco em física veicular e mecânicas de risco e recompensa."
-            techs={["UNITY 3D", "C#"]}
-            video="https://youtu.be/l5qiPo7G6qQ"
-            link=""
-            foto={chase}
-          />
-        </div>
-      </div>
-      <div className="flex justify-center mt-12 flex-col items-center ">
-        <h2 id="skill" className="text-4xl font-black text-center mb-12">
-          Minhas Habilidades
-        </h2>
-        <SkillsSection />
-        <div className="flex items-center gap-8"></div>
-      </div>
-      {/* <div className="flex justify-center mt-12 flex-col items-center ">
-        <h2 id="contato" className="text-4xl font-black text-center mb-12">
-          Contato
-        </h2>
-        <Contato />
-        <div className="flex items-center gap-8"></div>
-      </div> */}
+          <motion.div
+            className="editorial-shell mt-16"
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportSection}
+            variants={fadeUp}
+          >
+            <Contato />
+          </motion.div>
+        </section>
+      </main>
     </>
   );
 }

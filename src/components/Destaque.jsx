@@ -1,107 +1,156 @@
-import React from "react";
 import TechTag from "./Tag";
+import { motion } from "framer-motion";
+import { fadeLeft, fadeRight, fadeUp, scaleIn, staggerFast, viewportCard } from "../lib/motion";
 
-export const Destaque = ({ src }) => {
+const highlights = [
+  {
+    label: "Papel",
+    value: "App mobile, integração com backend e trabalho direto com ESP32.",
+  },
+  {
+    label: "Sistema",
+    value: "React Native, Node.js, sensores e resposta em tempo real.",
+  },
+  {
+    label: "Impacto",
+    value: "Segurança doméstica, alerta rápido e potencial social real.",
+  },
+];
+
+const tags = [
+  "REACT NATIVE",
+  "EXPO",
+  "NODE",
+  "EXPRESS",
+  "MYSQL",
+  "ESP32",
+  "IOT",
+];
+
+function PolaroidCard({
+  src,
+  alt,
+  caption,
+  rotation,
+  className = "",
+  imageClassName = "",
+  frameClassName = "",
+  mediaClassName = "",
+  captionClassName = "",
+}) {
   return (
-    <div
-      className="
-    flex flex-col lg:flex-row items-start justify-center
-    gap-12 xl:gap-20
-    max-w-[1700px] mx-auto px-4
-  "
+    <motion.div
+      className={`group bg-[rgba(245,245,245,0.97)] p-3 pb-5 text-neutral-900 shadow-[0_24px_60px_rgba(0,0,0,0.2)] transition duration-300 hover:scale-[1.03] ${className} ${frameClassName}`}
+      variants={scaleIn}
+      style={{ rotate: rotation }}
     >
-      {/* Mockup celular */}
-      <div
-        className="
-      relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-[20rem] xl:w-[22rem]
-      lg:h-[40rem] xl:h-[45rem]
-      rounded-3xl bg-black p-2 shadow-2xl border-4 border-neutral-800
-      hidden sm:block
-    "
-      >
+      <div className={`overflow-hidden bg-black ${mediaClassName}`}>
         <img
           src={src}
-          alt="Interface do app DVGC"
-          className="w-full h-72 sm:h-96 md:h-full rounded-2xl object-cover"
+          alt={alt}
+          className={`block w-full object-cover ${imageClassName}`}
         />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-2 rounded-b-xl bg-neutral-700 mt-2" />
       </div>
+      <p
+        className={`px-1 pt-4 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-700 ${captionClassName}`}
+      >
+        {caption}
+      </p>
+    </motion.div>
+  );
+}
 
-      {/* Texto mais largo */}
-      <div className="flex flex-col text-offwhite flex-1 max-w-[1100px]">
-        <div className="flex flex-row items-center sm:flex-row justify-between mb-4  sm:items-center">
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-offwhite">
-            DVGC
+export const Destaque = ({ groupPhoto, prototypePhoto, logoCard }) => {
+  return (
+    <motion.div
+      className="showcase-grid"
+      variants={staggerFast}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportCard}
+    >
+      <motion.div
+        className="destaque-polaroid-stage"
+        variants={fadeLeft}
+      >
+        <motion.div className="destaque-polaroid-grid" variants={staggerFast}>
+          <PolaroidCard
+            src={groupPhoto}
+            alt="Equipe do projeto DVGC"
+            caption="Apresentação do projeto"
+            rotation="var(--polaroid-rotation)"
+            className="polaroid-card polaroid-card-main"
+            captionClassName="pr-4"
+            imageClassName="aspect-[16/10]"
+          />
+
+          <PolaroidCard
+            src={prototypePhoto}
+            alt="Protótipo do DVGC"
+            caption="Protótipo físico"
+            rotation="var(--polaroid-rotation)"
+            className="polaroid-card polaroid-card-secondary"
+            imageClassName="aspect-[4/3]"
+          />
+
+          <PolaroidCard
+            src={logoCard}
+            alt="Identidade visual do DVGC"
+            caption="Identidade do app"
+            rotation="var(--polaroid-rotation)"
+            className="polaroid-card polaroid-card-tertiary"
+            imageClassName="aspect-[6/5]"
+          />
+        </motion.div>
+      </motion.div>
+
+      <motion.article
+        className="flex h-full flex-col justify-between rounded-[2rem] bg-[rgba(14,14,16,0.74)] p-7 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)] sm:p-9"
+        variants={fadeRight}
+      >
+        <div>
+          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.34em] text-[var(--color-red-soft)]">
+            DVGC / Smart Cities
           </p>
-          <p className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-ch1 font-bold">
-            Detector de Vazamento de Gás de Cozinha
+          <h3 className="mt-4 text-4xl font-semibold tracking-[-0.06em] text-[var(--color-text-strong)]">
+            Detector de Vazamento de Gás
+          </h3>
+          <p className="mt-5 max-w-2xl text-sm leading-8 text-[var(--color-text-muted)] sm:text-base">
+            O DVGC nasceu como um sistema completo para detectar vazamentos de
+            GLP e alertar o usuário em tempo real. Foi o projeto em que produto,
+            software, hardware e interface realmente precisaram operar como uma
+            única experiência.
           </p>
+
+          <motion.div className="mt-8 grid gap-3 sm:grid-cols-3" variants={staggerFast}>
+            {highlights.map((item) => (
+              <motion.div
+                key={item.label}
+                variants={fadeUp}
+                className="rounded-[1.5rem] bg-[rgba(255,255,255,0.03)] p-4 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)]"
+              >
+                <p className="text-[0.66rem] font-semibold uppercase tracking-[0.28em] text-[var(--color-red-soft)]">
+                  {item.label}
+                </p>
+                <p className="mt-3 text-sm leading-7 text-[var(--color-text-mid)]">
+                  {item.value}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <div className="mt-8 rounded-[1.5rem] bg-[linear-gradient(135deg,rgba(240,90,104,0.14),rgba(209,31,49,0.08))] px-5 py-4 text-sm leading-7 text-[var(--color-text-mid)] shadow-[inset_0_0_0_1px_rgba(240,90,104,0.12)]">
+            O projeto ficou entre os selecionados para bootcamps e treinamentos
+            com o SEBRAE, destacando potencial de impacto social e inovação.
+          </div>
         </div>
 
-        <p className="text-sm sm:text-base leading-relaxed mb-4 text-justify ">
-          Projeto desenvolvido em grupo por cinco integrantes como parte de uma
-          disciplina acadêmica dentro do tema <strong>“Smart Cities”</strong>. O
-          DVGC marcou minha primeira experiência prática integrando{" "}
-          <strong>software e hardware</strong>, com o objetivo de criar uma
-          solução inovadora e acessível para{" "}
-          <strong>monitoramento de segurança doméstica</strong>, focando na{" "}
-          <strong>detecção de vazamentos de gás GLP</strong>, amplamente
-          utilizado em residências.
-          <br />
-          <br />
-          No projeto, fui responsável por{" "}
-          <strong>desenvolver o aplicativo móvel</strong>, realizar a{" "}
-          <strong>integração do backend com o dispositivo físico</strong>, além
-          de programar o <strong>ESP32</strong> e contribuir ativamente na{" "}
-          <strong>montagem do protótipo físico</strong>.
-          <br />
-          <br />O dispositivo utiliza o <strong>
-            microcontrolador ESP32
-          </strong>{" "}
-          integrado a <strong>sensores de gás</strong>, aplicando conceitos de{" "}
-          <strong>eletrônica digital e analógica</strong> para realizar
-          monitoramento constante da concentração de GLP no ar. Ao detectar a
-          presença do gás, o sistema{" "}
-          <strong>envia alertas em tempo real para o smartphone</strong> do
-          usuário, por meio de um app desenvolvido em{" "}
-          <strong>React Native</strong>.
-          <br />
-          <br />O aplicativo conta com uma{" "}
-          <strong>interface minimalista</strong>,{" "}
-          <strong>gráficos interativos gerados em tempo real</strong>,{" "}
-          <strong>registro dos horários dos vazamentos</strong> e uma{" "}
-          <strong>seção de orientações práticas para emergências</strong>,
-          incluindo instruções de evacuação e contato com serviços
-          especializados.
-          <br />
-          <br />A solução inclui também uma{" "}
-          <strong>API própria construída com Node.js e Express</strong>, com{" "}
-          <strong>persistência dos dados em um banco MySQL</strong>, assegurando
-          confiabilidade e um histórico completo dos eventos registrados.
-        </p>
-
-        <div className="bg-ch3 text-xs sm:text-sm text-ch1 font-bold px-4 py-2 rounded-lg mb-4 shadow-inner">
-          Mesmo sendo desenvolvido por alunos de primeiro semestre, o DVGC foi
-          um dos <strong>5 projetos selecionados</strong> entre todas as turmas
-          e períodos dos cursos de engenharia para participar de bootcamps e
-          treinamentos com o SEBRAE, graças ao seu{" "}
-          <strong>potencial de inovação e impacto social</strong>.
+        <div className="mt-8 flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <TechTag key={tag} label={tag} />
+          ))}
         </div>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          <TechTag label="REACT NATIVE" />
-          <TechTag label="MYSQL" />
-          <TechTag label="EXPO" />
-          <TechTag label="EXPRESS" />
-          <TechTag label="NODE" />
-          <TechTag label="C++" />
-          <TechTag label="IOT" />
-          <TechTag label="ELETRÔNICA DIGITAL E ANALÓGICA" />
-          <TechTag label="SEBRAE" />
-          <TechTag label="METODOLOGIAS ÁGEIS - KANBAN" />
-        </div>
-      </div>
-    </div>
+      </motion.article>
+    </motion.div>
   );
 };
