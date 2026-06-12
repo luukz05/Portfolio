@@ -1,21 +1,16 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { VscChromeClose } from "react-icons/vsc";
-import portfolioLogo from "../assets/logo.png";
-import { fadeUp, scaleIn, staggerFast } from "../lib/motion";
 
 const cvUrl =
   "https://drive.google.com/file/d/1Pb6rasJ_9lM06mRlQuH7X3gPqeVRn0R7/view?usp=sharing";
 
 const navLinks = [
-  { href: "#hero", label: "Início" },
-  { href: "#sobre", label: "Sobre" },
-  { href: "#destaque", label: "Destaque" },
-  { href: "#web", label: "Projetos web" },
-  { href: "#games", label: "Projetos de jogos" },
-  { href: "#skill", label: "Habilidades" },
-  { href: "#contato", label: "Contato" },
+  { href: "#sobre", label: "sobre" },
+  { href: "#destaque", label: "destaque" },
+  { href: "#web", label: "trabalho" },
+  { href: "#skill", label: "habilidades" },
+  { href: "#contato", label: "contato" },
 ];
 
 const Header = () => {
@@ -25,35 +20,25 @@ const Header = () => {
   const toggleMenu = () => setMenuOpen((current) => !current);
 
   useEffect(() => {
-    const updateHash = () => {
-      setActiveHash(window.location.hash || "#hero");
-    };
-
+    const updateHash = () => setActiveHash(window.location.hash || "#hero");
     updateHash();
     window.addEventListener("hashchange", updateHash);
 
-    const sections = navLinks
+    const sections = [{ href: "#hero" }, ...navLinks]
       .map((link) => document.querySelector(link.href))
       .filter(Boolean);
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
+        const visible = entries
+          .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visibleEntry?.target?.id) {
-          setActiveHash(`#${visibleEntry.target.id}`);
-        }
+        if (visible?.target?.id) setActiveHash(`#${visible.target.id}`);
       },
-      {
-        rootMargin: "-30% 0px -55% 0px",
-        threshold: [0.15, 0.3, 0.5],
-      }
+      { rootMargin: "-30% 0px -55% 0px", threshold: [0.15, 0.3, 0.5] }
     );
 
-    sections.forEach((section) => observer.observe(section));
-
+    sections.forEach((s) => observer.observe(s));
     return () => {
       window.removeEventListener("hashchange", updateHash);
       observer.disconnect();
@@ -61,90 +46,64 @@ const Header = () => {
   }, []);
 
   return (
-    <motion.header
-      className="fixed top-0 z-50 w-full border-b border-[rgba(255,255,255,0.04)] bg-[rgba(7,7,8,0.58)] backdrop-blur-2xl"
-      variants={fadeUp}
-      initial="hidden"
-      animate="show"
-    >
-      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-5 py-4 lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-8 lg:px-8">
-        <motion.a
+    <header className="fixed top-0 z-50 w-full border-b border-[var(--color-border)] bg-[rgba(10,9,8,0.72)] backdrop-blur-xl">
+      <div className="mx-auto flex w-[min(1000px,calc(100%-3rem))] items-center justify-between py-4">
+        <a
           href="#hero"
-          className="inline-flex items-center"
-          aria-label="Lucas Vargas"
-          variants={fadeUp}
+          className="text-[0.92rem] font-medium tracking-[-0.01em] text-[var(--color-text-strong)]"
+          onClick={() => setActiveHash("#hero")}
         >
-          <img
-            src={portfolioLogo}
-            alt="Logo do portfólio"
-            className="h-11 w-11 object-cover sm:h-12 sm:w-12"
-          />
-        </motion.a>
+          lucas vargas
+          <span className="text-[var(--color-red)]">.</span>
+        </a>
 
         <button
-          className="inline-flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.06)] p-2 text-[var(--color-text-strong)] lg:hidden"
+          className="text-[var(--color-text-mid)] lg:hidden"
           onClick={toggleMenu}
           aria-label="Abrir menu"
         >
-          {menuOpen ? (
-            <VscChromeClose size={18} />
-          ) : (
-            <RxHamburgerMenu size={18} />
-          )}
+          {menuOpen ? <VscChromeClose size={18} /> : <RxHamburgerMenu size={18} />}
         </button>
 
-        <motion.nav
-          className="hidden items-center justify-center gap-5 xl:gap-8 lg:flex"
-          variants={staggerFast}
-          initial="hidden"
-          animate="show"
-        >
+        <nav className="hidden items-center gap-7 lg:flex">
           {navLinks.map((link) => (
-            <motion.a
+            <a
               key={link.href}
               href={link.href}
               onClick={() => setActiveHash(link.href)}
-              variants={fadeUp}
-              className={`group relative pb-2 text-[0.62rem] uppercase tracking-[0.24em] transition-colors duration-200 xl:text-[0.68rem] xl:tracking-[0.32em] ${
+              data-cursor="link"
+              className={`text-[0.82rem] transition-colors duration-200 ${
                 activeHash === link.href
                   ? "text-[var(--color-text-strong)]"
                   : "text-[var(--color-text-muted)] hover:text-[var(--color-text-strong)]"
               }`}
             >
               {link.label}
-              <span
-                className={`absolute bottom-0 left-0 h-px bg-[var(--color-red-soft)] transition-all duration-300 ${
-                  activeHash === link.href
-                    ? "w-full opacity-100"
-                    : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
-                }`}
-              />
-            </motion.a>
+            </a>
           ))}
-        </motion.nav>
-
-        <motion.a
-          className="hidden min-h-10 items-center rounded-full bg-[linear-gradient(135deg,rgba(240,90,104,0.2),rgba(209,31,49,0.12))] px-3 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-text-strong)] shadow-[inset_0_0_0_1px_var(--color-red-border-soft)] transition hover:bg-[linear-gradient(135deg,rgba(240,90,104,0.28),rgba(209,31,49,0.18))] lg:inline-flex xl:px-4 xl:text-[0.68rem] xl:tracking-[0.32em]"
-          href={cvUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          variants={scaleIn}
-        >
-          Baixar currículo
-        </motion.a>
+          <a
+            className="text-[0.82rem] text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-red-soft)]"
+            href={cvUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="link"
+          >
+            currículo ↗
+          </a>
+        </nav>
       </div>
 
       {menuOpen ? (
-        <div className="border-t border-[rgba(255,255,255,0.05)] bg-[rgba(10,10,12,0.96)] lg:hidden">
-          <nav className="mx-auto flex w-full max-w-[1440px] flex-col gap-1 px-5 py-4">
+        <div className="border-t border-[var(--color-border)] bg-[rgba(10,9,8,0.97)] backdrop-blur-xl lg:hidden">
+          <nav className="mx-auto flex w-[min(1000px,calc(100%-2.25rem))] flex-col py-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className={`rounded-full border px-4 py-3 text-sm uppercase tracking-[0.24em] transition ${
+                className={`border-b border-[var(--color-border)] py-3.5 text-[0.9rem] transition ${
                   activeHash === link.href
-                    ? "border-[var(--color-red-border-soft)] text-[var(--color-text-strong)]"
-                    : "border-transparent text-[var(--color-text-muted)] hover:border-[rgba(255,255,255,0.06)] hover:text-[var(--color-text-strong)]"
+                    ? "text-[var(--color-text-strong)]"
+                    : "text-[var(--color-text-muted)]"
                 }`}
                 onClick={() => {
                   setActiveHash(link.href);
@@ -155,17 +114,17 @@ const Header = () => {
               </a>
             ))}
             <a
-              className="mt-2 inline-flex min-h-11 items-center justify-center rounded-full border border-[var(--color-red-border-soft)] bg-[linear-gradient(135deg,rgba(240,90,104,0.18),rgba(209,31,49,0.1))] px-4 text-[0.78rem] font-semibold uppercase tracking-[0.28em] text-[var(--color-text-strong)]"
+              className="py-3.5 text-[0.9rem] text-[var(--color-red-soft)]"
               href={cvUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Baixar currículo
+              currículo ↗
             </a>
           </nav>
         </div>
       ) : null}
-    </motion.header>
+    </header>
   );
 };
 

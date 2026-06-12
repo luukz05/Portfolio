@@ -2,19 +2,19 @@ export const easing = [0.22, 1, 0.36, 1];
 
 export const viewportSection = {
   once: true,
-  amount: 0.22,
+  amount: 0.2,
 };
 
 export const viewportCard = {
   once: true,
-  amount: 0.3,
+  amount: 0.25,
 };
 
 export const staggerContainer = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
       delayChildren: 0.04,
     },
   },
@@ -24,7 +24,7 @@ export const staggerFast = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.06,
+      staggerChildren: 0.05,
       delayChildren: 0.02,
     },
   },
@@ -33,15 +33,13 @@ export const staggerFast = {
 export const fadeUp = {
   hidden: {
     opacity: 0,
-    y: 28,
-    filter: "blur(10px)",
+    y: 16,
   },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: {
-      duration: 0.68,
+      duration: 0.6,
       ease: easing,
     },
   },
@@ -50,15 +48,13 @@ export const fadeUp = {
 export const fadeLeft = {
   hidden: {
     opacity: 0,
-    x: -32,
-    filter: "blur(10px)",
+    x: -18,
   },
   show: {
     opacity: 1,
     x: 0,
-    filter: "blur(0px)",
     transition: {
-      duration: 0.72,
+      duration: 0.65,
       ease: easing,
     },
   },
@@ -67,15 +63,13 @@ export const fadeLeft = {
 export const fadeRight = {
   hidden: {
     opacity: 0,
-    x: 32,
-    filter: "blur(10px)",
+    x: 18,
   },
   show: {
     opacity: 1,
     x: 0,
-    filter: "blur(0px)",
     transition: {
-      duration: 0.72,
+      duration: 0.65,
       ease: easing,
     },
   },
@@ -84,15 +78,13 @@ export const fadeRight = {
 export const scaleIn = {
   hidden: {
     opacity: 0,
-    scale: 0.94,
-    filter: "blur(8px)",
+    scale: 0.98,
   },
   show: {
     opacity: 1,
     scale: 1,
-    filter: "blur(0px)",
     transition: {
-      duration: 0.58,
+      duration: 0.5,
       ease: easing,
     },
   },
@@ -104,8 +96,7 @@ export const subtleHoverLift = {
     scale: 1,
   },
   hover: {
-    y: -4,
-    scale: 1.01,
+    y: -3,
     transition: {
       duration: 0.24,
       ease: easing,

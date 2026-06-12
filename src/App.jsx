@@ -1,18 +1,17 @@
-import { startTransition, useMemo, useState } from "react";
+import { startTransition, useEffect, useMemo, useState } from "react";
 import "./App.css";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import Header from "./components/Header";
-import ImageLinkButton from "./components/ImageButton";
-import ProjectCard from "./components/Cards";
+import ProjectList from "./components/ProjectList";
 import { Destaque } from "./components/Destaque";
 import { SobreMim } from "./components/Sobre Mim";
-import { Carousel } from "./components/carousel";
 import SkillsSection from "./components/skills";
 import Contato from "./components/contato";
-
-import envelope from "./assets/envelope.svg";
-import github from "./assets/github.svg";
-import linkedin from "./assets/linkedin.svg";
+import Loader from "./components/Loader";
+import Marquee from "./components/Marquee";
+import Magnetic from "./components/Magnetic";
+import ScrambleText from "./components/ScrambleText";
+import { ArrowDown, DotGrid, Grain } from "./components/Svg";
 
 import GAMMA from "./assets/GAMMA.png";
 import NBA from "./assets/NBA.png";
@@ -34,24 +33,20 @@ import chase from "./assets/The Chase.png";
 import zombiefication from "./assets/Zombiefication.png";
 import treasure from "./assets/Treasure Island.png";
 import dvgcmobile from "./assets/dvgc_mobile.jpg";
-import dvgcGrupo from "./assets/dvgc_grupo.png";
-import dvgcPrototipo from "./assets/dvgc_prototipo.png";
+import dvgcGrupo from "./assets/dvgc_grupo.jpg";
+import dvgcPrototipo from "./assets/dvgc_prototipo.jpg";
 import dvgcLogo from "./assets/DVGC.png";
 
-import s1 from "./assets/1.png";
-import s2 from "./assets/2.png";
-import s3 from "./assets/3.png";
-import s4 from "./assets/4.png";
-import {
-  fadeLeft,
-  fadeRight,
-  fadeUp,
-  scaleIn,
-  staggerContainer,
-  staggerFast,
-  viewportCard,
-  viewportSection,
-} from "./lib/motion";
+import portrait from "./assets/1.jpg";
+import { fadeUp, staggerContainer, viewportSection } from "./lib/motion";
+
+const lineReveal = {
+  hidden: { y: "110%" },
+  show: {
+    y: 0,
+    transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] },
+  },
+};
 
 const webProjects = [
   {
@@ -325,69 +320,21 @@ const gameProjects = [
   },
 ];
 
-function SectionHeading({ eyebrow, title, description, id, meta }) {
+function Section({ id, label, meta, className = "block", children }) {
   return (
-    <motion.div
-      id={id}
-      className="editorial-shell section-head"
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="show"
-      viewport={viewportSection}
-    >
-      <motion.div variants={staggerFast}>
-        <motion.p variants={fadeUp} className="section-kicker">
-          {eyebrow}
-        </motion.p>
-        <motion.h2 variants={fadeUp} className="section-title">
-          {title}
-        </motion.h2>
-        {description ? (
-          <motion.p variants={fadeUp} className="section-copy">
-            {description}
-          </motion.p>
-        ) : null}
-      </motion.div>
-      {meta ? (
-        <motion.div variants={fadeRight} className="section-meta">
-          <span className="section-meta-label">{meta.label}</span>
-          <p className="section-meta-copy">{meta.copy}</p>
+    <section id={id} className={className}>
+      <div className="wrap">
+        <motion.div
+          className="label"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportSection}
+        >
+          <ScrambleText text={label} />
+          {meta ? <span className="label-meta">{meta}</span> : null}
         </motion.div>
-      ) : null}
-    </motion.div>
-  );
-}
-
-function ProjectSection({
-  id,
-  eyebrow,
-  title,
-  description,
-  meta,
-  projects,
-  tone = "default",
-  controls,
-}) {
-  return (
-    <section
-      className={`section-block ${
-        tone === "soft" ? "section-block-soft" : "section-block-default"
-      }`}
-    >
-      <SectionHeading
-        id={id}
-        eyebrow={eyebrow}
-        title={title}
-        description={description}
-        meta={meta}
-      />
-      <div className="editorial-shell mt-16">
-        {controls ? <div className="section-toolbar">{controls}</div> : null}
-        <div className="project-grid-3">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.title} revealIndex={index} {...project} />
-          ))}
-        </div>
+        {children}
       </div>
     </section>
   );
@@ -396,28 +343,28 @@ function ProjectSection({
 function App() {
   const [webSort, setWebSort] = useState("complexity");
   const [webDirection, setWebDirection] = useState("desc");
+  const [loading, setLoading] = useState(true);
+
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    mass: 0.3,
+  });
+
+  useEffect(() => {
+    document.body.style.overflow = loading ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [loading]);
 
   const heroServices = [
-    {
-      title: "Front-end",
-      copy: "Interfaces claras e responsivas.",
-    },
-    {
-      title: "Full stack",
-      copy: "API, dados e produto.",
-    },
-    {
-      title: "Mobile + IoT",
-      copy: "Apps e sistemas conectados.",
-    },
-    {
-      title: "Inglês",
-      copy: "Comunicação fluente em contexto técnico.",
-    },
-    {
-      title: "Soft skills",
-      copy: "Clareza, colaboração e pensamento prático.",
-    },
+    "front-end",
+    "full stack",
+    "mobile + iot",
+    "inglês",
+    "soft skills",
   ];
 
   const sortedWebProjects = useMemo(() => {
@@ -450,313 +397,208 @@ function App() {
     return projects.sort((a, b) => (a.complexity - b.complexity) * direction);
   }, [webDirection, webSort]);
 
-  const webSortControls = (
-    <div className="sort-toolbar">
-      <span className="sort-label">Ordenar por:</span>
-      <div className="sort-toggle" role="tablist" aria-label="Critério de ordenação dos projetos web">
-        <button
-          type="button"
-          role="tab"
-          aria-selected={webSort === "complexity"}
-          className={`sort-chip ${webSort === "complexity" ? "sort-chip-active" : ""}`}
-          onClick={() => {
-            startTransition(() => setWebSort("complexity"));
-          }}
-        >
-          Complexidade
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={webSort === "recent"}
-          className={`sort-chip ${webSort === "recent" ? "sort-chip-active" : ""}`}
-          onClick={() => {
-            startTransition(() => setWebSort("recent"));
-          }}
-        >
-          Conclusão
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={webSort === "status"}
-          className={`sort-chip ${webSort === "status" ? "sort-chip-active" : ""}`}
-          onClick={() => {
-            startTransition(() => setWebSort("status"));
-          }}
-        >
-          Status atual
-        </button>
-      </div>
+  const sortOptions = [
+    { key: "complexity", label: "complexidade" },
+    { key: "recent", label: "recente" },
+    { key: "status", label: "status" },
+  ];
 
-      <div
-        className={`sort-direction-toggle ${webSort === "status" ? "sort-direction-toggle-disabled" : ""}`}
-        role="tablist"
-        aria-label="Direção de ordenação dos projetos web"
-        aria-disabled={webSort === "status"}
-      >
+  const webSortControls = (
+    <div className="sort">
+      <span>ordenar:</span>
+      {sortOptions.map((opt) => (
+        <button
+          key={opt.key}
+          type="button"
+          className={`sort-opt ${webSort === opt.key ? "sort-opt-active" : ""}`}
+          onClick={() => startTransition(() => setWebSort(opt.key))}
+        >
+          {opt.label}
+        </button>
+      ))}
+      {webSort !== "status" ? (
         <button
           type="button"
-          role="tab"
-          aria-selected={webDirection === "desc"}
-          disabled={webSort === "status"}
-          className={`sort-direction-option ${
-            webDirection === "desc" ? "sort-direction-option-active" : ""
-          }`}
-          onClick={() => {
-            startTransition(() => setWebDirection("desc"));
-          }}
+          className="sort-opt sort-dir"
+          aria-label="Inverter direção"
+          onClick={() =>
+            startTransition(() =>
+              setWebDirection((d) => (d === "desc" ? "asc" : "desc"))
+            )
+          }
         >
-          Desc
+          {webDirection === "desc" ? "↓ desc" : "↑ asc"}
         </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={webDirection === "asc"}
-          disabled={webSort === "status"}
-          className={`sort-direction-option ${
-            webDirection === "asc" ? "sort-direction-option-active" : ""
-          }`}
-          onClick={() => {
-            startTransition(() => setWebDirection("asc"));
-          }}
-        >
-          Asc
-        </button>
-      </div>
+      ) : null}
     </div>
   );
 
   return (
     <>
+      <Grain />
+      <AnimatePresence>
+        {loading ? <Loader key="loader" onDone={() => setLoading(false)} /> : null}
+      </AnimatePresence>
+      <motion.div className="scroll-progress" style={{ scaleX: progress }} />
+
       <Header />
-      <main className="relative overflow-x-hidden">
-        <section id="hero" className="hero-grid">
-          <div className="editorial-shell hero-shell">
+      <main className="overflow-x-hidden">
+        <section id="hero" className="hero">
+          <DotGrid className="hero-dots" />
+          <div className="wrap">
             <motion.div
-              className="hero-copy"
+              className="hero-inner"
               variants={staggerContainer}
               initial="hidden"
-              animate="show"
+              animate={loading ? "hidden" : "show"}
             >
-              <motion.span variants={fadeUp} className="hero-pill">
-                Portfolio / 2026
+              <motion.span variants={fadeUp} className="hero-tag">
+                <ScrambleText text="portfolio / 2026" trigger="mount" />
               </motion.span>
 
-              <motion.div variants={staggerFast} className="hero-copy-grid">
-                <motion.h1 variants={fadeUp} className="hero-title">
-                  Lucas Vargas
-                </motion.h1>
-                <motion.p variants={fadeUp} className="hero-role">
-                  Desenvolvedor full stack criando interfaces orientadas a
-                  produto, sistemas conectados e experiências digitais com
-                  identidade visual forte.
-                </motion.p>
-                <motion.p variants={fadeUp} className="hero-note">
-                  Trabalho entre front-end, back-end, mobile e hardware com
-                  foco em clareza, ritmo visual e produtos que parecem
-                  construídos com intenção, não montados por partes.
-                </motion.p>
+              <h1 className="hero-name">
+                <span className="hero-line">
+                  <motion.span variants={lineReveal} className="hero-line-inner">
+                    lucas vargas<span className="hero-dot">.</span>
+                  </motion.span>
+                </span>
+              </h1>
+
+              <motion.p variants={fadeUp} className="hero-role">
+                Desenvolvedor full stack criando interfaces orientadas a produto,
+                sistemas conectados e experiências digitais com identidade visual
+                forte.
+              </motion.p>
+
+              <motion.p variants={fadeUp} className="hero-note">
+                Trabalho entre front-end, back-end, mobile e hardware com foco em
+                clareza, ritmo visual e produtos que parecem construídos com
+                intenção, não montados por partes.
+              </motion.p>
+
+              <motion.div variants={fadeUp} className="hero-actions">
+                <Magnetic strength={0.45}>
+                  <a
+                    className="hero-link hero-link-primary"
+                    href="#web"
+                    data-cursor="link"
+                  >
+                    ver projetos
+                  </a>
+                </Magnetic>
+                <a
+                  className="hero-link"
+                  href="https://github.com/luukz05"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="link"
+                >
+                  github
+                </a>
+                <a
+                  className="hero-link"
+                  href="https://linkedin.com/in/lucasvargasdev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="link"
+                >
+                  linkedin
+                </a>
+                <a
+                  className="hero-link"
+                  href="mailto:lucasvargasdev05@gmail.com"
+                  data-cursor="link"
+                >
+                  email
+                </a>
               </motion.div>
 
-              <motion.div variants={staggerFast} className="hero-actions">
-                <motion.a variants={scaleIn} className="button-primary" href="#web">
-                  Ver projetos
-                </motion.a>
-                <motion.div variants={scaleIn}>
-                <ImageLinkButton
-                  href="https://github.com/luukz05"
-                  src={github}
-                  alt="GitHub"
-                  newTab={true}
-                />
-                </motion.div>
-                <motion.div variants={scaleIn}>
-                <ImageLinkButton
-                  href="https://linkedin.com/in/lucasvargasdev"
-                  src={linkedin}
-                  alt="LinkedIn"
-                  newTab={true}
-                />
-                </motion.div>
-                <motion.div variants={scaleIn}>
-                <ImageLinkButton
-                  href="copy:lucasvargasdev05@gmail.com"
-                  src={envelope}
-                  alt="Email"
-                  newTab={true}
-                />
-                </motion.div>
+              <motion.div variants={fadeUp} className="hero-meta">
+                {heroServices.map((item, i) => (
+                  <span key={item} className="contents">
+                    {i > 0 ? <span className="hero-meta-sep">·</span> : null}
+                    <span>{item}</span>
+                  </span>
+                ))}
+                <span className="hero-status">disponível para projetos</span>
               </motion.div>
             </motion.div>
-
-            <motion.aside
-              className="hero-panel glass-surface"
-              variants={fadeRight}
-              initial="hidden"
-              animate="show"
-            >
-              <motion.div variants={fadeUp} className="hero-panel-top">
-                <p className="hero-panel-label">Serviços</p>
-                <span className="hero-availability">Disponível para projetos</span>
-              </motion.div>
-
-              <motion.div
-                className="hero-service-list"
-                variants={staggerFast}
-                initial="hidden"
-                animate="show"
-              >
-                {heroServices.map((item) => (
-                  <motion.div
-                    key={item.title}
-                    variants={fadeUp}
-                    className="hero-service-item"
-                  >
-                    <p className="hero-service-title">{item.title}</p>
-                    <p className="hero-service-copy">{item.copy}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-            </motion.aside>
           </div>
-        </section>
 
-        <section className="section-block section-block-plain">
-          <SectionHeading
-            id="sobre"
-            eyebrow="Sobre mim"
-            title="Desenvolvimento, produto e experiência visual."
-            description="Minha base reúne desenvolvimento web, mobile e sistemas conectados ao mundo físico. Aqui, a ideia é apresentar essa trajetória com mais clareza, contexto e organização."
-            meta={{
-              label: "Nota",
-              copy:
-                "Prático, autodidata e orientado a produto. Busco construir experiências claras, funcionais e bem apresentadas.",
-            }}
-          />
-          <motion.div
-            className="editorial-shell mt-16"
-            initial="hidden"
-            whileInView="show"
-            viewport={viewportSection}
-            variants={fadeUp}
+          <motion.a
+            href="#sobre"
+            className="hero-scroll"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: loading ? 0 : 1 }}
+            transition={{ delay: 1.4, duration: 0.6 }}
+            aria-label="Rolar para baixo"
           >
-            <div className="showcase-grid about-showcase">
-              <motion.div variants={fadeLeft}>
-                <SobreMim />
-              </motion.div>
-              <motion.div variants={fadeRight} className="flex h-full items-stretch">
-                <Carousel s1={s1} s2={s2} s3={s3} s4={s4} />
-              </motion.div>
-            </div>
-          </motion.div>
+            <span>scroll</span>
+            <ArrowDown className="hero-scroll-arrow" />
+          </motion.a>
         </section>
 
-        <section className="section-block section-block-soft">
-          <SectionHeading
-            id="destaque"
-            eyebrow="Projeto em destaque"
-            title="Um projeto que uniu software, hardware e usabilidade."
-            description="DVGC representa a parte mais concreta da minha experiência com produto, integração e impacto social."
-            meta={{
-              label: "Foco do caso",
-              copy:
-                "Smart Cities, alertas em tempo real, interface mobile e monitoramento físico em um mesmo fluxo.",
-            }}
+        <Marquee />
+
+        <Section id="sobre" label="sobre">
+          <div className="sobre-grid">
+            <SobreMim />
+            <motion.div
+              className="sobre-photo"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewportSection}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="sobre-frame">
+                <img
+                  src={portrait}
+                  alt="Lucas Vargas"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <span className="sobre-caption">lucas vargas — sorocaba, sp</span>
+            </motion.div>
+          </div>
+        </Section>
+
+        <Section id="destaque" label="destaque">
+          <Destaque
+            groupPhoto={dvgcGrupo}
+            prototypePhoto={dvgcPrototipo}
+            logoCard={dvgcLogo}
           />
-          <motion.div
-            className="editorial-shell mt-16"
-            initial="hidden"
-            whileInView="show"
-            viewport={viewportSection}
-            variants={fadeUp}
-          >
-            <Destaque
-              groupPhoto={dvgcGrupo}
-              prototypePhoto={dvgcPrototipo}
-              logoCard={dvgcLogo}
-            />
-          </motion.div>
-        </section>
+        </Section>
 
-        <ProjectSection
+        <Section
           id="web"
-          eyebrow="Projetos web"
-          title="Projetos web selecionados."
-          description="Projetos em que produto, interface, dados, autenticação, mobile e integração externa aparecem com pesos diferentes, mas sempre com foco em clareza e boa apresentação."
-          meta={{
-            label: "Seleção",
-            copy: `${String(webProjects.length).padStart(
-              2,
-              "0"
-            )} projetos web organizados por impacto e complexidade.`,
-          }}
-          projects={sortedWebProjects}
-          controls={webSortControls}
-        />
+          label="trabalho"
+          meta={`${String(webProjects.length).padStart(2, "0")} projetos web`}
+        >
+          {webSortControls}
+          <ProjectList projects={sortedWebProjects} showStatus />
+        </Section>
 
-        <ProjectSection
+        <Section
           id="games"
-          eyebrow="Projetos de jogos"
-          title="Projetos de jogos e experimentos interativos."
-          description="Uma seleção menor, mas importante para direção criativa, sensação de ritmo e entendimento de experiência interativa."
-          meta={{
-            label: "Seleção",
-            copy: `${String(gameProjects.length).padStart(
-              2,
-              "0"
-            )} projetos apresentados com a mesma grade e o mesmo rigor visual.`,
-          }}
-          projects={gameProjects}
-          tone="soft"
-        />
+          label="jogos"
+          meta={`${String(gameProjects.length).padStart(2, "0")} projetos`}
+        >
+          <ProjectList projects={gameProjects} showStatus={false} />
+        </Section>
 
-        <section className="section-block">
-          <SectionHeading
-            id="skill"
-            eyebrow="Habilidades"
-            title="Tecnologias, ferramentas e forma de trabalho."
-            description="Organizado para destacar repertório técnico, critérios de implementação e a maneira como eu trabalho com mais clareza e menos ruído."
-            meta={{
-              label: "Modo de trabalho",
-              copy:
-                "Menos ruído visual, mais hierarquia, previsibilidade técnica e escolhas com intenção.",
-            }}
-          />
-          <motion.div
-            className="editorial-shell mt-16"
-            initial="hidden"
-            whileInView="show"
-            viewport={viewportSection}
-            variants={fadeUp}
-          >
-            <SkillsSection />
-          </motion.div>
-        </section>
+        <Section id="skill" label="habilidades">
+          <SkillsSection />
+        </Section>
 
-        <section className="section-block section-block-soft">
-          <SectionHeading
-            id="contato"
-            eyebrow="Contato"
-            title="Canais diretos para conversar sobre projetos e oportunidades."
-            description="Se fizer sentido conversar sobre front-end, full stack, mobile ou projetos com hardware, estes são os meios mais diretos para falar comigo."
-            meta={{
-              label: "Disponibilidade",
-              copy:
-                "Aberto a trabalhos com identidade visual forte, bom critério técnico e ambição de produto.",
-            }}
-          />
-          <motion.div
-            className="editorial-shell mt-16"
-            initial="hidden"
-            whileInView="show"
-            viewport={viewportSection}
-            variants={fadeUp}
-          >
-            <Contato />
-          </motion.div>
-        </section>
+        <Section id="contato" label="contato">
+          <p className="lede" style={{ marginBottom: "2.5rem" }}>
+            Aberto a trabalhos com identidade visual forte, bom critério técnico e
+            ambição de produto. Estes são os canais mais diretos.
+          </p>
+          <Contato />
+        </Section>
       </main>
     </>
   );
